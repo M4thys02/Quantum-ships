@@ -1,0 +1,1339 @@
+fileFormatVersion: 2
+guid: 7e12f8c983c0ca8448b4c6b6d9dc44a5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9080487648370823209
+    second: mysterious_bag_final_0
+  - first:
+      213: 7406049034571420787
+    second: mysterious_bag_final_1
+  - first:
+      213: 4807109473017720587
+    second: mysterious_bag_final_2
+  - first:
+      213: 8211119788009384932
+    second: mysterious_bag_final_3
+  - first:
+      213: 4680865003205206761
+    second: mysterious_bag_final_4
+  - first:
+      213: 6768716668836896188
+    second: mysterious_bag_final_5
+  - first:
+      213: -1898246659970145902
+    second: mysterious_bag_final_6
+  - first:
+      213: -2089746197225338242
+    second: mysterious_bag_final_7
+  - first:
+      213: 4529723087551092632
+    second: mysterious_bag_final_8
+  - first:
+      213: 3187182804096671377
+    second: mysterious_bag_final_9
+  - first:
+      213: 1796570094215314127
+    second: mysterious_bag_final_10
+  - first:
+      213: -1595172475901890272
+    second: mysterious_bag_final_11
+  - first:
+      213: -9065577848368667267
+    second: mysterious_bag_final_12
+  - first:
+      213: -4431980905105104091
+    second: mysterious_bag_final_13
+  - first:
+      213: 6547269256005023168
+    second: mysterious_bag_final_14
+  - first:
+      213: 1357880000247292072
+    second: mysterious_bag_final_15
+  - first:
+      213: -5413413763416846850
+    second: mysterious_bag_final_16
+  - first:
+      213: 8031375917991589734
+    second: mysterious_bag_final_17
+  - first:
+      213: 1454408023404951559
+    second: mysterious_bag_final_18
+  - first:
+      213: -1020939153759972595
+    second: mysterious_bag_final_19
+  - first:
+      213: 5977731109354046625
+    second: mysterious_bag_final_20
+  - first:
+      213: 4604196506944293929
+    second: mysterious_bag_final_21
+  - first:
+      213: 1333809130818953835
+    second: mysterious_bag_final_22
+  - first:
+      213: 9194906125257978105
+    second: mysterious_bag_final_23
+  - first:
+      213: -8316933814501184423
+    second: mysterious_bag_final_24
+  - first:
+      213: -6509393920655134800
+    second: mysterious_bag_final_25
+  - first:
+      213: -2936924072660917456
+    second: mysterious_bag_final_26
+  - first:
+      213: 3966062065478604340
+    second: mysterious_bag_final_27
+  - first:
+      213: 3755122914976710089
+    second: mysterious_bag_final_28
+  - first:
+      213: -6108394091109449262
+    second: mysterious_bag_final_29
+  - first:
+      213: -339249796604830309
+    second: mysterious_bag_final_30
+  - first:
+      213: 4402212669753703221
+    second: mysterious_bag_final_31
+  - first:
+      213: -4426090305581156073
+    second: mysterious_bag_final_32
+  - first:
+      213: 1287661413223084938
+    second: mysterious_bag_final_33
+  - first:
+      213: -6209278819497054412
+    second: mysterious_bag_final_34
+  - first:
+      213: 2890557119537860229
+    second: mysterious_bag_final_35
+  - first:
+      213: 9126101695561292903
+    second: mysterious_bag_final_36
+  - first:
+      213: 8580788054470412097
+    second: mysterious_bag_final_37
+  - first:
+      213: 6519991574220554961
+    second: mysterious_bag_final_38
+  - first:
+      213: -3264174735013712585
+    second: mysterious_bag_final_39
+  - first:
+      213: -3824235071594722457
+    second: mysterious_bag_final_40
+  - first:
+      213: 7097067647601562737
+    second: mysterious_bag_final_41
+  - first:
+      213: -757510668256253557
+    second: mysterious_bag_final_42
+  - first:
+      213: 6288445432684070005
+    second: mysterious_bag_final_43
+  - first:
+      213: 1515770673383377778
+    second: mysterious_bag_final_44
+  - first:
+      213: -1004381610342535740
+    second: mysterious_bag_final_45
+  - first:
+      213: -7478910660341796020
+    second: mysterious_bag_final_46
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mysterious_bag_final_0
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 911
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dfe8832890abf180800000000000000
+      internalID: -9080487648370823209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_1
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 871
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37411c6ab5297c660800000000000000
+      internalID: 7406049034571420787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_2
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 879
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0fe2a7b89846b240800000000000000
+      internalID: 4807109473017720587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_3
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 855
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ebea7c51f1c3f170800000000000000
+      internalID: 8211119788009384932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_4
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 873
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e2aa9d8be5c5f040800000000000000
+      internalID: 4680865003205206761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 856
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbdd947b2ff4fed50800000000000000
+      internalID: 6768716668836896188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_6
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 841
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 291686858b218a5e0800000000000000
+      internalID: -1898246659970145902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_7
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 834
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7a09a3d7eabff2e0800000000000000
+      internalID: -2089746197225338242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_8
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 135
+        width: 546
+        height: 705
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8975e5c062fccde30800000000000000
+      internalID: 4529723087551092632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_9
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 832
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e5a68bfd52b3c20800000000000000
+      internalID: 3187182804096671377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_10
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 799
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fca3bc76bf2bee810800000000000000
+      internalID: 1796570094215314127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_11
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 752
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0213362b51fccd9e0800000000000000
+      internalID: -1595172475901890272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_12
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 721
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75e5587af8903280800000000000000
+      internalID: -9065577848368667267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_13
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 697
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52365e339d07e72c0800000000000000
+      internalID: -4431980905105104091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_14
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 703
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5f30d03b29cda50800000000000000
+      internalID: 6547269256005023168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_15
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 695
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a0e8567aa828d210800000000000000
+      internalID: 1357880000247292072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_16
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 647
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efd04591dd0bfd4b0800000000000000
+      internalID: -5413413763416846850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_17
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 645
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 667f38968dd257f60800000000000000
+      internalID: 8031375917991589734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_18
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 655
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 708b78934681f2410800000000000000
+      internalID: 1454408023404951559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_19
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 639
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0359d2bf35e4d1f0800000000000000
+      internalID: -1020939153759972595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_20
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 575
+        width: 45
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a489d7c5ca25f250800000000000000
+      internalID: 5977731109354046625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_21
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 614
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92c4288345465ef30800000000000000
+      internalID: 4604196506944293929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_22
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 607
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b62e2a07654a28210800000000000000
+      internalID: 1333809130818953835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_23
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 543
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f0b01b776eda9f70800000000000000
+      internalID: 9194906125257978105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_24
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 585
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95ce83eb2c0549c80800000000000000
+      internalID: -8316933814501184423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_25
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 548
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bf6348a7bcf9a5a0800000000000000
+      internalID: -6509393920655134800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_26
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 527
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 033a0cccd13fd37d0800000000000000
+      internalID: -2936924072660917456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_27
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 503
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 436110a7f684a0730800000000000000
+      internalID: 3966062065478604340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_28
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 502
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cdbd1b4560ec1430800000000000000
+      internalID: 3755122914976710089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_29
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 471
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d1835310ff9a3ba0800000000000000
+      internalID: -6108394091109449262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_30
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 463
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9dde3f7b1eba4bf0800000000000000
+      internalID: -339249796604830309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_31
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 471
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53bb466691dc71d30800000000000000
+      internalID: 4402212669753703221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_32
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 480
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 719f808415e5392c0800000000000000
+      internalID: -4426090305581156073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_33
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 431
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a83b326ab31bed110800000000000000
+      internalID: 1287661413223084938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_34
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 432
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43f6584dfc534d9a0800000000000000
+      internalID: -6209278819497054412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_35
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 405
+        width: 31
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58ec709a2625d1820800000000000000
+      internalID: 2890557119537860229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_36
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 398
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76c5504d32d66ae70800000000000000
+      internalID: 9126101695561292903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_37
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 360
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147cf97c545151770800000000000000
+      internalID: 8580788054470412097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_38
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 341
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d2c4f7dac9ab7a50800000000000000
+      internalID: 6519991574220554961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_39
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 304
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73de3b27f5253b2d0800000000000000
+      internalID: -3264174735013712585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_40
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 321
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b810cc6769deac0800000000000000
+      internalID: -3824235071594722457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_41
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 263
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17455327c69dd7260800000000000000
+      internalID: 7097067647601562737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_42
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 271
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8964098f08cc75f0800000000000000
+      internalID: -757510668256253557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_43
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 214
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 574cf8cadcb054750800000000000000
+      internalID: 6288445432684070005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_44
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 211
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27b88f38569190510800000000000000
+      internalID: 1515770673383377778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_45
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 193
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cd29903f38bf02f0800000000000000
+      internalID: -1004381610342535740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mysterious_bag_final_46
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 112
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c43f17f1162953890800000000000000
+      internalID: -7478910660341796020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      mysterious_bag_final_0: -9080487648370823209
+      mysterious_bag_final_1: 7406049034571420787
+      mysterious_bag_final_10: 1796570094215314127
+      mysterious_bag_final_11: -1595172475901890272
+      mysterious_bag_final_12: -9065577848368667267
+      mysterious_bag_final_13: -4431980905105104091
+      mysterious_bag_final_14: 6547269256005023168
+      mysterious_bag_final_15: 1357880000247292072
+      mysterious_bag_final_16: -5413413763416846850
+      mysterious_bag_final_17: 8031375917991589734
+      mysterious_bag_final_18: 1454408023404951559
+      mysterious_bag_final_19: -1020939153759972595
+      mysterious_bag_final_2: 4807109473017720587
+      mysterious_bag_final_20: 5977731109354046625
+      mysterious_bag_final_21: 4604196506944293929
+      mysterious_bag_final_22: 1333809130818953835
+      mysterious_bag_final_23: 9194906125257978105
+      mysterious_bag_final_24: -8316933814501184423
+      mysterious_bag_final_25: -6509393920655134800
+      mysterious_bag_final_26: -2936924072660917456
+      mysterious_bag_final_27: 3966062065478604340
+      mysterious_bag_final_28: 3755122914976710089
+      mysterious_bag_final_29: -6108394091109449262
+      mysterious_bag_final_3: 8211119788009384932
+      mysterious_bag_final_30: -339249796604830309
+      mysterious_bag_final_31: 4402212669753703221
+      mysterious_bag_final_32: -4426090305581156073
+      mysterious_bag_final_33: 1287661413223084938
+      mysterious_bag_final_34: -6209278819497054412
+      mysterious_bag_final_35: 2890557119537860229
+      mysterious_bag_final_36: 9126101695561292903
+      mysterious_bag_final_37: 8580788054470412097
+      mysterious_bag_final_38: 6519991574220554961
+      mysterious_bag_final_39: -3264174735013712585
+      mysterious_bag_final_4: 4680865003205206761
+      mysterious_bag_final_40: -3824235071594722457
+      mysterious_bag_final_41: 7097067647601562737
+      mysterious_bag_final_42: -757510668256253557
+      mysterious_bag_final_43: 6288445432684070005
+      mysterious_bag_final_44: 1515770673383377778
+      mysterious_bag_final_45: -1004381610342535740
+      mysterious_bag_final_46: -7478910660341796020
+      mysterious_bag_final_5: 6768716668836896188
+      mysterious_bag_final_6: -1898246659970145902
+      mysterious_bag_final_7: -2089746197225338242
+      mysterious_bag_final_8: 4529723087551092632
+      mysterious_bag_final_9: 3187182804096671377
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
