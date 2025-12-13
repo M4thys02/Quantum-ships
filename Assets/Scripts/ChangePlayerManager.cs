@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,15 +12,19 @@ public class ChangePlayerManager : MonoBehaviour {
     [SerializeField] private int gridSize;
     [SerializeField] private int defaultHeight;
     private int oneTileSizes = 64;
-    private float currentScale;
+    private float gridScale;
+    [SerializeField] private GridLabelGenerator _labelgenerator;
+
     private int currentPlayer = 0;
     public int CurrentPlayer => currentPlayer;
 
     private void Awake() {
         gridSize = (int)PlayerPrefs.GetFloat("GridSlider", defaultGridSize);
-        currentScale = (float)defaultHeight / (oneTileSizes * gridSize);
+        gridScale = (float)defaultHeight / (oneTileSizes * gridSize);
         GenerateTilemap(player0Tilemap);
         GenerateTilemap(player1Tilemap);
+
+        _labelgenerator.setUpLabels(gridSize, gridScale, true);
 
         UpdateTilemapsVisibility();
     }
@@ -32,7 +37,7 @@ public class ChangePlayerManager : MonoBehaviour {
                 currentTilemap.SetTile(position, tileBase);
             }
         }
-        currentTilemap.transform.localScale = Vector3.one * currentScale;
+        currentTilemap.transform.localScale = Vector3.one * gridScale;
     }
 
     public void ChangePlayer() {

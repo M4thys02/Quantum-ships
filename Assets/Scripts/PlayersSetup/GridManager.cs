@@ -92,6 +92,6 @@ public class GridManager : MonoBehaviour {
         currentScale = newScale; //This is much better then dictionary, bcs it is caluclated on-time for current gridResolution
 
         generateGrid();
-        _labelGenerator.setUpLabels(gridResolution, currentScale);
+        _labelGenerator.setUpLabels(gridResolution, currentScale, false);
     }
 }

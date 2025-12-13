@@ -13,6 +13,7 @@ public class GridLabelGenerator : MonoBehaviour {
     [SerializeField] private float defaultFontSize = 4f;
     private int gridSize { get; set; }
     private float gridScale { get; set; }
+    private bool mainGame { get; set; }
 
     private static readonly Dictionary<int, float> FontSizeByGrid = new() {
         { 3, 20f },
@@ -31,9 +32,17 @@ public class GridLabelGenerator : MonoBehaviour {
     private void CreateLabelForTile(Vector3Int pos, int row, int column) {
         var label = Instantiate(labelPrefab, transform);
         label.text = $"{(char)('A' + column)}{row + 1}";
-        label.fontSize = GetFontSizeForGrid(gridSize);
+        Vector3 worldPos = new Vector3(0, 0, 0);
 
-        Vector3 worldPos = tilemap.CellToWorld(pos) + new Vector3(0.5f, 0.5f, 0) * gridScale;
+        if (!mainGame) {
+            label.fontSize = GetFontSizeForGrid(gridSize);
+            worldPos = tilemap.CellToWorld(pos) + new Vector3(0.5f, 0.5f, 0) * gridScale;
+        }
+        else {
+            label.fontSize = defaultFontSize;
+            worldPos = tilemap.CellToWorld(pos) + new Vector3(0.85f, 0.85f, 0) * gridScale;
+        }
+
         label.transform.position = worldPos;
     }
     private void GenerateLabels() {
@@ -56,9 +65,10 @@ public class GridLabelGenerator : MonoBehaviour {
         }
     }
 
-    public void setUpLabels(int currentSize, float currentGridScale) {
+    public void setUpLabels(int currentSize, float currentGridScale, bool isGame) {
         gridSize = currentSize;
         gridScale = currentGridScale;
+        mainGame = isGame;
 
         GenerateLabels();
     }
