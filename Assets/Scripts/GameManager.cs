@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         _changePlayerManager = GetComponentInChildren<ChangePlayerManager>();
-
-        _changePlayerManager.UpdateTilemapsVisibility();
     }
     public void GameFinished() {
         PlayersSetUps.Cleanup();             // destroy persistent object

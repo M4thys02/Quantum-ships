@@ -1,13 +1,39 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class ChangePlayerManager : MonoBehaviour {
     public Tilemap player0Tilemap;
     public Tilemap player1Tilemap;
+    [SerializeField] private TileBase tileBase;
 
+    private int defaultGridSize = 3;
+    [SerializeField] private int gridSize;
+    [SerializeField] private int defaultHeight;
+    private int oneTileSizes = 64;
+    private float currentScale;
     private int currentPlayer = 0;
-
     public int CurrentPlayer => currentPlayer;
+
+    private void Awake() {
+        gridSize = (int)PlayerPrefs.GetFloat("GridSlider", defaultGridSize);
+        currentScale = (float)defaultHeight / (oneTileSizes * gridSize);
+        GenerateTilemap(player0Tilemap);
+        GenerateTilemap(player1Tilemap);
+
+        UpdateTilemapsVisibility();
+    }
+
+    private void GenerateTilemap(Tilemap currentTilemap) {
+        currentTilemap.ClearAllTiles();
+        for (int x = 0; x < gridSize; ++x) {
+            for (int y = 0; y < gridSize; ++y) {
+                Vector3Int position = new Vector3Int(x, y, 0);
+                currentTilemap.SetTile(position, tileBase);
+            }
+        }
+        currentTilemap.transform.localScale = Vector3.one * currentScale;
+    }
 
     public void ChangePlayer() {
         currentPlayer = (currentPlayer == 0) ? 1 : 0;
