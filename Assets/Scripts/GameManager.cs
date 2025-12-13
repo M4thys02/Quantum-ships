@@ -16,4 +16,12 @@ public class GameManager : MonoBehaviour {
     public void ChangePlayer() {
         _changePlayerManager.ChangePlayer();
     }
+
+    public void PlayerAttack() {
+
+    }
+
+    public void PlayerMeasure() {
+
+    }
 }
