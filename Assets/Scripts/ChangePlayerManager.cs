@@ -53,4 +53,8 @@ public class ChangePlayerManager : MonoBehaviour {
     public Tilemap GetActiveTilemap() {
         return currentPlayer == 0 ? player0Tilemap : player1Tilemap;
     }
+
+    public int GetActivatePlayer() {
+        return currentPlayer;
+    }
 }

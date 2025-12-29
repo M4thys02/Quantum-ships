@@ -53,6 +53,33 @@ public class PlayersSetUps : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    public static Vector2Int GetWeightedRandomTileForPlayer(int player) {
+        Dictionary<Vector2Int, int> dict = (player == 0) ? player0Tiles : player1Tiles;
+
+        if (dict.Count == 0) {
+            Debug.LogWarning($"No tiles available for player {player}.");
+            return Vector2Int.zero;
+        }
+
+        int totalWeight = 0;
+
+        foreach (var kvp in dict) {
+            totalWeight += kvp.Value;
+        }
+
+        int randomValue = Random.Range(0, totalWeight);
+
+        foreach (var kvp in dict) {
+            randomValue -= kvp.Value;
+
+            if (randomValue < 0)
+                return kvp.Key;
+        }
+
+        // Fallback, logically unreachable
+        return Vector2Int.zero;
+    }
+
     //public static void ShowDictionaries() {
     //    Debug.Log("=== Player 0 Tiles ===");
     //    if (player0Tiles.Count == 0) {
