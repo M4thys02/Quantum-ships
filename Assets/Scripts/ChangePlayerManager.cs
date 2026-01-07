@@ -134,4 +134,5 @@ public class ChangePlayerManager : MonoBehaviour {
     public int GetActivatePlayer() {
         return currentPlayer;
     }
+
 }

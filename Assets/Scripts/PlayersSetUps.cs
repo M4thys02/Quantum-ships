@@ -80,6 +80,10 @@ public class PlayersSetUps : MonoBehaviour {
         return Vector2Int.zero;
     }
 
+    public static Dictionary<Vector2Int, int> GetKeyValuePairs(int player) {
+        return player == 0 ? player0Tiles : player1Tiles;
+    }
+
     //public static void ShowDictionaries() {
     //    Debug.Log("=== Player 0 Tiles ===");
     //    if (player0Tiles.Count == 0) {
