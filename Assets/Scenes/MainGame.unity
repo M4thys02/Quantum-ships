@@ -295,6 +295,10 @@ MonoBehaviour:
   gridSize: 10
   defaultHeight: 700
   _labelgenerator: {fileID: 1206253712}
+  attackSquarePrefab: {fileID: 4252134518107266298, guid: a973b962b8108d84083141a539b86f74, type: 3}
+  mainCamera: {fileID: 2021074609}
+  defaultSquares: 10
+  maxAttackSquares: 0
 --- !u!1 &329213081
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,37 +701,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554389897}
   m_CullTransparentMesh: 1
---- !u!1 &619483282
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 619483283}
-  m_Layer: 0
-  m_Name: Attack Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &619483283
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619483282}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 653447362}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &653447360
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +745,6 @@ Transform:
   m_Children:
   - {fileID: 200475735}
   - {fileID: 1402896910}
-  - {fileID: 619483283}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663306214
@@ -2468,6 +2440,7 @@ GameObject:
   - component: {fileID: 1527285753}
   - component: {fileID: 1527285755}
   - component: {fileID: 1527285754}
+  - component: {fileID: 1527285756}
   m_Layer: 0
   m_Name: Player0 Gameboard
   m_TagString: Untagged
@@ -2713,6 +2686,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &1527285756
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527285752}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1548628355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2860,6 +2860,7 @@ GameObject:
   - component: {fileID: 1552613341}
   - component: {fileID: 1552613343}
   - component: {fileID: 1552613342}
+  - component: {fileID: 1552613344}
   m_Layer: 0
   m_Name: Player1 Gameboard
   m_TagString: Untagged
@@ -3105,6 +3106,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &1552613344
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552613340}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1582054045
 GameObject:
   m_ObjectHideFlags: 0

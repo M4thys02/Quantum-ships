@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerAttack() {
-
+        int currentPlayer = _changePlayerManager.GetActivatePlayer();
     }
 
     public void PlayerMeasure() {

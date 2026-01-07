@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,16 @@ public class ChangePlayerManager : MonoBehaviour {
     private int currentPlayer = 0;
     public int CurrentPlayer => currentPlayer;
 
+    // FOR PLAYER ATTACK:
+    [SerializeField] private GameObject attackSquarePrefab;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private int defaultSquares = 10;
+    [SerializeField] private int maxAttackSquares;
+
+    private Dictionary<Vector3Int, List<GameObject>> player0Squares = new Dictionary<Vector3Int, List<GameObject>>();
+    private Dictionary<Vector3Int, List<GameObject>> player1Squares = new Dictionary<Vector3Int, List<GameObject>>();
+
+
     private void Awake() {
         gridSize = (int)PlayerPrefs.GetFloat("GridSlider", defaultGridSize);
         gridScale = (float)defaultHeight / (oneTileSizes * gridSize);
@@ -27,6 +38,54 @@ public class ChangePlayerManager : MonoBehaviour {
         _labelgenerator.setUpLabels(gridSize, gridScale, true); //TODO: fix label generation for gridSize 10 etc.
 
         UpdateTilemapsVisibility();
+
+        maxAttackSquares = (int)PlayerPrefs.GetFloat("SquareSlider", defaultSquares);
+    }
+
+    private void Update() {
+        if (Input.GetMouseButtonDown(1)) {
+            HandleClick(add: true);
+        }
+        else if (Input.GetMouseButtonDown(0)) {
+            HandleClick(add: false);
+        }
+    }
+
+    private void HandleClick(bool add) {
+        Vector3 worldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        worldPos.z = 0f;
+        TryHandleTilemap(GetActiveTilemap(), GetActiveSquaresDict(), worldPos, add);
+    }
+
+    private void TryHandleTilemap(Tilemap tilemap, Dictionary<Vector3Int, List<GameObject>> squaresDict, Vector3 worldPos, bool add) {
+        Vector3Int cellPos = tilemap.WorldToCell(worldPos);
+
+        // Ignore clicks outside the tilemap
+        if (!tilemap.HasTile(cellPos))
+            return;
+
+        if (!squaresDict.TryGetValue(cellPos, out var list)) {
+            list = new List<GameObject>();
+            squaresDict[cellPos] = list;
+        }
+
+        if (add) {
+            if (list.Count >= maxAttackSquares)
+                return;
+
+            Vector3 spawnPos = tilemap.GetCellCenterWorld(cellPos);
+            GameObject square = Instantiate(attackSquarePrefab, spawnPos, Quaternion.identity);
+            square.transform.localScale = Vector3.one * gridScale;
+            list.Add(square);
+        }
+        else {
+            if (list.Count == 0)
+                return;
+
+            GameObject square = list[list.Count - 1];
+            list.RemoveAt(list.Count - 1);
+            Destroy(square);
+        }
     }
 
     private void GenerateTilemap(Tilemap currentTilemap) {
@@ -46,12 +105,30 @@ public class ChangePlayerManager : MonoBehaviour {
     }
 
     public void UpdateTilemapsVisibility() {
-        player0Tilemap.gameObject.SetActive(currentPlayer == 0);
-        player1Tilemap.gameObject.SetActive(currentPlayer == 1);
+        bool isPlayer0 = currentPlayer == 0;
+
+        player0Tilemap.gameObject.SetActive(isPlayer0);
+        player1Tilemap.gameObject.SetActive(!isPlayer0);
+
+        foreach (var kv in player0Squares) {
+            foreach (var square in kv.Value) {
+                square.SetActive(isPlayer0);
+            }
+        }
+
+        foreach (var kv in player1Squares) {
+            foreach (var square in kv.Value) {
+                square.SetActive(!isPlayer0);
+            }
+        }
     }
 
     public Tilemap GetActiveTilemap() {
         return currentPlayer == 0 ? player0Tilemap : player1Tilemap;
+    }
+
+    public Dictionary<Vector3Int, List<GameObject>> GetActiveSquaresDict() {
+        return currentPlayer == 0 ? player0Squares : player1Squares;
     }
 
     public int GetActivatePlayer() {
