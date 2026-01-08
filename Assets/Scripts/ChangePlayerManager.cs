@@ -35,7 +35,7 @@ public class ChangePlayerManager : MonoBehaviour {
         GenerateTilemap(player0Tilemap);
         GenerateTilemap(player1Tilemap);
 
-        _labelgenerator.setUpLabels(gridSize, gridScale, true); //TODO: fix label generation for gridSize 10 etc.
+        _labelgenerator.setUpLabels(gridSize, gridScale, true);
 
         UpdateTilemapsVisibility();
 
