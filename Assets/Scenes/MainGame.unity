@@ -731,6 +731,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebcb5a393a247a4f9ef71745d3553ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  measureButton: {fileID: 1327830159}
+  attackPlayerButton: {fileID: 1582054047}
+  nextPlayerButton: {fileID: 945089900}
 --- !u!4 &653447362
 Transform:
   m_ObjectHideFlags: 0

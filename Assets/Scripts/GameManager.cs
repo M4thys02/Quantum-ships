@@ -50,9 +50,7 @@ public class GameManager : MonoBehaviour {
         }
 
         if (guessedSquaresCount >= (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability)) {
-            measureButton.gameObject.SetActive(false);
-            attackPlayerButton.gameObject.SetActive(false);
-            nextPlayerButton.gameObject.SetActive(false);
+            PlayerWinGame();
         }
     }
 
@@ -63,6 +61,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void PlayerWinGame() {
-
+        measureButton.gameObject.SetActive(false);
+        attackPlayerButton.gameObject.SetActive(false);
+        nextPlayerButton.gameObject.SetActive(false);
     }
 }
