@@ -65,6 +65,9 @@ public class ChangePlayerManager : MonoBehaviour {
         if (!tilemap.HasTile(cellPos))
             return;
 
+        if (IsTileAlreadyGuessed(squaresDict, cellPos))
+            return;
+
         if (!squaresDict.TryGetValue(cellPos, out var list)) {
             list = new List<GameObject>();
             squaresDict[cellPos] = list;
@@ -108,18 +111,18 @@ public class ChangePlayerManager : MonoBehaviour {
     public void UpdateTilemapsVisibility() {
         bool isPlayer0 = currentPlayer == 0;
 
-        player0Tilemap.gameObject.SetActive(isPlayer0);
-        player1Tilemap.gameObject.SetActive(!isPlayer0);
+        player0Tilemap.gameObject.SetActive(!isPlayer0);
+        player1Tilemap.gameObject.SetActive(isPlayer0);
 
-        foreach (var kv in player0Squares) {
-            foreach (var square in kv.Value) {
-                square.SetActive(isPlayer0);
-            }
-        }
+        SetSquaresVisibility(player0Squares, isPlayer0);
+        SetSquaresVisibility(player1Squares, !isPlayer0);
+    }
 
-        foreach (var kv in player1Squares) {
+    private void SetSquaresVisibility(Dictionary<Vector3Int, List<GameObject>> dict, bool visible) {
+        foreach (var kv in dict) {
             foreach (var square in kv.Value) {
-                square.SetActive(!isPlayer0);
+                if (square != null)
+                    square.SetActive(visible);
             }
         }
     }
@@ -136,22 +139,33 @@ public class ChangePlayerManager : MonoBehaviour {
         return currentPlayer;
     }
 
-    public void CreateGuessedSquares(Vector3Int tilePos3D, int expectedCount) { //TODO: clicking on guessed tile doesn't add red attack square
-        Dictionary<Vector3Int, List<GameObject>>  playerSquares = GetActiveSquaresDict();
-        if (playerSquares.ContainsKey(tilePos3D)) {
-            foreach (var square in playerSquares[tilePos3D]) {
+    //TODO: clicking on guessed tile doesn't add red attack square
+    public void CreateGuessedSquares(Vector3Int tilePos3D, int amount) {
+        Dictionary<Vector3Int, List<GameObject>> playerSquares = GetActiveSquaresDict();
+
+        // remove old attack squares
+        if (playerSquares.TryGetValue(tilePos3D, out var list)) {
+            foreach (var square in list)
                 Destroy(square);
-            }
-            playerSquares[tilePos3D].Clear();
+
+            list.Clear();
+        }
+        else {
+            playerSquares[tilePos3D] = new List<GameObject>();
+            list = playerSquares[tilePos3D];
         }
 
-        for (int i = 0; i < expectedCount; i++) {
-            Vector3 spawnPos = playerSquares.ContainsKey(tilePos3D) && playerSquares[tilePos3D].Count > 0
-                ? playerSquares[tilePos3D][0].transform.position
-                : GetActiveTilemap().GetCellCenterWorld(tilePos3D);
+        Vector3 spawnPos = GetActiveTilemap().GetCellCenterWorld(tilePos3D);
 
+        // create guessed squares INSTEAD of attack squares
+        for (int i = 0; i < amount; i++) {
             GameObject guessed = Instantiate(guessedSquarePrefab, spawnPos, Quaternion.identity);
             guessed.transform.localScale = Vector3.one * gridScale;
+            list.Add(guessed);
         }
+    }
+
+    bool IsTileAlreadyGuessed(Dictionary<Vector3Int, List<GameObject>> squares, Vector3Int tile) {
+        return squares.TryGetValue(tile, out var list) && list.Count > 0 && list[0].CompareTag("GuessedSquare");
     }
 }

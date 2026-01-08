@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - TextLabel
+  - GuessedSquare
   layers:
   - Default
   - TransparentFX
