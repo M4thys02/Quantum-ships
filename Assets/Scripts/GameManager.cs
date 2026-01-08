@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour {
 
     public void PlayerMeasure() {
         OffOnButtons(false);
-        int opponent= _changePlayerManager.GetOpponent();
+        int opponent = _changePlayerManager.GetOpponent();
         int attacker = _changePlayerManager.GetActivatePlayer();
         Vector2Int measuredTile = PlayersSetUps.GetWeightedRandomTileForPlayer(opponent);
         _measureManager.CurrentMeasurement(measuredTile, attacker);
