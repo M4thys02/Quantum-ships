@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class GridLabelGenerator : MonoBehaviour {
 
     [Header("Grid Settings")]
     [SerializeField] private float defaultFontSize = 4f;
+    [SerializeField] private int maxRowsBeforeNewOffset = 9;
     private int gridSize { get; set; }
     private float gridScale { get; set; }
     private bool mainGame { get; set; }
@@ -26,21 +28,35 @@ public class GridLabelGenerator : MonoBehaviour {
         { 10, 4.75f }
     };
 
-    private float GetFontSizeForGrid(int size) {
-        return FontSizeByGrid.TryGetValue(size, out float sizeValue) ? sizeValue : defaultFontSize;
-    }
+    private Dictionary<int, float> FontSizeInGame = new() {
+        { 3, 5f },
+        { 4, 5f },
+        { 5, 4.5f },
+        { 6, 4f },
+        { 7, 3f },
+        { 8, 2.5f },
+        { 9, 2f },
+        { 10, 2f }
+    };
     private void CreateLabelForTile(Vector3Int pos, int row, int column) {
         var label = Instantiate(labelPrefab, transform);
         label.text = $"{(char)('A' + column)}{row + 1}";
         Vector3 worldPos = new Vector3(0, 0, 0);
 
         if (!mainGame) {
-            label.fontSize = GetFontSizeForGrid(gridSize);
+            label.fontSize = FontSizeByGrid.TryGetValue(gridSize, out float sizeValue) ? sizeValue : defaultFontSize;
             worldPos = tilemap.CellToWorld(pos) + new Vector3(0.5f, 0.5f, 0) * gridScale;
         }
         else {
-            label.fontSize = defaultFontSize;
-            worldPos = tilemap.CellToWorld(pos) + new Vector3(0.85f, 0.85f, 0) * gridScale;
+            label.fontSize = FontSizeInGame.TryGetValue(gridSize, out float sizeValue) ? sizeValue : defaultFontSize;
+            float x_offset = 0f;
+            if (row > maxRowsBeforeNewOffset - 1) {
+                x_offset = 0.3f;
+            }
+            else {
+                x_offset = 0.2f;
+            }
+            worldPos = tilemap.CellToWorld(pos) + new Vector3(x_offset, 0.85f, 0) * gridScale;
         }
 
         label.transform.position = worldPos;

@@ -29,7 +29,6 @@ public class ChangePlayerManager : MonoBehaviour {
     private Dictionary<Vector3Int, List<GameObject>> player0Squares = new Dictionary<Vector3Int, List<GameObject>>();
     private Dictionary<Vector3Int, List<GameObject>> player1Squares = new Dictionary<Vector3Int, List<GameObject>>();
 
-
     private void Awake() {
         gridSize = (int)PlayerPrefs.GetFloat("GridSlider", defaultGridSize);
         gridScale = (float)defaultHeight / (oneTileSizes * gridSize);
@@ -138,8 +137,6 @@ public class ChangePlayerManager : MonoBehaviour {
     public int GetActivatePlayer() {
         return currentPlayer;
     }
-
-    //TODO: clicking on guessed tile doesn't add red attack square
     public void CreateGuessedSquares(Vector3Int tilePos3D, int amount) {
         Dictionary<Vector3Int, List<GameObject>> playerSquares = GetActiveSquaresDict();
 
