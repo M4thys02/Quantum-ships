@@ -8,12 +8,14 @@ public class ChangePlayerManager : MonoBehaviour {
     public Tilemap player0Tilemap;
     public Tilemap player1Tilemap;
     [SerializeField] private TileBase tileBase;
+    [SerializeField] TMP_Text player0Turn;
+    [SerializeField] TMP_Text player1Turn;
 
     private int defaultGridSize = 3;
-    [SerializeField] private int gridSize;
-    [SerializeField] private int defaultHeight;
     private int oneTileSizes = 64;
     private float gridScale;
+    [SerializeField] private int gridSize;
+    [SerializeField] private int defaultHeight;
     [SerializeField] private GridLabelGenerator _labelgenerator;
 
     private int currentPlayer = 0;
@@ -37,6 +39,7 @@ public class ChangePlayerManager : MonoBehaviour {
 
         _labelgenerator.setUpLabels(gridSize, gridScale, true);
 
+        player1Turn.gameObject.SetActive(false);
         UpdateTilemapsVisibility();
 
         maxAttackSquares = (int)PlayerPrefs.GetFloat("SquareSlider", defaultSquares);
@@ -104,6 +107,10 @@ public class ChangePlayerManager : MonoBehaviour {
 
     public void ChangePlayer() {
         currentPlayer = (currentPlayer == 0) ? 1 : 0;
+
+        player0Turn.gameObject.SetActive(currentPlayer == 0);
+        player1Turn.gameObject.SetActive(currentPlayer == 1);
+
         UpdateTilemapsVisibility();
     }
 
