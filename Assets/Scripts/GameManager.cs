@@ -27,11 +27,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangePlayer() {
+        measureButton.gameObject.SetActive(true);
+        attackPlayerButton.gameObject.SetActive(true);
         _changePlayerManager.ChangePlayer();
         _measureManager.UpdateMeasurementsVisibility(_changePlayerManager.GetActivatePlayer());
     }
 
     public void PlayerAttack() {
+        attackPlayerButton.gameObject.SetActive(false);
         int attacker = _changePlayerManager.GetActivatePlayer();
         int defender = attacker ^ 1;
 
@@ -57,6 +60,7 @@ public class GameManager : MonoBehaviour {
 
 
     public void PlayerMeasure() {
+        measureButton.gameObject.SetActive(false);
         int currentPlayer = _changePlayerManager.GetActivatePlayer();
         Vector2Int measuredTile = PlayersSetUps.GetWeightedRandomTileForPlayer(currentPlayer);
         _measureManager.CurrentMeasurement(measuredTile, currentPlayer);
