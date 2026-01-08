@@ -27,6 +27,7 @@ public class ChangePlayerManager : MonoBehaviour {
     [SerializeField] private Camera mainCamera;
     [SerializeField] private int defaultSquares = 10;
     [SerializeField] private int maxAttackSquares;
+    [SerializeField] private int currentAttackSquares;
 
     private Dictionary<Vector3Int, List<GameObject>> player0Squares = new Dictionary<Vector3Int, List<GameObject>>();
     private Dictionary<Vector3Int, List<GameObject>> player1Squares = new Dictionary<Vector3Int, List<GameObject>>();
@@ -76,13 +77,14 @@ public class ChangePlayerManager : MonoBehaviour {
         }
 
         if (add) {
-            if (list.Count >= maxAttackSquares)
+            if (currentAttackSquares >= maxAttackSquares)
                 return;
 
             Vector3 spawnPos = tilemap.GetCellCenterWorld(cellPos);
             GameObject square = Instantiate(attackSquarePrefab, spawnPos, Quaternion.identity);
             square.transform.localScale = Vector3.one * gridScale;
             list.Add(square);
+            currentAttackSquares++;
         }
         else {
             if (list.Count == 0)
@@ -91,6 +93,7 @@ public class ChangePlayerManager : MonoBehaviour {
             GameObject square = list[list.Count - 1];
             list.RemoveAt(list.Count - 1);
             Destroy(square);
+            currentAttackSquares--;
         }
     }
 
@@ -107,6 +110,7 @@ public class ChangePlayerManager : MonoBehaviour {
 
     public void ChangePlayer() {
         currentPlayer = (currentPlayer == 0) ? 1 : 0;
+        currentAttackSquares = 0;
 
         player0Turn.gameObject.SetActive(currentPlayer == 0);
         player1Turn.gameObject.SetActive(currentPlayer == 1);
