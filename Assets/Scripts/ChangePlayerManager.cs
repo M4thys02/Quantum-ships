@@ -144,7 +144,11 @@ public class ChangePlayerManager : MonoBehaviour {
     public int GetActivatePlayer() {
         return currentPlayer;
     }
-    public void CreateGuessedSquares(Vector3Int tilePos3D, int amount) {
+
+    public int GetOpponent() {
+        return currentPlayer ^ 1;
+    }
+    public void CreateGuessedSquares(Vector3Int tilePos3D, int amount) { //TODO: not only 10 squares in one tile, but 10 squares only in GLOBAL
         Dictionary<Vector3Int, List<GameObject>> playerSquares = GetActiveSquaresDict();
 
         // remove old attack squares

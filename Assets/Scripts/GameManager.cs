@@ -59,11 +59,12 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    public void PlayerMeasure() {
+    public void PlayerMeasure() { //TODO: bags should be switched
         measureButton.gameObject.SetActive(false);
-        int currentPlayer = _changePlayerManager.GetActivatePlayer();
-        Vector2Int measuredTile = PlayersSetUps.GetWeightedRandomTileForPlayer(currentPlayer);
-        _measureManager.CurrentMeasurement(measuredTile, currentPlayer);
+        int opponent= _changePlayerManager.GetOpponent();
+        int attacker = _changePlayerManager.GetActivatePlayer();
+        Vector2Int measuredTile = PlayersSetUps.GetWeightedRandomTileForPlayer(opponent);
+        _measureManager.CurrentMeasurement(measuredTile, attacker);
     }
 
     private void PlayerWinGame() {
