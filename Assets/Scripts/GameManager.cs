@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
         _measureManager.UpdateMeasurementsVisibility(_changePlayerManager.GetActivatePlayer());
     }
 
-    public void PlayerAttack() {
+    public void PlayerAttack() { //TODO: Stop guessing myself
         int currentPlayer = _changePlayerManager.GetActivatePlayer();
         Dictionary<Vector3Int, List<GameObject>> playerSquares = _changePlayerManager.GetActiveSquaresDict();
         Dictionary<Vector2Int, int> expectedTiles = PlayersSetUps.GetKeyValuePairs(currentPlayer);
