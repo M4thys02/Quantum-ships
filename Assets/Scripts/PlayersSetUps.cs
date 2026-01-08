@@ -81,7 +81,7 @@ public class PlayersSetUps : MonoBehaviour {
     }
 
     public static Dictionary<Vector2Int, int> GetKeyValuePairs(int player) {
-        return player == 0 ? player0Tiles : player1Tiles;
+        return player == 1 ? player0Tiles : player1Tiles;
     }
 
     //public static void ShowDictionaries() {

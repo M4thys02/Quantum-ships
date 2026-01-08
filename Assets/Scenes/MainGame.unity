@@ -296,6 +296,7 @@ MonoBehaviour:
   defaultHeight: 700
   _labelgenerator: {fileID: 1206253712}
   attackSquarePrefab: {fileID: 4252134518107266298, guid: a973b962b8108d84083141a539b86f74, type: 3}
+  guessedSquarePrefab: {fileID: 4252134518107266298, guid: 5a70d8f33e719e24f8d6a07e314f1aab, type: 3}
   mainCamera: {fileID: 2021074609}
   defaultSquares: 10
   maxAttackSquares: 0

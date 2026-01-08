@@ -21,6 +21,7 @@ public class ChangePlayerManager : MonoBehaviour {
 
     // FOR PLAYER ATTACK:
     [SerializeField] private GameObject attackSquarePrefab;
+    [SerializeField] private GameObject guessedSquarePrefab;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private int defaultSquares = 10;
     [SerializeField] private int maxAttackSquares;
@@ -135,4 +136,22 @@ public class ChangePlayerManager : MonoBehaviour {
         return currentPlayer;
     }
 
+    public void CreateGuessedSquares(Vector3Int tilePos3D, int expectedCount) { //TODO: clicking on guessed tile doesn't add red attack square
+        Dictionary<Vector3Int, List<GameObject>>  playerSquares = GetActiveSquaresDict();
+        if (playerSquares.ContainsKey(tilePos3D)) {
+            foreach (var square in playerSquares[tilePos3D]) {
+                Destroy(square);
+            }
+            playerSquares[tilePos3D].Clear();
+        }
+
+        for (int i = 0; i < expectedCount; i++) {
+            Vector3 spawnPos = playerSquares.ContainsKey(tilePos3D) && playerSquares[tilePos3D].Count > 0
+                ? playerSquares[tilePos3D][0].transform.position
+                : GetActiveTilemap().GetCellCenterWorld(tilePos3D);
+
+            GameObject guessed = Instantiate(guessedSquarePrefab, spawnPos, Quaternion.identity);
+            guessed.transform.localScale = Vector3.one * gridScale;
+        }
+    }
 }
