@@ -27,14 +27,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangePlayer() {
-        measureButton.gameObject.SetActive(true);
-        attackPlayerButton.gameObject.SetActive(true);
+        OffOnButtons(true);
         _changePlayerManager.ChangePlayer();
         _measureManager.UpdateMeasurementsVisibility(_changePlayerManager.GetActivatePlayer());
     }
 
     public void PlayerAttack() {
-        attackPlayerButton.gameObject.SetActive(false);
+        OffOnButtons(false);
         int attacker = _changePlayerManager.GetActivatePlayer();
         int defender = attacker ^ 1;
 
@@ -54,23 +53,22 @@ public class GameManager : MonoBehaviour {
         }
 
         if (p0GuessedSquaresCount == (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability) || p1GuessedSquaresCount == (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability)) { 
-            PlayerWinGame();
+            nextPlayerButton.gameObject.SetActive(false);
         }
     }
 
 
-    public void PlayerMeasure() { //TODO: bags should be switched
-        measureButton.gameObject.SetActive(false);
+    public void PlayerMeasure() {
+        OffOnButtons(false);
         int opponent= _changePlayerManager.GetOpponent();
         int attacker = _changePlayerManager.GetActivatePlayer();
         Vector2Int measuredTile = PlayersSetUps.GetWeightedRandomTileForPlayer(opponent);
         _measureManager.CurrentMeasurement(measuredTile, attacker);
     }
 
-    private void PlayerWinGame() {
-        measureButton.gameObject.SetActive(false);
-        attackPlayerButton.gameObject.SetActive(false);
-        nextPlayerButton.gameObject.SetActive(false);
+    private void OffOnButtons(bool onOff) {
+        measureButton.gameObject.SetActive(onOff);
+        attackPlayerButton.gameObject.SetActive(onOff);
     }
 
     private void AddGuessedSquares(int player, int amount) {
