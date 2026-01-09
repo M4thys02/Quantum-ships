@@ -121,7 +121,12 @@ public class ChangePlayerManager : MonoBehaviour {
 
             text = Instantiate(tileCounterPrefab, countersRoot);
             text.transform.position = pos;
-            //text.transform.localScale = Vector3.one * gridScale;
+            if (gridSize >= 6) {
+                text.transform.localScale *= 0.25f;
+            }
+            else {
+                text.transform.localScale *= 0.5f;
+            }
 
             countersDict[cellPos] = text;
         }

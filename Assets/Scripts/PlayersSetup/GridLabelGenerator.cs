@@ -13,6 +13,7 @@ public class GridLabelGenerator : MonoBehaviour {
     [Header("Grid Settings")]
     [SerializeField] private float defaultFontSize = 4f;
     [SerializeField] private int maxRowsBeforeNewOffset = 9;
+    [SerializeField] private int maxGridSizeBeforeNewOffset = 5;
     private int gridSize { get; set; }
     private float gridScale { get; set; }
     private bool mainGame { get; set; }
@@ -50,7 +51,7 @@ public class GridLabelGenerator : MonoBehaviour {
         else {
             label.fontSize = FontSizeInGame.TryGetValue(gridSize, out float sizeValue) ? sizeValue : defaultFontSize;
             float x_offset = 0f;
-            if (row > maxRowsBeforeNewOffset - 1) {
+            if (row > maxRowsBeforeNewOffset - 1 || gridSize >= maxGridSizeBeforeNewOffset) {
                 x_offset = 0.3f;
             }
             else {

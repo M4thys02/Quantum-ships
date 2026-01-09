@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
 
             int guessed = attackSquares.TryGetValue(tilePos, out var list) ? list.Count : 0;
 
-            if (guessed == expected) {
+            if (guessed >= expected) {
                 _changePlayerManager.CreateGuessedSquares(tilePos, expected);
                 AddGuessedSquares(attacker, guessed);
             }
