@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.U2D;
+using TMPro;
 
 public class GameSetup : MonoBehaviour {
     public GridManager _gridManager;
     public ProbabilitySquaresManager _probSquareManager;
     [SerializeField] Camera _camera;
+    [SerializeField] TextMeshProUGUI probabilityPercentige;
 
-    //private int maximumGridSize = 10;
     private int defaultGridSize = 3;
     private int defaultProbability = 10;
     private int defaultHeight = 850;
@@ -39,10 +40,6 @@ public class GameSetup : MonoBehaviour {
     void Awake() {
         currentGridSize = (int)PlayerPrefs.GetFloat("GridSlider", defaultGridSize);
         currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability);
-
-        //if (currentGridSize < defaultGridSize || currentGridSize > maximumGridSize) {
-        //    currentGridSize = defaultGridSize;
-        //}
 
         gridScale = (float)defaultHeight / (oneTileSizes * currentGridSize);
 
