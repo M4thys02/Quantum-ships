@@ -43,10 +43,10 @@ public class GameManager : MonoBehaviour {
         foreach (var kv in defenderTiles) {
             Vector3Int tilePos = new(kv.Key.x, kv.Key.y, 0);
             int expected = kv.Value;
-
             int guessed = attackSquares.TryGetValue(tilePos, out var list) ? list.Count : 0;
+            Debug.Log($"expected squares: {expected}, guessed squares: {guessed}");
 
-            if (guessed >= expected) {
+            if (guessed == expected) {
                 _changePlayerManager.CreateGuessedSquares(tilePos, expected);
                 AddGuessedSquares(attacker, guessed);
             }

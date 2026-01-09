@@ -30,7 +30,7 @@ public class ChangePlayerManager : MonoBehaviour {
     [SerializeField] private Transform attackSqrtRoot;
     [SerializeField] private Transform guessedSqrtRoot;
     [SerializeField] private int defaultSquares = 10;
-    [SerializeField] private int maxAttackSquares;
+    [SerializeField] private int maxSquares;
     [SerializeField] private int currentAttackSquares;
     [SerializeField] private TextMeshPro tileCounterPrefab;
     [SerializeField] private Transform countersRoot;
@@ -52,7 +52,7 @@ public class ChangePlayerManager : MonoBehaviour {
         player1Turn.gameObject.SetActive(false);
         UpdateTilemapsVisibility();
 
-        maxAttackSquares = (int)PlayerPrefs.GetFloat("SquareSlider", defaultSquares);
+        maxSquares = (int)PlayerPrefs.GetFloat("SquareSlider", defaultSquares);
     }
 
     private void Update() {
@@ -86,7 +86,7 @@ public class ChangePlayerManager : MonoBehaviour {
         }
 
         if (add) {
-            if (currentAttackSquares >= maxAttackSquares)
+            if (CountAllSquares(GetActiveSquaresDict()) >= maxSquares)
                 return;
 
             Vector3 spawnPos = tilemap.GetCellCenterWorld(cellPos);
@@ -229,5 +229,19 @@ public class ChangePlayerManager : MonoBehaviour {
 
     bool IsTileAlreadyGuessed(Dictionary<Vector3Int, List<GameObject>> squares, Vector3Int tile) {
         return squares.TryGetValue(tile, out var list) && list.Count > 0 && list[0].CompareTag("GuessedSquare");
+    }
+
+    private int CountAllSquares(Dictionary<Vector3Int, List<GameObject>> squaresDict) {
+        int total = 0;
+
+        foreach (var kv in squaresDict) {
+            foreach (var square in kv.Value) {
+                if (square != null && (square.CompareTag("GuessedSquare") || square.CompareTag("AttackSquare"))) {
+                    total++;
+                }
+            }
+        }
+
+        return total;
     }
 }
