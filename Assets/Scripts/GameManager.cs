@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour {
     private MeasureManager _measureManager;
 
     private int defaultProbability = 10;
+    private int currentProbability;
     private int p0GuessedSquaresCount = 0;
     private int p1GuessedSquaresCount = 0;
+    private HashSet<Vector3Int> p0ResolvedTiles = new();
+    private HashSet<Vector3Int> p1ResolvedTiles = new();
 
     [SerializeField] Button measureButton;
     [SerializeField] Button attackPlayerButton;
@@ -20,13 +23,18 @@ public class GameManager : MonoBehaviour {
     private void Awake() {
         _changePlayerManager = GetComponentInChildren<ChangePlayerManager>();
         _measureManager = GetComponentInChildren<MeasureManager>();
+        currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability);
     }
     public void GameFinished() {
+        p0ResolvedTiles.Clear();
+        p1ResolvedTiles.Clear();
         PlayersSetUps.Cleanup(); // destroy persistent object
         SceneManager.LoadScene("MainMenu");
     }
 
     public void ChangePlayer() {
+        Debug.Log($"player0: {p0GuessedSquaresCount}");
+        Debug.Log($"player1: {p1GuessedSquaresCount}");
         OffOnButtons(true);
         _changePlayerManager.ChangePlayer();
         _measureManager.UpdateMeasurementsVisibility(_changePlayerManager.GetActivatePlayer());
@@ -37,24 +45,31 @@ public class GameManager : MonoBehaviour {
         int attacker = _changePlayerManager.GetActivatePlayer();
         int defender = attacker ^ 1;
 
-        Dictionary<Vector3Int, List<GameObject>> attackSquares = _changePlayerManager.GetActiveSquaresDict();
-        Dictionary<Vector2Int, int> defenderTiles = PlayersSetUps.GetKeyValuePairs(defender);
+        var attackSquares = _changePlayerManager.GetActiveSquaresDict();
+        var defenderTiles = PlayersSetUps.GetKeyValuePairs(defender);
+        var resolvedTiles = (attacker == 0) ? p0ResolvedTiles : p1ResolvedTiles;
 
         foreach (var kv in defenderTiles) {
             Vector3Int tilePos = new(kv.Key.x, kv.Key.y, 0);
+
+            // If this tile was already resolved, skip it
+            if (resolvedTiles.Contains(tilePos))
+                continue;
+
+            if (!attackSquares.TryGetValue(tilePos, out var list))
+                continue;
+
             int expected = kv.Value;
-            int guessed = attackSquares.TryGetValue(tilePos, out var list) ? list.Count : 0;
-            Debug.Log($"expected squares: {expected}, guessed squares: {guessed}");
+            int guessed = list.Count;
 
             if (guessed == expected) {
+                resolvedTiles.Add(tilePos);
                 _changePlayerManager.CreateGuessedSquares(tilePos, expected);
                 AddGuessedSquares(attacker, guessed);
             }
         }
 
-        if (p0GuessedSquaresCount == (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability) || p1GuessedSquaresCount == (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability)) { 
-            nextPlayerButton.gameObject.SetActive(false);
-        }
+        CheckWinCondition();
     }
 
 
@@ -72,9 +87,14 @@ public class GameManager : MonoBehaviour {
     }
 
     private void AddGuessedSquares(int player, int amount) {
-        if (player == 0)
-            p0GuessedSquaresCount += amount;
-        else
-            p1GuessedSquaresCount += amount;
+        if (player == 0) p0GuessedSquaresCount += amount; 
+        else p1GuessedSquaresCount += amount;
+    }
+
+    private void CheckWinCondition() {
+        if (p0GuessedSquaresCount >= currentProbability || p1GuessedSquaresCount >= currentProbability) {
+            nextPlayerButton.gameObject.SetActive(false);
+            //TODO: winning screen
+        }
     }
 }

@@ -233,15 +233,11 @@ public class ChangePlayerManager : MonoBehaviour {
 
     private int CountAllSquares(Dictionary<Vector3Int, List<GameObject>> squaresDict) {
         int total = 0;
-
         foreach (var kv in squaresDict) {
-            foreach (var square in kv.Value) {
-                if (square != null && (square.CompareTag("GuessedSquare") || square.CompareTag("AttackSquare"))) {
-                    total++;
-                }
+            if (kv.Value != null) {
+                total += kv.Value.Count;
             }
         }
-
         return total;
     }
 }
