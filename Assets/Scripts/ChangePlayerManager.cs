@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class ChangePlayerManager : MonoBehaviour {
     public Tilemap player0Tilemap;
@@ -121,15 +122,12 @@ public class ChangePlayerManager : MonoBehaviour {
 
             text = Instantiate(tileCounterPrefab, countersRoot);
             text.transform.position = pos;
-            if (gridSize >= 6) {
-                text.transform.localScale *= 0.25f;
-            }
-            else {
-                text.transform.localScale *= 0.5f;
-            }
-
             countersDict[cellPos] = text;
         }
+
+        float scale = (gridSize >= 6) ? 0.25f : 0.5f;
+        if (count >= 100) scale *= 0.5f;
+        text.transform.localScale = Vector3.one * scale;
 
         text.text = count.ToString();
     }
