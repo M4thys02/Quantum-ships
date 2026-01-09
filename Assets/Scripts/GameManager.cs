@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour {
     private ChangePlayerManager _changePlayerManager;
     private MeasureManager _measureManager;
 
+    [SerializeField] TextMeshProUGUI probabilityPercentige;
     private int defaultProbability = 10;
+    private int maximumProbability = 100;
     private int currentProbability;
     private int p0GuessedSquaresCount = 0;
     private int p1GuessedSquaresCount = 0;
@@ -24,6 +27,9 @@ public class GameManager : MonoBehaviour {
         _changePlayerManager = GetComponentInChildren<ChangePlayerManager>();
         _measureManager = GetComponentInChildren<MeasureManager>();
         currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", defaultProbability);
+
+        float oneSquareProbability = maximumProbability / (float)currentProbability;
+        probabilityPercentige.text = $"= {oneSquareProbability:F2} %";
     }
     public void GameFinished() {
         p0ResolvedTiles.Clear();
