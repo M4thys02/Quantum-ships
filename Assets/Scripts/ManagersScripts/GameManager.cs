@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     private HashSet<Vector3Int>[] _resolvedTiles = { new(), new() };
 
     private void Start() {
-        _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
+        _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", 3);
         _tokenManager.Initialize(_turnManager, _boardManager, _uiManager);
 
         _inputManager.OnLeftClick += (pos) => _tokenManager.OnTileInteract(pos, false);
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
 
         _uiManager.UpdateProbability(100f / _currentProbability);
         _turnManager.ChangeTurn(); // Start game
+        //_uiManager.UpdateTurnUI(_turnManager.CurrentPlayer);
     }
 
     public void PlayerAttack() {
@@ -63,7 +64,9 @@ public class GameManager : MonoBehaviour {
     public void PlayerMeasure() {
         _uiManager.SetActionButtonsInteractable(false);
         int attacker = _turnManager.CurrentPlayer;
-        Vector2Int tile = PlayersSetUps.GetWeightedRandomTileForPlayer(_turnManager.GetOpponent());
+        int defender = _turnManager.GetOpponent();
+        //Debug.Log($"attacker is: {attacker}, defender is: {defender}");
+        Vector2Int tile = PlayersSetUps.GetWeightedRandomTileForPlayer(attacker);
 
         _measureManager.AddMeasurement(tile, attacker);
         _uiManager.UpdateMeasurementList(attacker, _measureManager.GetPlayerMeasurements(attacker));

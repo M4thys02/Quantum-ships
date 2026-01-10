@@ -61,7 +61,7 @@ public class TokenManager : MonoBehaviour {
 
     private void AddSquare(Vector3Int pos, List<GameObject> list) {
         Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(pos);
-        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, transform); // Spawne čtvereček jako potomka tohoto Manageru (pro pořádek)
+        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, transform); // Spawne čtvereček jako potomka tohoto Manageru
         sq.transform.localScale = Vector3.one * _boardManager.GridScale;
 
         list.Add(sq);

@@ -33,7 +33,7 @@ public class BoardManager : MonoBehaviour {
 
     // Returns map where attack is currently display
     public Tilemap GetActiveTilemap() {
-        return _player0Tilemap.gameObject.activeSelf ? _player0Tilemap : _player1Tilemap;
+        return _player0Tilemap.gameObject.activeSelf ? _player1Tilemap : _player0Tilemap;
     }
 
     private void GenerateTilemap(Tilemap map) {
