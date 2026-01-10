@@ -56,7 +56,7 @@ public class TokenManager : MonoBehaviour {
         }
 
         Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(cellPos);
-        _uiManager.UpdateTileCounter(player, cellPos, list.Count, worldPos);
+        _uiManager.UpdateTileCounter(player, cellPos, list.Count, worldPos, _boardManager.GridSize);
     }
 
     private void AddSquare(Vector3Int pos, List<GameObject> list) {

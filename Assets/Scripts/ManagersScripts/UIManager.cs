@@ -96,13 +96,13 @@ public class UIManager : MonoBehaviour {
     }
 
     private string TileToLabel(Vector2Int tile) {
-        // Předpoklad: tile.x = 0 -> 'A', tile.y = 0 -> '1'
+        // Assuming: tile.x = 0 -> 'A', tile.y = 0 -> '1'
         char column = (char)('A' + tile.x);
         int row = tile.y + 1;
         return $"{column}{row}";
     }
 
-    public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos) {
+    public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos, int gridSize) {
         var counters = _playerCounters[playerIndex];
 
         if (count <= 0) {
@@ -117,6 +117,10 @@ public class UIManager : MonoBehaviour {
             text = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity);
             counters[cellPos] = text;
         }
+
+        float scale = (gridSize >= 6) ? 0.25f : 0.5f;
+        if (count >= 100) scale *= 0.75f;
+        text.transform.localScale = Vector3.one * scale;
 
         text.text = count.ToString();
     }
