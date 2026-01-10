@@ -11,8 +11,8 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TMP_Text _player1TurnText;
 
     [Header("Measurement Panels")]
-    [SerializeField] private TMP_Text _player0MeasureText; // Textové pole pro seznam měření P0
-    [SerializeField] private TMP_Text _player1MeasureText; // Textové pole pro seznam měření P1
+    [SerializeField] private TMP_Text _player0MeasureText;
+    [SerializeField] private TMP_Text _player1MeasureText;
 
     [Header("Game Info")]
     [SerializeField] private TMP_Text _probabilityText;
@@ -22,13 +22,16 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private Button _measureButton;
     [SerializeField] private Button _nextPlayerButton;
 
-    // Eventy, na které se napojí GameManager
+    [Header("World Text Settings")]
+    [SerializeField] private TMP_Text _tileCounterPrefab;
+    private Dictionary<Vector3Int, TMP_Text>[] _playerCounters = { new Dictionary<Vector3Int, TMP_Text>(), new Dictionary<Vector3Int, TMP_Text>() };
+
+    // Events for GameManager
     public event Action OnAttackClicked;
     public event Action OnMeasureClicked;
     public event Action OnNextTurnClicked;
 
     private void Awake() {
-        // Automatické napojení tlačítek na C# eventy
         _attackButton.onClick.AddListener(() => OnAttackClicked?.Invoke());
         _measureButton.onClick.AddListener(() => OnMeasureClicked?.Invoke());
         _nextPlayerButton.onClick.AddListener(() => OnNextTurnClicked?.Invoke());
@@ -40,7 +43,6 @@ public class UIManager : MonoBehaviour {
     public void UpdateTurnUI(int activePlayer) {
         bool isP0 = (activePlayer == 0);
 
-        // Zobrazení nápisu "Player Turn"
         if (_player0TurnText) _player0TurnText.gameObject.SetActive(isP0);
         if (_player1TurnText) _player1TurnText.gameObject.SetActive(!isP0);
 
@@ -70,15 +72,11 @@ public class UIManager : MonoBehaviour {
         targetText.text = BuildMeasurementString(measurements);
     }
 
-    /// <summary>
-    /// Zapne/Vypne tlačítka akcí (Attack/Measure).
-    /// </summary>
+
+    // Turns OFF/ON buttons (Attack & Measure)
     public void SetActionButtonsInteractable(bool interactable) {
         _attackButton.interactable = interactable;
         _measureButton.interactable = interactable;
-        // Nebo přes SetActive, pokud je chceš úplně schovat:
-        // _attackButton.gameObject.SetActive(interactable);
-        // _measureButton.gameObject.SetActive(interactable);
     }
 
     public void ToggleNextTurnButton(bool active) {
@@ -86,7 +84,6 @@ public class UIManager : MonoBehaviour {
     }
 
     // --- Pomocné metody pro formátování textu ---
-
     private string BuildMeasurementString(Dictionary<Vector2Int, int> dict) {
         StringBuilder sb = new StringBuilder();
 
@@ -103,5 +100,33 @@ public class UIManager : MonoBehaviour {
         char column = (char)('A' + tile.x);
         int row = tile.y + 1;
         return $"{column}{row}";
+    }
+
+    public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos) {
+        var counters = _playerCounters[playerIndex];
+
+        if (count <= 0) {
+            if (counters.TryGetValue(cellPos, out var existing)) {
+                Destroy(existing.gameObject);
+                counters.Remove(cellPos);
+            }
+            return;
+        }
+
+        if (!counters.TryGetValue(cellPos, out var text)) {
+            text = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity);
+            counters[cellPos] = text;
+        }
+
+        text.text = count.ToString();
+    }
+
+    public void ToggleCountersVisibility(int activePlayer) {
+        for (int i = 0; i < 2; i++) {
+            bool isVisible = (i == activePlayer);
+            foreach (var text in _playerCounters[i].Values) {
+                if (text != null) text.gameObject.SetActive(isVisible);
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
-        _tokenManager.Initialize(_turnManager, _boardManager);
+        _tokenManager.Initialize(_turnManager, _boardManager, _uiManager);
 
         _inputManager.OnLeftClick += (pos) => _tokenManager.OnTileInteract(pos, false);
         _inputManager.OnRightClick += (pos) => _tokenManager.OnTileInteract(pos, true);
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
         _turnManager.OnTurnChanged += (prev, curr) => {
             _boardManager.UpdateVisibility(curr);
             _uiManager.UpdateTurnUI(curr);
+            _uiManager.ToggleCountersVisibility(curr);
             _uiManager.SetActionButtonsInteractable(true);
             _uiManager.ToggleNextTurnButton(false);
         };

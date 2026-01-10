@@ -6,17 +6,19 @@ public class TokenManager : MonoBehaviour {
     [SerializeField] private GameObject _attackSquarePrefab;
     [SerializeField] private GameObject _guessedSquarePrefab;
 
-    // Data: [HráčIndex][Souřadnice] -> Seznam objektů
+    // Data: [PlayerIndex][Coordinates] -> List of objects
     private Dictionary<Vector3Int, List<GameObject>>[] _playerSquares;
     private int _currentPlacedCount = 0;
     private int _maxSquaresPerTurn;
 
     private TurnManager _turnManager;
     private BoardManager _boardManager;
+    private UIManager _uiManager;
 
-    public void Initialize(TurnManager tm, BoardManager bm) {
+    public void Initialize(TurnManager tm, BoardManager bm, UIManager ui) {
         _turnManager = tm;
         _boardManager = bm;
+        _uiManager = ui;
 
         // Načtení limitu čtverečků z PlayerPrefs (stejně jako v původním kódu)
         _maxSquaresPerTurn = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
@@ -34,10 +36,11 @@ public class TokenManager : MonoBehaviour {
 
     public void OnTileInteract(Vector3Int cellPos, bool isAdding) {
         int player = _turnManager.CurrentPlayer;
-        var dict = _playerSquares[player];
 
-        if (!dict.ContainsKey(cellPos)) dict[cellPos] = new List<GameObject>();
-        var list = dict[cellPos];
+        if (!_playerSquares[player].ContainsKey(cellPos))
+            _playerSquares[player][cellPos] = new List<GameObject>();
+
+        var list = _playerSquares[player][cellPos];
 
         if (IsTileResolved(list)) return;
 
@@ -51,14 +54,14 @@ public class TokenManager : MonoBehaviour {
             RemoveSquare(list);
             _currentPlacedCount--;
         }
+
+        Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(cellPos);
+        _uiManager.UpdateTileCounter(player, cellPos, list.Count, worldPos);
     }
 
     private void AddSquare(Vector3Int pos, List<GameObject> list) {
         Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(pos);
-        // Spawne čtvereček jako potomka tohoto Manageru (pro pořádek)
-        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, transform);
-
-        // Nastavení scale podle BoardManageru (aby čtverečky seděly do políček)
+        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, transform); // Spawne čtvereček jako potomka tohoto Manageru (pro pořádek)
         sq.transform.localScale = Vector3.one * _boardManager.GridScale;
 
         list.Add(sq);

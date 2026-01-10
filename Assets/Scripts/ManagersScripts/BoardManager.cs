@@ -31,7 +31,8 @@ public class BoardManager : MonoBehaviour {
         _player1Tilemap.gameObject.SetActive(activePlayer == 0);
     }
 
-    public Tilemap GetActiveTilemap() { // Returns map where attack is currently display
+    // Returns map where attack is currently display
+    public Tilemap GetActiveTilemap() {
         return _player0Tilemap.gameObject.activeSelf ? _player0Tilemap : _player1Tilemap;
     }
 
