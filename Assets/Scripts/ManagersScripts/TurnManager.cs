@@ -8,7 +8,7 @@ public class TurnManager : MonoBehaviour {
     public void ChangeTurn() {
         int previousPlayer = CurrentPlayer;
         CurrentPlayer = (CurrentPlayer == 0) ? 1 : 0;
-        Debug.Log($"Turn changed: {previousPlayer} -> {CurrentPlayer}");
+        //Debug.Log($"Turn changed: {previousPlayer} -> {CurrentPlayer}");
         OnTurnChanged?.Invoke(previousPlayer, CurrentPlayer);
     }
 
