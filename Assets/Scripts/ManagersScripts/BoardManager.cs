@@ -10,7 +10,7 @@ public class BoardManager : MonoBehaviour {
     private int _gridSize;
     private float _gridScale;
     private const int OneTilePixelSize = 64;
-    private const int DefaultHeight = 10;
+    private const int DefaultHeight = 700;
 
     public float GridScale => _gridScale;
     public int GridSize => _gridSize;
