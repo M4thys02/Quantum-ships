@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour {
     public void PlayerMeasure() {
         _uiManager.SetActionButtonsInteractable(false);
         int attacker = _turnManager.CurrentPlayer;
-        int defender = _turnManager.GetOpponent();
         //Debug.Log($"attacker is: {attacker}, defender is: {defender}");
         Vector2Int tile = PlayersSetUps.GetWeightedRandomTileForPlayer(attacker);
 

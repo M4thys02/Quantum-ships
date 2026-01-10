@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class TokenManager : MonoBehaviour {
     [SerializeField] private GameObject _attackSquarePrefab;
@@ -8,7 +10,8 @@ public class TokenManager : MonoBehaviour {
 
     // Data: [PlayerIndex][Coordinates] -> List of objects
     private Dictionary<Vector3Int, List<GameObject>>[] _playerSquares;
-    private int _currentPlacedCount = 0;
+    private int[] _attackSquaresCount = new int[2];
+    private int[] _guessedSquaresCount = new int[2];
     private int _maxSquaresPerTurn;
 
     private TurnManager _turnManager;
@@ -29,13 +32,13 @@ public class TokenManager : MonoBehaviour {
 
         // DŮLEŽITÉ: Při změně tahu schováme čtverečky jednoho hráče a ukážeme druhého
         _turnManager.OnTurnChanged += (prev, curr) => {
-            _currentPlacedCount = 0;
             UpdateVisuals(curr);
         };
     }
 
     public void OnTileInteract(Vector3Int cellPos, bool isAdding) {
         int player = _turnManager.CurrentPlayer;
+        int available = _maxSquaresPerTurn - _attackSquaresCount[player] - _guessedSquaresCount[player];
 
         if (!_playerSquares[player].ContainsKey(cellPos))
             _playerSquares[player][cellPos] = new List<GameObject>();
@@ -45,14 +48,14 @@ public class TokenManager : MonoBehaviour {
         if (IsTileResolved(list)) return;
 
         if (isAdding) {
-            if (_currentPlacedCount >= _maxSquaresPerTurn) return;
+            if (available <= 0) return;
             AddSquare(cellPos, list);
-            _currentPlacedCount++;
+            _attackSquaresCount[player]++;
         }
         else {
             if (list.Count == 0) return;
             RemoveSquare(list);
-            _currentPlacedCount--;
+            _attackSquaresCount[player] = Mathf.Max(0, _attackSquaresCount[player] - 1);
         }
 
         Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(cellPos);
@@ -74,10 +77,10 @@ public class TokenManager : MonoBehaviour {
     }
 
     public void MarkTileAsGuessed(Vector3Int pos, int count) {
-        int player = _turnManager.CurrentPlayer;
-        var dict = _playerSquares[player];
+        int attacker = _turnManager.CurrentPlayer;
+        var dict = _playerSquares[attacker]; // Ukládáme výsledek k útočníkovi
 
-        // Smazání útočných čtverečků
+        // Smazání dočasných útočných čtverečků
         if (dict.TryGetValue(pos, out var list)) {
             foreach (var sq in list) Destroy(sq);
             list.Clear();
@@ -87,13 +90,18 @@ public class TokenManager : MonoBehaviour {
             list = dict[pos];
         }
 
-        // Vytvoření "uhodnutých" čtverečků
-        Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(pos);
+        // ZÍSKÁNÍ SPRÁVNÉ MAPY: Musíte vzít mapu hráče, na kterého se útočí
+        Tilemap targetMap = _boardManager.GetActiveTilemap();
+        Vector3 worldPos = targetMap.GetCellCenterWorld(pos);
+
         for (int i = 0; i < count; i++) {
             GameObject g = Instantiate(_guessedSquarePrefab, worldPos, Quaternion.identity, transform);
             g.transform.localScale = Vector3.one * _boardManager.GridScale;
             list.Add(g);
         }
+
+        _attackSquaresCount[attacker] -= count;
+        _guessedSquaresCount[attacker] += count;
     }
 
     // Metoda pro přepínání viditelnosti mezi tahy (aby hráč neviděl útoky soupeře)
