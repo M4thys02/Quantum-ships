@@ -1,16 +1,16 @@
+using System;
 using UnityEngine;
 
-public class TurnManager : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+public class TurnManager : MonoBehaviour {
+    public int CurrentPlayer { get; private set; } = 0;
+    public event Action<int, int> OnTurnChanged;
+
+    public void ChangeTurn() {
+        int previousPlayer = CurrentPlayer;
+        CurrentPlayer = (CurrentPlayer == 0) ? 1 : 0;
+        Debug.Log($"Turn changed: {previousPlayer} -> {CurrentPlayer}");
+        OnTurnChanged?.Invoke(previousPlayer, CurrentPlayer);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int GetOpponent() => CurrentPlayer ^ 1;
 }

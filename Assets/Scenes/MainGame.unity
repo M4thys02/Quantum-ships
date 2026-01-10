@@ -425,6 +425,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bdda7d02e4eb640ad0a97a64b7ce03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  _player0TurnText: {fileID: 2005111929}
+  _player1TurnText: {fileID: 49259675}
+  _player0MeasureText: {fileID: 952932297}
+  _player1MeasureText: {fileID: 1548628357}
+  _probabilityText: {fileID: 428917169}
+  _attackButton: {fileID: 1582054047}
+  _measureButton: {fileID: 1327830159}
+  _nextPlayerButton: {fileID: 945089900}
 --- !u!1 &164870226
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,68 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e22fc4c93fc49343a8f9a5f327dc5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
---- !u!1 &200475734
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 200475735}
-  - component: {fileID: 200475736}
-  m_Layer: 0
-  m_Name: ChangePlayer Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &200475735
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200475734}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -962.9116, y: -287.00903, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 653447362}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &200475736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200475734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4934c5f5a07663148b54d9ec03daefda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ChangePlayerManager
-  player0Tilemap: {fileID: 1527285755}
-  player1Tilemap: {fileID: 1552613343}
-  tileBase: {fileID: 11400000, guid: ae5b1f850e1dfc54caecb5ed51f53222, type: 2}
-  player0Turn: {fileID: 2005111929}
-  player1Turn: {fileID: 49259675}
-  gridSize: 10
-  defaultHeight: 700
-  _labelgenerator: {fileID: 1206253712}
-  mainCamera: {fileID: 2021074609}
-  attackSquarePrefab: {fileID: 4252134518107266298, guid: a973b962b8108d84083141a539b86f74, type: 3}
-  guessedSquarePrefab: {fileID: 4252134518107266298, guid: 5a70d8f33e719e24f8d6a07e314f1aab, type: 3}
-  attackSqrtRoot: {fileID: 1869652843}
-  guessedSqrtRoot: {fileID: 279132521}
-  defaultSquares: 10
-  maxSquares: 0
-  currentAttackSquares: 0
-  tileCounterPrefab: {fileID: 6500632915648916015, guid: 0301746a0bc1b354f8d138f67407787d, type: 3}
-  countersRoot: {fileID: 687457812}
+  _mainCamera: {fileID: 2021074609}
+  _boardManager: {fileID: 825427214}
 --- !u!1 &279132520
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +684,7 @@ GameObject:
   - component: {fileID: 428917170}
   - component: {fileID: 428917169}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Probability text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1129,10 +1077,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebcb5a393a247a4f9ef71745d3553ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probabilityPercentige: {fileID: 428917169}
-  measureButton: {fileID: 1327830159}
-  attackPlayerButton: {fileID: 1582054047}
-  nextPlayerButton: {fileID: 945089900}
+  _turnManager: {fileID: 1887730990}
+  _boardManager: {fileID: 825427214}
+  _inputManager: {fileID: 164870228}
+  _tokenManager: {fileID: 1567854754}
+  _measureManager: {fileID: 1402896911}
+  _uiManager: {fileID: 131394317}
 --- !u!4 &653447362
 Transform:
   m_ObjectHideFlags: 0
@@ -1146,13 +1096,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 200475735}
-  - {fileID: 1402896910}
-  - {fileID: 825427213}
   - {fileID: 1887730989}
-  - {fileID: 164870227}
   - {fileID: 131394316}
+  - {fileID: 164870227}
   - {fileID: 1567854753}
+  - {fileID: 825427213}
+  - {fileID: 1402896910}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &663306214
@@ -1366,6 +1315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ee694d8418c734b840093ad5313a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoardManager
+  _player0Tilemap: {fileID: 1527285755}
+  _player1Tilemap: {fileID: 1552613343}
+  _tileBase: {fileID: 11400000, guid: ae5b1f850e1dfc54caecb5ed51f53222, type: 2}
+  _labelGenerator: {fileID: 1206253712}
 --- !u!1 &883442920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,8 +2672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1708da998bc404345abd65816883027f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeasureManager
-  _player0Measurements: {fileID: 952932297}
-  _player1Measurements: {fileID: 1548628357}
 --- !u!1 &1472711826
 GameObject:
   m_ObjectHideFlags: 0
@@ -3741,6 +3692,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cbe5f8e8ed80d4cabea6e869b1271c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TokenManager
+  _attackSquarePrefab: {fileID: 4252134518107266298, guid: a973b962b8108d84083141a539b86f74, type: 3}
+  _guessedSquarePrefab: {fileID: 4252134518107266298, guid: 5a70d8f33e719e24f8d6a07e314f1aab, type: 3}
 --- !u!1 &1582054045
 GameObject:
   m_ObjectHideFlags: 0

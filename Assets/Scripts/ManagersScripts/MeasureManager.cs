@@ -1,46 +1,22 @@
-using System.Collections.Generic;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class MeasureManager : MonoBehaviour {
-    [SerializeField] private TextMeshProUGUI _player0Measurements;
-    [SerializeField] private TextMeshProUGUI _player1Measurements;
 
-    private Dictionary<Vector2Int, int> player0Measurements = new();
-    private Dictionary<Vector2Int, int> player1Measurements = new();
+    // [hráč][dlaždice] → počet měření
+    public Dictionary<Vector2Int, int>[] Measurements = {
+        new Dictionary<Vector2Int, int>(),
+        new Dictionary<Vector2Int, int>()
+    };
 
-    public void CurrentMeasurement(Vector2Int measuredTile, int player) {
-        var dict = (player == 0) ? player0Measurements : player1Measurements;
-        var text = (player == 0) ? _player0Measurements : _player1Measurements;
+    public void AddMeasurement(Vector2Int tile, int player) {
+        if (!Measurements[player].ContainsKey(tile))
+            Measurements[player][tile] = 0;
 
-        if (!dict.ContainsKey(measuredTile))
-            dict[measuredTile] = 0;
-
-        dict[measuredTile]++;
-
-        text.text = BuildMeasurementText(dict);
+        Measurements[player][tile]++;
     }
 
-    private string TileToLabel(Vector2Int tile) {
-        char column = (char)('A' + tile.x);
-        int row = tile.y + 1;
-
-        return $"{column}{row}";
-    }
-
-    private string BuildMeasurementText(Dictionary<Vector2Int, int> dict) {
-        System.Text.StringBuilder sb = new();
-
-        foreach (var kvp in dict) {
-            string label = TileToLabel(kvp.Key);
-            sb.AppendLine($"{label} - {kvp.Value}");
-        }
-
-        return sb.ToString();
-    }
-
-    public void UpdateMeasurementsVisibility(int player) {
-        _player0Measurements.gameObject.SetActive(player == 0);
-        _player1Measurements.gameObject.SetActive(player == 1);
+    public Dictionary<Vector2Int, int> GetPlayerMeasurements(int player) {
+        return Measurements[player];
     }
 }
