@@ -22,14 +22,12 @@ public class TokenManager : MonoBehaviour {
         _boardManager = bm;
         _uiManager = ui;
 
-        // Načtení limitu čtverečků z PlayerPrefs (stejně jako v původním kódu)
         _maxSquaresPerTurn = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
 
         _playerSquares = new Dictionary<Vector3Int, List<GameObject>>[2];
         _playerSquares[0] = new Dictionary<Vector3Int, List<GameObject>>();
         _playerSquares[1] = new Dictionary<Vector3Int, List<GameObject>>();
 
-        // DŮLEŽITÉ: Při změně tahu schováme čtverečky jednoho hráče a ukážeme druhého
         _turnManager.OnTurnChanged += (prev, curr) => {
             UpdateVisuals(curr);
         };
@@ -63,7 +61,7 @@ public class TokenManager : MonoBehaviour {
 
     private void AddSquare(Vector3Int pos, List<GameObject> list) {
         Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(pos);
-        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, transform); // Spawne čtvereček jako potomka tohoto Manageru
+        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, transform); // Spawns square as child of Manager
         sq.transform.localScale = Vector3.one * _boardManager.GridScale;
 
         list.Add(sq);
@@ -77,9 +75,9 @@ public class TokenManager : MonoBehaviour {
 
     public void MarkTileAsGuessed(Vector3Int pos, int count) {
         int attacker = _turnManager.CurrentPlayer;
-        var dict = _playerSquares[attacker]; // Ukládáme výsledek k útočníkovi
+        var dict = _playerSquares[attacker];
 
-        // Smazání dočasných útočných čtverečků
+        // Removing attackers attack squares
         if (dict.TryGetValue(pos, out var list)) {
             foreach (var sq in list) Destroy(sq);
             list.Clear();
@@ -89,7 +87,6 @@ public class TokenManager : MonoBehaviour {
             list = dict[pos];
         }
 
-        // ZÍSKÁNÍ SPRÁVNÉ MAPY: Musíte vzít mapu hráče, na kterého se útočí
         Tilemap targetMap = _boardManager.GetActiveTilemap();
         Vector3 worldPos = targetMap.GetCellCenterWorld(pos);
 
@@ -103,7 +100,7 @@ public class TokenManager : MonoBehaviour {
         _guessedSquaresCount[attacker] += count;
     }
 
-    // Metoda pro přepínání viditelnosti mezi tahy (aby hráč neviděl útoky soupeře)
+    // Method for updating visuals between individual turns
     private void UpdateVisuals(int activePlayer) {
         for (int i = 0; i < 2; i++) {
             bool isVisible = (i == activePlayer);
@@ -120,7 +117,6 @@ public class TokenManager : MonoBehaviour {
     }
 
     private bool IsTileResolved(List<GameObject> list) {
-        // Kontrola podle Tagu (musíš mít v Unity nastavený Tag "GuessedSquare" u prefabu)
         return list.Count > 0 && list[0].CompareTag("GuessedSquare");
     }
 }

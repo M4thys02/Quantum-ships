@@ -23,8 +23,11 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private Button _nextPlayerButton;
 
     [Header("World Text Settings")]
-    [SerializeField] private TMP_Text _tileCounterPrefab;
-    private Dictionary<Vector3Int, TMP_Text>[] _playerCounters = { new Dictionary<Vector3Int, TMP_Text>(), new Dictionary<Vector3Int, TMP_Text>() };
+    [SerializeField] private TileCounter _tileCounterPrefab;
+    private Dictionary<Vector3Int, TileCounter>[] _playerCounters = {
+        new Dictionary<Vector3Int, TileCounter>(),
+        new Dictionary<Vector3Int, TileCounter>()
+    };
 
     // Events for GameManager
     public event Action OnAttackClicked;
@@ -78,6 +81,7 @@ public class UIManager : MonoBehaviour {
     public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos, int gridSize) {
         var counters = _playerCounters[playerIndex];
 
+        // 1. Odstranění, pokud je počet 0
         if (count <= 0) {
             if (counters.TryGetValue(cellPos, out var existing)) {
                 Destroy(existing.gameObject);
@@ -86,23 +90,21 @@ public class UIManager : MonoBehaviour {
             return;
         }
 
-        if (!counters.TryGetValue(cellPos, out var text)) {
-            text = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity);
-            counters[cellPos] = text;
+        // 2. Získání nebo vytvoření instance (používáme typ TileCounter)
+        if (!counters.TryGetValue(cellPos, out var counterScript)) {
+            counterScript = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity);
+            counters[cellPos] = counterScript;
         }
 
-        float scale = (gridSize >= 6) ? 0.25f : 0.5f;
-        if (count >= 100) scale *= 0.75f;
-        text.transform.localScale = Vector3.one * scale;
-
-        text.text = count.ToString();
+        // 3. Voláme metodu přímo na skriptu counteru
+        counterScript.UpdateVisuals(count, gridSize);
     }
 
     public void ToggleCountersVisibility(int activePlayer) {
         for (int i = 0; i < 2; i++) {
             bool isVisible = (i == activePlayer);
-            foreach (var text in _playerCounters[i].Values) {
-                if (text != null) text.gameObject.SetActive(isVisible);
+            foreach (var counter in _playerCounters[i].Values) {
+                if (counter != null) counter.gameObject.SetActive(isVisible);
             }
         }
     }

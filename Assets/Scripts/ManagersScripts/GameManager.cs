@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour {
 
         _uiManager.UpdateProbability(100f / _currentProbability);
         _turnManager.ChangeTurn(); // Start game
-        //_uiManager.UpdateTurnUI(_turnManager.CurrentPlayer);
     }
 
     public void PlayerAttack() {

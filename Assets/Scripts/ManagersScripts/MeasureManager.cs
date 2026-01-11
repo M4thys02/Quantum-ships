@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MeasureManager : MonoBehaviour {
 
-    // [hráč][dlaždice] → počet měření
+    // [player][tile] → count of measurements
     public Dictionary<Vector2Int, int>[] Measurements = {
         new Dictionary<Vector2Int, int>(),
         new Dictionary<Vector2Int, int>()

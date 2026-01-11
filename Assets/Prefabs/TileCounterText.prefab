@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 466295394427234809}
   - component: {fileID: 3730492316065295376}
   - component: {fileID: 6500632915648916015}
+  - component: {fileID: 6883625770775081149}
   m_Layer: 0
   m_Name: TileCounterText
   m_TagString: Untagged
@@ -179,3 +180,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3730492316065295376}
   m_maskType: 0
+--- !u!114 &6883625770775081149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940786006600380344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d5bdd5ec481244d80800209a6427f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileCounter
+  _text: {fileID: 6500632915648916015}

@@ -433,7 +433,7 @@ MonoBehaviour:
   _attackButton: {fileID: 1582054047}
   _measureButton: {fileID: 1327830159}
   _nextPlayerButton: {fileID: 945089900}
-  _tileCounterPrefab: {fileID: 6500632915648916015, guid: 0301746a0bc1b354f8d138f67407787d, type: 3}
+  _tileCounterPrefab: {fileID: 6883625770775081149, guid: 0301746a0bc1b354f8d138f67407787d, type: 3}
 --- !u!1 &164870226
 GameObject:
   m_ObjectHideFlags: 0
