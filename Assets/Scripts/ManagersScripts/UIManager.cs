@@ -81,7 +81,6 @@ public class UIManager : MonoBehaviour {
     public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos, int gridSize) {
         var counters = _playerCounters[playerIndex];
 
-        // 1. Odstranění, pokud je počet 0
         if (count <= 0) {
             if (counters.TryGetValue(cellPos, out var existing)) {
                 Destroy(existing.gameObject);
@@ -90,13 +89,11 @@ public class UIManager : MonoBehaviour {
             return;
         }
 
-        // 2. Získání nebo vytvoření instance (používáme typ TileCounter)
         if (!counters.TryGetValue(cellPos, out var counterScript)) {
             counterScript = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity);
             counters[cellPos] = counterScript;
         }
 
-        // 3. Voláme metodu přímo na skriptu counteru
         counterScript.UpdateVisuals(count, gridSize);
     }
 
