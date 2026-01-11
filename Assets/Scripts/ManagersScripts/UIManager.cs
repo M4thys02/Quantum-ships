@@ -37,33 +37,24 @@ public class UIManager : MonoBehaviour {
         _nextPlayerButton.onClick.AddListener(() => OnNextTurnClicked?.Invoke());
     }
 
-    /// <summary>
-    /// Aktualizuje vizuál podle toho, kdo je na tahu.
-    /// </summary>
+    // Update UIText which player is on turn
     public void UpdateTurnUI(int activePlayer) {
         bool isP0 = (activePlayer == 0);
 
         if (_player0TurnText) _player0TurnText.gameObject.SetActive(isP0);
         if (_player1TurnText) _player1TurnText.gameObject.SetActive(!isP0);
 
-        // Zobrazení panelů s měřením (hráč vidí jen svoje měření?)
-        // Pokud chceš, aby hráč viděl svoje měření, nebo měření soupeře, uprav podmínku zde.
-        // Dle původního kódu se zobrazuje panel aktivního hráče.
         if (_player0MeasureText) _player0MeasureText.gameObject.SetActive(isP0);
         if (_player1MeasureText) _player1MeasureText.gameObject.SetActive(!isP0);
     }
 
-    /// <summary>
-    /// Vypíše pravděpodobnost jednoho čtverečku.
-    /// </summary>
+    // Shows probability of 1 square
     public void UpdateProbability(float percentage) {
         if (_probabilityText != null)
             _probabilityText.text = $"= {percentage:F2} %";
     }
 
-    /// <summary>
-    /// Přijme slovník naměřených dat, zformátuje je na text a vypíše do UI.
-    /// </summary>
+    // Gets dictionary with measurement data, formates them, and then write them in UI
     public void UpdateMeasurementList(int playerIndex, Dictionary<Vector2Int, int> measurements) {
         TMP_Text targetText = (playerIndex == 0) ? _player0MeasureText : _player1MeasureText;
 
@@ -80,28 +71,10 @@ public class UIManager : MonoBehaviour {
     }
 
     public void ToggleNextTurnButton(bool active) {
-        _nextPlayerButton.gameObject.SetActive(active);
+        _nextPlayerButton.interactable = active;
     }
 
-    // --- Pomocné metody pro formátování textu ---
-    private string BuildMeasurementString(Dictionary<Vector2Int, int> dict) {
-        StringBuilder sb = new StringBuilder();
-
-        foreach (var kvp in dict) {
-            string label = TileToLabel(kvp.Key);
-            sb.AppendLine($"{label} - {kvp.Value}");
-        }
-
-        return sb.ToString();
-    }
-
-    private string TileToLabel(Vector2Int tile) {
-        // Assuming: tile.x = 0 -> 'A', tile.y = 0 -> '1'
-        char column = (char)('A' + tile.x);
-        int row = tile.y + 1;
-        return $"{column}{row}";
-    }
-
+    // Methods for counters numbers
     public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos, int gridSize) {
         var counters = _playerCounters[playerIndex];
 
@@ -132,5 +105,24 @@ public class UIManager : MonoBehaviour {
                 if (text != null) text.gameObject.SetActive(isVisible);
             }
         }
+    }
+
+    // --- Helping methods for text formating ---
+    private string BuildMeasurementString(Dictionary<Vector2Int, int> dict) {
+        StringBuilder sb = new StringBuilder();
+
+        foreach (var kvp in dict) {
+            string label = TileToLabel(kvp.Key);
+            sb.AppendLine($"{label} - {kvp.Value}");
+        }
+
+        return sb.ToString();
+    }
+
+    private string TileToLabel(Vector2Int tile) {
+        // Assuming: tile.x = 0 -> 'A', tile.y = 0 -> '1'
+        char column = (char)('A' + tile.x);
+        int row = tile.y + 1;
+        return $"{column}{row}";
     }
 }

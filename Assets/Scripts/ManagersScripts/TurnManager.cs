@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour {
-    public int CurrentPlayer { get; private set; } = 0;
+    public int CurrentPlayer { get; private set; } = 1;
     public event Action<int, int> OnTurnChanged;
 
     public void ChangeTurn() {
