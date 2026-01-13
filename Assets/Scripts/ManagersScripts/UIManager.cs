@@ -7,15 +7,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
     [Header("Turn Indicators")]
+    [SerializeField] private GameObject _gameTitle;
     [SerializeField] private TMP_Text _player0TurnText;
     [SerializeField] private TMP_Text _player1TurnText;
 
     [Header("Measurement Panels")]
+    [SerializeField] private GameObject _measurementBoard;
     [SerializeField] private TMP_Text _player0MeasureText;
     [SerializeField] private TMP_Text _player1MeasureText;
 
     [Header("Game Info")]
+    [SerializeField] private GameObject _winScreen;
     [SerializeField] private TMP_Text _probabilityText;
+    [SerializeField] private TMP_Text _whichPlayerWinText;
 
     [Header("Controls")]
     [SerializeField] private Button _attackButton;
@@ -106,6 +110,14 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    public void PlayerWinGame(int winPlayer) {
+        ToggleNextTurnButton(false);
+        _gameTitle.SetActive(false);
+        _measurementBoard.SetActive(false);
+        ShowWhoWin(winPlayer);
+        _winScreen.SetActive(true);
+    }
+
     // --- Helping methods for text formating ---
     private string BuildMeasurementString(Dictionary<Vector2Int, int> dict) {
         StringBuilder sb = new StringBuilder();
@@ -123,5 +135,10 @@ public class UIManager : MonoBehaviour {
         char column = (char)('A' + tile.x);
         int row = tile.y + 1;
         return $"{column}{row}";
+    }
+
+    private void ShowWhoWin(int player) {
+        string roman = player == 0 ? "I" : "II";
+        _whichPlayerWinText.text = $"Player {roman} won";
     }
 }

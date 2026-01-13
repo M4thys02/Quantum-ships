@@ -73,8 +73,8 @@ public class GameManager : MonoBehaviour {
 
     private void CheckWinCondition() {
         if (_guessedCounts[0] >= _currentProbability || _guessedCounts[1] >= _currentProbability) {
-            _uiManager.ToggleNextTurnButton(false);
-            // Victory logic...
+            _uiManager.PlayerWinGame(_turnManager.CurrentPlayer);
+            _boardManager.ShowBothTilemaps();
         }
     }
 

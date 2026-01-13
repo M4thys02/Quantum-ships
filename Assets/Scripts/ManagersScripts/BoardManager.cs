@@ -31,6 +31,14 @@ public class BoardManager : MonoBehaviour {
         _player1Tilemap.gameObject.SetActive(activePlayer == 0);
     }
 
+    public void ShowBothTilemaps() {
+        _player0Tilemap.gameObject.SetActive(true);
+        _player1Tilemap.gameObject.SetActive(true);
+
+        _player1Tilemap.transform.localPosition =
+        new Vector3(2.5f, _player1Tilemap.transform.localPosition.y, _player1Tilemap.transform.localPosition.z);
+    }
+
     // Returns map where attack is currently display
     public Tilemap GetActiveTilemap() {
         return _player0Tilemap.gameObject.activeSelf ? _player0Tilemap : _player1Tilemap;
