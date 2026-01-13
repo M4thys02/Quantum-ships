@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
@@ -82,7 +83,7 @@ public class UIManager : MonoBehaviour {
     }
 
     // Methods for counters numbers
-    public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos, int gridSize) {
+    public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos, int gridSize, Tilemap targetMap) {
         var counters = _playerCounters[playerIndex];
 
         if (count <= 0) {
@@ -94,7 +95,7 @@ public class UIManager : MonoBehaviour {
         }
 
         if (!counters.TryGetValue(cellPos, out var counterScript)) {
-            counterScript = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity);
+            counterScript = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity, targetMap.transform); // ← parent = tilemapa
             counters[cellPos] = counterScript;
         }
 
@@ -110,12 +111,21 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    private void ToggleBothCountersVisibility(bool isVisible) {
+        for (int i = 0; i < 2; i++) {
+            foreach (var counter in _playerCounters[i].Values) {
+                if (counter != null) counter.gameObject.SetActive(isVisible);
+            }
+        }
+    }
+
     public void PlayerWinGame(int winPlayer) {
         ToggleNextTurnButton(false);
         _gameTitle.SetActive(false);
         _measurementBoard.SetActive(false);
         ShowWhoWin(winPlayer);
         _winScreen.SetActive(true);
+        ToggleBothCountersVisibility(true);
     }
 
     // --- Helping methods for text formating ---

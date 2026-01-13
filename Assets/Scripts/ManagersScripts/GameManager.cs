@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour {
         if (_guessedCounts[0] >= _currentProbability || _guessedCounts[1] >= _currentProbability) {
             _uiManager.PlayerWinGame(_turnManager.CurrentPlayer);
             _boardManager.ShowBothTilemaps();
+            _tokenManager.ShowVisualsForBothPlayers();
         }
     }
 

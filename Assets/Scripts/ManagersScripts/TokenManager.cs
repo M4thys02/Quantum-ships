@@ -54,16 +54,16 @@ public class TokenManager : MonoBehaviour {
             RemoveSquare(list);
             _attackSquaresCount[player] = Mathf.Max(0, _attackSquaresCount[player] - 1);
         }
-
-        Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(cellPos);
-        _uiManager.UpdateTileCounter(player, cellPos, list.Count, worldPos, _boardManager.GridSize);
+        Tilemap activeTilemap = _boardManager.GetActiveTilemap();
+        Vector3 worldPos = activeTilemap.GetCellCenterWorld(cellPos);
+        _uiManager.UpdateTileCounter(player, cellPos, list.Count, worldPos, _boardManager.GridSize, activeTilemap);
     }
 
     private void AddSquare(Vector3Int pos, List<GameObject> list) {
-        Vector3 worldPos = _boardManager.GetActiveTilemap().GetCellCenterWorld(pos);
-        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, transform); // Spawns square as child of Manager
-        sq.transform.localScale = Vector3.one * _boardManager.GridScale;
-
+        Tilemap targetMap = _boardManager.GetActiveTilemap();
+        Vector3 worldPos = targetMap.GetCellCenterWorld(pos);
+        GameObject sq = Instantiate(_attackSquarePrefab, worldPos, Quaternion.identity, targetMap.transform); // ← parent = tilemap
+        sq.transform.localScale = Vector3.one;
         list.Add(sq);
     }
 
@@ -91,8 +91,8 @@ public class TokenManager : MonoBehaviour {
         Vector3 worldPos = targetMap.GetCellCenterWorld(pos);
 
         for (int i = 0; i < count; i++) {
-            GameObject g = Instantiate(_guessedSquarePrefab, worldPos, Quaternion.identity, transform);
-            g.transform.localScale = Vector3.one * _boardManager.GridScale;
+            GameObject g = Instantiate(_guessedSquarePrefab, worldPos, Quaternion.identity, targetMap.transform);
+            g.transform.localScale = Vector3.one;
             list.Add(g);
         }
 
@@ -107,6 +107,16 @@ public class TokenManager : MonoBehaviour {
             foreach (var kvp in _playerSquares[i]) {
                 foreach (var obj in kvp.Value) {
                     if (obj != null) obj.SetActive(isVisible);
+                }
+            }
+        }
+    }
+
+    public void ShowVisualsForBothPlayers() {
+        for (int i = 0; i < 2; i++) {
+            foreach (var kvp in _playerSquares[i]) {
+                foreach (var obj in kvp.Value) {
+                    if (obj != null) obj.SetActive(true);
                 }
             }
         }
