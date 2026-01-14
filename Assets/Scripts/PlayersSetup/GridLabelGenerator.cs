@@ -36,8 +36,8 @@ public class GridLabelGenerator : MonoBehaviour {
         { 6, 4f },
         { 7, 3f },
         { 8, 2.5f },
-        { 9, 2f },
-        { 10, 2f }
+        { 9, 2.5f },
+        { 10, 2.5f }
     };
     private void CreateLabelForTile(Vector3Int pos, int row, int column) {
         var label = Instantiate(labelPrefab, transform);
