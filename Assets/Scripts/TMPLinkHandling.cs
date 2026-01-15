@@ -21,7 +21,7 @@ public class TMPLinkHandling : MonoBehaviour, IPointerClickHandler {
             TMP_LinkInfo linkInfo = text.textInfo.linkInfo[linkIndex];
             string linkID = linkInfo.GetLinkID();
 
-            Debug.Log($"Otevírám odkaz: {linkID}");
+            //Debug.Log($"Otevírám odkaz: {linkID}");
             Application.OpenURL(linkID);
         }
     }

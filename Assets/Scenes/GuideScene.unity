@@ -647,22 +647,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<style=H1>Available Actions</style>\n<style=H2>1. Measure the Quantum
-    Ship</style>\n\n[ICON: MEASURE BUTTON / MYSTERY BAG]\n\nBy clicking the Measure
-    button, you perform a quantum measurement. The result appears on the Measurements
-    Board in the <style=blueColor>format</style>:\n\n<style=blueColor>(cell position)
-    - (number of measurements)</style>\n\nExample: <style=blueColor>B3 \u2014 5</style>\n\nThis
-    means:\n<style=Bullet>The quantum ship was detected on this cell</style>\n<style=Bullet>Five
-    measurement results pointed to this position</style>\n\n<style=red><b>Important
-    notes about measurements</b>:\nThe number of measurements does NOT equal the
-    number of blue squares on that cell.</style>\n\nMeasurements are probabilistic:\n<style=Bullet>Cells
-    with higher probability are more likely to be measured</style>\n<style=Bullet>But
-    randomness still applies</style>\n<style=Bullet>It is possible to repeatedly
-    measure a low-probability cell purely by chance</style>\n\n<style=H2>2. Estimating
-    the Opponent\u2019s Distribution</style>\n\nInstead of measuring, you can try
-    to reconstruct your opponent\u2019s probability distribution.\n\n[ICON: RED SQUARE]\n\nUse
-    the right mouse button on the grid to place red estimation squares. Each red
-    square represents your guess of the opponent\u2019s probability. The number displayed
-    on a cell shows how many red squares are stacked there.\n\n<style=Bullet>Left
+    Ship</style>\n\n\n<align=center><sprite name=measure></align>\n\n\n\nBy clicking
+    the Measure button, you perform a quantum measurement. The result appears on
+    the Measurements Board in the <style=blueColor>format</style>:\n\n<style=blueColor>(cell
+    position) - (number of measurements)</style>\n\nExample: <style=blueColor>B3
+    \u2014 5</style>\n\nThis means:\n<style=Bullet>The quantum ship was detected
+    on this cell</style>\n<style=Bullet>Five measurement results pointed to this
+    position</style>\n\n<style=red><b>Important notes about measurements</b>:\nThe
+    number of measurements does NOT equal the number of blue squares on that cell.</style>\n\nMeasurements
+    are probabilistic:\n<style=Bullet>Cells with higher probability are more likely
+    to be measured</style>\n<style=Bullet>But randomness still applies</style>\n<style=Bullet>It
+    is possible to repeatedly measure a low-probability cell purely by chance</style>\n\n<style=H2>2.
+    Estimating the Opponent\u2019s Distribution</style>\n\nInstead of measuring,
+    you can try to reconstruct your opponent\u2019s probability distribution.\n\n<align=center><sprite
+    name=attack></align>\n\nUse the right mouse button on the grid to place red estimation
+    squares. Each red square represents your guess of the opponent\u2019s probability.
+    The number displayed on a cell shows how many red squares are stacked there.\n\n<style=Bullet>Left
     mouse button adds estimation squares.</style>\n<style=Bullet>Right mouse button
     removes them.</style>\n<style=Bullet>The counter updates dynamically as you add
     or remove squares.</style>\n<style=Bullet><style=blueColor><b>Hold mechanic:</b>
@@ -672,10 +672,10 @@ MonoBehaviour:
     Squares in the settings. Their total must again represent exactly 100% probability.</style>\n\n<style=H2>Attack</style>\n\n[ICON:
     ATTACK BUTTON]\n\nWhen you are confident in your estimation, you may choose to
     attack.\n\nThe game compares your red estimation squares, with your opponent\u2019s
-    original blue probability squares. If your estimation for a cell is exactly correct:\n\n[ICON:
-    GREEN SQUARE]\n\nA green square appears on that cell, The number indicates how
-    many probability squares were correctly guessed.\n\nA green square means, you
-    have perfectly identified the probability of the quantum ship on that cell."
+    original blue probability squares. If your estimation for a cell is exactly correct:\n\n<align=center><sprite
+    name=guessed></align>\n\nA green square appears on that cell, The number indicates
+    how many probability squares were correctly guessed.\n\nA green square means,
+    you have perfectly identified the probability of the quantum ship on that cell."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
   m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
@@ -694,7 +694,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 03e11b813d5d1f747b7c75f2b12e1889, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 11400000, guid: 05dad0977e951a242b4cbdcdbc7b7a7e, type: 2}
   m_TextStyleHashCode: -1183493901
@@ -1031,13 +1031,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<style=H1>Phase 1 \u2014 Creating Your Probability Distribution</style>\n\nIn
     the first phase, players take turns creating their own probability distribution.\n\n[IMAGE:
-    EMPTY GRID WITH BLUE SQUARES]\n\n<style=H2>Placing Probability Squares</style>\n\n<style=Bullet>Use
-    the left mouse button to drag blue probability squares onto your grid.</style>\n<style=Bullet>You
-    must place all available squares somewhere on the board.</style>\n<style=Bullet><style=blueColor>Multiple
+    EMPTY GRID WITH BLUE SQUARES]\n\n<style=H2>Placing Probability Squares</style>
+    <sprite name=probability>\n\n<style=Bullet>Use the left mouse button to drag
+    blue probability squares onto your grid.</style>\n<style=Bullet>You must place
+    all available squares somewhere on the board.</style>\n<style=Bullet><style=blueColor>Multiple
     squares can be stacked on the same cell.</style></style>\n<style=Bullet>More
-    squares on one cell = higher probability that the quantum ship is there.</style>\n\n<sprite
-    name=guessed>\n\nOne blue square represents a fixed probability of the ship being
-    located on that cell.\n\nThis distribution will later be guessed by your opponent.\n\n<style=H2>Automatic
+    squares on one cell = higher probability that the quantum ship is there.</style>\n\nOne
+    blue square represents a fixed probability of the ship being located on that
+    cell.\n\nThis distribution will later be guessed by your opponent.\n\n<style=H2>Automatic
     Layout</style>\n\nIf you do not want to place the squares manually, you can use:\n\n[ICON:
     AUTOMATIC LAYOUT BUTTON] AUTOMATIC LAYOUT\n\nThis randomly distributes all probability
     squares across the grid."
@@ -1059,7 +1060,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 8c7ed5d8b21e5da43a3420d88eb3fc3f, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 03e11b813d5d1f747b7c75f2b12e1889, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 11400000, guid: 05dad0977e951a242b4cbdcdbc7b7a7e, type: 2}
   m_TextStyleHashCode: -1183493901
@@ -1826,7 +1827,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "QUANTUM SHIPS \u2014 HOW TO PLAY"
+  m_text: "QUANTUM SHIPS \nHOW TO PLAY"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
   m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
@@ -2160,14 +2161,13 @@ MonoBehaviour:
     before ending your turn.
 
 
-    To end your turn, click:
+
+    To end your turn, click: <sprite name=next_player>
 
 
-    [ICON: END TURN
-    BUTTON]
 
-
-    The turn is then passed to the other player.'
+    The
+    turn is then passed to the other player.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
   m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
@@ -2186,7 +2186,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 03e11b813d5d1f747b7c75f2b12e1889, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 11400000, guid: 05dad0977e951a242b4cbdcdbc7b7a7e, type: 2}
   m_TextStyleHashCode: -1183493901
@@ -2909,7 +2909,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 904, y: 675}
+  m_SizeDelta: {x: 904, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832394842
 MonoBehaviour:
@@ -2942,8 +2942,8 @@ MonoBehaviour:
     Krkavec \u2014 for many great ideas to improve the game</style>\n\n<b>Game</b>:
     \n<color=#F54927><link=\"https://github.com/M4thys02/Quantum-ships\">GitHub Repository</link></color>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
-  m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 67293651db230dd42b4d19e707a35a24, type: 2}
+  m_sharedMaterial: {fileID: 882555599375849553, guid: 67293651db230dd42b4d19e707a35a24, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
