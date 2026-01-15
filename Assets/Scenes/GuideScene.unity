@@ -648,7 +648,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<style=H1>Available Actions</style>\n<style=H2>1. Measure the Quantum
     Ship</style>\n\n\n<align=center><sprite name=measure></align>\n\n\n\nBy clicking
-    the Measure button, you perform a quantum measurement. The result appears on
+    the Mysterious bag, you perform a quantum measurement. The result appears on
     the Measurements Board in the <style=blueColor>format</style>:\n\n<style=blueColor>(cell
     position) - (number of measurements)</style>\n\nExample: <style=blueColor>B3
     \u2014 5</style>\n\nThis means:\n<style=Bullet>The quantum ship was detected
