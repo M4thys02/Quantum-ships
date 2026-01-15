@@ -624,7 +624,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 904, y: 1650}
+  m_SizeDelta: {x: 904, y: 1800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296316360
 MonoBehaviour:
@@ -665,9 +665,11 @@ MonoBehaviour:
     on a cell shows how many red squares are stacked there.\n\n<style=Bullet>Left
     mouse button adds estimation squares.</style>\n<style=Bullet>Right mouse button
     removes them.</style>\n<style=Bullet>The counter updates dynamically as you add
-    or remove squares.</style>\n\n<style=red><b>Important rule</b>:\nYou can place
-    at most the same number of estimation squares as defined in Probability Squares
-    in the settings. Their total must again represent exactly 100% probability.</style>\n\n<style=H2>Attack</style>\n\n[ICON:
+    or remove squares.</style>\n<style=Bullet><style=blueColor><b>Hold mechanic:</b>
+    Holding the left or right mouse button continuously adds or removes estimation
+    squares on the selected cell.</style></style>\r\n\n<style=red><b>Important rule</b>:\nYou
+    can place at most the same number of estimation squares as defined in Probability
+    Squares in the settings. Their total must again represent exactly 100% probability.</style>\n\n<style=H2>Attack</style>\n\n[ICON:
     ATTACK BUTTON]\n\nWhen you are confident in your estimation, you may choose to
     attack.\n\nThe game compares your red estimation squares, with your opponent\u2019s
     original blue probability squares. If your estimation for a cell is exactly correct:\n\n[ICON:
@@ -1540,7 +1542,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 904, y: 75}
+  m_SizeDelta: {x: 904, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896148866
 MonoBehaviour:
@@ -1724,7 +1726,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 370875745}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.092307694
+  m_Size: 0.1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2124,7 +2126,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 904, y: 300}
+  m_SizeDelta: {x: 904, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1214961086
 MonoBehaviour:
@@ -2907,7 +2909,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 904, y: 600}
+  m_SizeDelta: {x: 904, y: 675}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832394842
 MonoBehaviour:
@@ -2934,10 +2936,11 @@ MonoBehaviour:
     Programmer \xB7 Graphics Designer \xB7 Developer</b>:\nMat\u011Bj Marou\u0161ek\n\n<b>Tester</b>:\nJan
     Kratochv\xEDl\n\n<b>Special Thanks</b>:\n<style=Bullet>Mgr. Jana Legersk\xE1
     \u2014 for giving the opportunity to create the digital version</style>\n<style=Bullet>RNDr.
-    Zde\u0148ka Koupilov\xE1, Ph.D. \u2014 for motivation to complete the game and
-    support its future use</style>\n<style=Bullet>Luk\xE1\u0161 Krkavec \u2014 for
-    many great ideas to improve the game</style>\n\n<b>Game</b>: \n<color=#F54927><link=\"https://github.com/M4thys02/Quantum-ships\">GitHub
-    Repository</link></color>"
+    Tom\xE1\u0161 Holan, Ph.D. \u2013 for providing the opportunity to create this
+    game</style>\r\n<style=Bullet>RNDr. Zde\u0148ka Koupilov\xE1, Ph.D. \u2014 for
+    motivation to complete the game and support its future use</style>\n<style=Bullet>Luk\xE1\u0161
+    Krkavec \u2014 for many great ideas to improve the game</style>\n\n<b>Game</b>:
+    \n<color=#F54927><link=\"https://github.com/M4thys02/Quantum-ships\">GitHub Repository</link></color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
   m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
@@ -3241,7 +3244,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 6500}
+  m_SizeDelta: {x: 0, y: 6000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2072432272
 MonoBehaviour:
