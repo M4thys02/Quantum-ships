@@ -274,7 +274,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1035,8 +1035,8 @@ MonoBehaviour:
     the left mouse button to drag blue probability squares onto your grid.</style>\n<style=Bullet>You
     must place all available squares somewhere on the board.</style>\n<style=Bullet><style=blueColor>Multiple
     squares can be stacked on the same cell.</style></style>\n<style=Bullet>More
-    squares on one cell = higher probability that the quantum ship is there.</style>\n\n[ICON:
-    BLUE SQUARE]\n\nOne blue square represents a fixed probability of the ship being
+    squares on one cell = higher probability that the quantum ship is there.</style>\n\n<sprite
+    name=guessed>\n\nOne blue square represents a fixed probability of the ship being
     located on that cell.\n\nThis distribution will later be guessed by your opponent.\n\n<style=H2>Automatic
     Layout</style>\n\nIf you do not want to place the squares manually, you can use:\n\n[ICON:
     AUTOMATIC LAYOUT BUTTON] AUTOMATIC LAYOUT\n\nThis randomly distributes all probability
@@ -1059,7 +1059,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 8c7ed5d8b21e5da43a3420d88eb3fc3f, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 11400000, guid: 05dad0977e951a242b4cbdcdbc7b7a7e, type: 2}
   m_TextStyleHashCode: -1183493901
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2202,7 +2202,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2387,7 +2387,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2975,7 +2975,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
