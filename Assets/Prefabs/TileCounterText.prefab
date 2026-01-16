@@ -192,4 +192,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d5bdd5ec481244d80800209a6427f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileCounter
-  _text: {fileID: 6500632915648916015}
+  _counterText: {fileID: 6500632915648916015}

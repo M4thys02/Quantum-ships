@@ -142,7 +142,7 @@ public class UIManager : MonoBehaviour {
             counters[cellPos] = counterScript;
         }
 
-        counterScript.SetText(RevealRealCountLabel(guessed, actual));
+        counterScript.SetText(guessed, actual, gridSize);
     }
 
     // --- Helping methods for text formating ---
