@@ -237,9 +237,9 @@ MonoBehaviour:
     game is played on a square grid of size N \xD7 N, where:\n<style=Bullet><style=blueColor>N
     can range from 3 to 10</style> </style>\n<style=Bullet><style=blueColor>the total
     number of Probability Squares can range from 10 to 100 </style></style>\n\nThese
-    values can be adjusted in:\n\n[ICON: SETTINGS BUTTON] SETTINGS\n\nEach Probability
-    Square represents a fixed portion of the total probability.\nThe sum of all probability
-    squares must always equal 100% (1.0).\n"
+    values can be adjusted in:\n\n<align=center><sprite name=settings_button></align>\n\n\nEach
+    Probability Square represents a fixed portion of the total probability.\nThe
+    sum of all probability squares must always equal 100% (1.0).\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
   m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
@@ -258,7 +258,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 03e11b813d5d1f747b7c75f2b12e1889, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 11400000, guid: 05dad0977e951a242b4cbdcdbc7b7a7e, type: 2}
   m_TextStyleHashCode: -1183493901
@@ -624,7 +624,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 904, y: 2500}
+  m_SizeDelta: {x: 904, y: 2350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296316360
 MonoBehaviour:
@@ -677,10 +677,11 @@ MonoBehaviour:
     Holding the left or right mouse button continuously adds or removes estimation
     squares on the selected cell.</style></style>\r\n\n<style=red><b>Important rule</b>:\nYou
     can place at most the same number of estimation squares as defined in Probability
-    Squares in the settings. Their total must again represent exactly 100% probability.</style>\n\n<style=H2>Attack</style>\n\n[ICON:
-    ATTACK BUTTON]\n\nWhen you are confident in your estimation, you may choose to
-    attack.\n\nThe game compares your red estimation squares, with your opponent\u2019s
-    original blue probability squares. If your estimation for a cell is exactly correct:\n\n<align=center><sprite
+    Squares in the settings. Their total must again represent exactly 100% probability.</style>\n\n<style=H2>3.
+    Attack</style>\n\n<align=center><sprite name=attack_button></align>\n\n\nWhen
+    you are confident in your estimation, you may choose to attack.\n\nThe game compares
+    your red estimation squares, with your opponent\u2019s original blue probability
+    squares. If your estimation for a cell is exactly correct:\n\n<align=center><sprite
     name=guessed></align>\n\nA green square appears on that cell, The number indicates
     how many probability squares were correctly guessed.\n\nA green square means,
     you have perfectly identified the probability of the quantum ship on that cell."
@@ -1038,17 +1039,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<style=H1>Phase 1 \u2014 Creating Your Probability Distribution</style>\n\nIn
-    the first phase, players take turns creating their own probability distribution.\n\n[IMAGE:
-    EMPTY GRID WITH BLUE SQUARES]\n\n<style=H2>Placing Probability Squares</style>
-    <sprite name=probability>\n\n<style=Bullet>Use the left mouse button to drag
-    blue probability squares onto your grid.</style>\n<style=Bullet>You must place
-    all available squares somewhere on the board.</style>\n<style=Bullet><style=blueColor>Multiple
+    the first phase, players take turns creating their own probability distribution.\n\n<style=H2>Placing
+    Probability Squares</style> <sprite name=probability>\n\n<style=Bullet>Use the
+    left mouse button to drag blue probability squares onto your grid.</style>\n<style=Bullet>You
+    must place all available squares somewhere on the board.</style>\n<style=Bullet><style=blueColor>Multiple
     squares can be stacked on the same cell.</style></style>\n<style=Bullet>More
     squares on one cell = higher probability that the quantum ship is there.</style>\n\nOne
     blue square represents a fixed probability of the ship being located on that
     cell.\n\nThis distribution will later be guessed by your opponent.\n\n<style=H2>Automatic
-    Layout</style>\n\nIf you do not want to place the squares manually, you can use:\n\n[ICON:
-    AUTOMATIC LAYOUT BUTTON] AUTOMATIC LAYOUT\n\nThis randomly distributes all probability
+    Layout</style>\n\nIf you do not want to place the squares manually, you can use:\n\n<align=center><sprite
+    name=auto_layout_button></align>\n\n\nThis randomly distributes all probability
     squares across the grid."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
@@ -2359,8 +2359,7 @@ MonoBehaviour:
   m_text: "<style=H1>Winning the Game</style>\n\nThe game ends when one player fully
     reconstructs the opponent\u2019s probability distribution.\n\nAt the end:\n<style=Bullet>Both
     players\u2019 grids are revealed</style>\n<style=Bullet>The full probability
-    layouts are shown</style>\n<style=Bullet>A victory screen announces the winner</style>\n\n[IMAGE:
-    BOTH GRIDS REVEALED + WINNER TEXT]"
+    layouts are shown</style>\n<style=Bullet>A victory screen announces the winner</style>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
   m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}

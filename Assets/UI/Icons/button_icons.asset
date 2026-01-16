@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
-  m_Name: SmallIconsSheet
+  m_Name: button_icons
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_SpriteAsset
   m_Version: 1.1.0
   m_FaceInfo:
@@ -35,106 +35,83 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  m_Material: {fileID: 3958133156860611845}
-  spriteSheet: {fileID: 2800000, guid: 1971249e4acd2ff47bdf05059d3d7a04, type: 3}
+  m_Material: {fileID: 433551883024863348}
+  spriteSheet: {fileID: 2800000, guid: 2cd5d28174a87d04c87a110daae196f4, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: attack
+    m_Name: settings_button
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 1
     m_Scale: 1
-    m_Name: guessed
+    m_Name: auto_layout_button
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 2
     m_Scale: 1
-    m_Name: probability
-  - m_ElementType: 2
-    m_Unicode: 65534
-    m_GlyphIndex: 3
-    m_Scale: 1
-    m_Name: next_player
+    m_Name: attack_button
   m_GlyphTable:
   - m_Index: 0
     m_Metrics:
-      m_Width: 508
-      m_Height: 508
+      m_Width: 338
+      m_Height: 112
       m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 318
-      m_HorizontalAdvance: 508
+      m_HorizontalBearingY: 56
+      m_HorizontalAdvance: 338
     m_GlyphRect:
-      m_X: 514
-      m_Y: 2
-      m_Width: 508
-      m_Height: 508
+      m_X: 0
+      m_Y: 224
+      m_Width: 338
+      m_Height: 112
     m_Scale: 4
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-    sprite: {fileID: -5882298029048124752, guid: 1971249e4acd2ff47bdf05059d3d7a04, type: 3}
+    sprite: {fileID: 6300842288645743189, guid: 2cd5d28174a87d04c87a110daae196f4, type: 3}
   - m_Index: 1
     m_Metrics:
-      m_Width: 508
-      m_Height: 508
+      m_Width: 338
+      m_Height: 112
       m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 318
-      m_HorizontalAdvance: 508
+      m_HorizontalBearingY: 56
+      m_HorizontalAdvance: 338
     m_GlyphRect:
-      m_X: 1026
-      m_Y: 2
-      m_Width: 508
-      m_Height: 508
+      m_X: 0
+      m_Y: 112
+      m_Width: 338
+      m_Height: 112
     m_Scale: 4
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-    sprite: {fileID: -4760596228799125324, guid: 1971249e4acd2ff47bdf05059d3d7a04, type: 3}
+    sprite: {fileID: -1025470062, guid: 2cd5d28174a87d04c87a110daae196f4, type: 3}
   - m_Index: 2
     m_Metrics:
-      m_Width: 508
-      m_Height: 508
+      m_Width: 338
+      m_Height: 112
       m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 318
-      m_HorizontalAdvance: 508
-    m_GlyphRect:
-      m_X: 1538
-      m_Y: 2
-      m_Width: 508
-      m_Height: 508
-    m_Scale: 4
-    m_AtlasIndex: 0
-    m_ClassDefinitionType: 0
-    sprite: {fileID: -189819882514928490, guid: 1971249e4acd2ff47bdf05059d3d7a04, type: 3}
-  - m_Index: 3
-    m_Metrics:
-      m_Width: 512
-      m_Height: 512
-      m_HorizontalBearingX: -0
-      m_HorizontalBearingY: 318
-      m_HorizontalAdvance: 512
+      m_HorizontalBearingY: 56
+      m_HorizontalAdvance: 338
     m_GlyphRect:
       m_X: 0
       m_Y: 0
-      m_Width: 512
-      m_Height: 512
+      m_Width: 338
+      m_Height: 112
     m_Scale: 4
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-    sprite: {fileID: 603681055017043993, guid: 1971249e4acd2ff47bdf05059d3d7a04, type: 3}
+    sprite: {fileID: -2091117585, guid: 2cd5d28174a87d04c87a110daae196f4, type: 3}
   spriteInfoList: []
-  fallbackSpriteAssets:
-  - {fileID: 11400000, guid: 35aadd23232890947942536f0f1e3904, type: 2}
-  - {fileID: 11400000, guid: 1707e587f72f2964592c282e3db4052f, type: 2}
---- !u!21 &3958133156860611845
+  fallbackSpriteAssets: []
+--- !u!21 &433551883024863348
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SmallIconsSheet Material
+  m_Name: button_icons Material
   m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -151,7 +128,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1971249e4acd2ff47bdf05059d3d7a04, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2cd5d28174a87d04c87a110daae196f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
