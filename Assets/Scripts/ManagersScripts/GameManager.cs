@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     private HashSet<Vector3Int>[] _resolvedTiles = { new(), new() };
 
     private void Start() {
-        _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", 3);
+        _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
         _tokenManager.Initialize(_turnManager, _boardManager, _uiManager);
 
         _inputManager.OnLeftClick += (pos) => _tokenManager.OnTileInteract(pos, false);
@@ -63,10 +63,18 @@ public class GameManager : MonoBehaviour {
     public void PlayerMeasure() {
         _uiManager.SetActionButtonsInteractable(false);
         int attacker = _turnManager.CurrentPlayer;
-        //Debug.Log($"attacker is: {attacker}, defender is: {defender}");
-        Vector2Int tile = PlayersSetUps.GetWeightedRandomTileForPlayer(_turnManager.GetOpponent());
+        int defender = _turnManager.GetOpponent();
 
-        _measureManager.AddMeasurement(tile, attacker);
+        // M = 0.08 * squares_count + (7 / gridSize) + 1
+        int gridSize = _boardManager.GridSize;
+        float mFloat = (0.08f * _currentProbability) + (7f / gridSize) + 1f;
+        int measurementCount = Mathf.RoundToInt(mFloat);
+
+        for (int i = 0; i < measurementCount; i++) {
+            Vector2Int tile = PlayersSetUps.GetWeightedRandomTileForPlayer(defender);
+            _measureManager.AddMeasurement(tile, attacker);
+        }
+
         _uiManager.UpdateMeasurementList(attacker, _measureManager.GetPlayerMeasurements(attacker));
         _uiManager.ToggleNextTurnButton(true);
     }
