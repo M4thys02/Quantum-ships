@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour {
 
     [Header("Measurement Panels")]
     [SerializeField] private GameObject _measurementBoard;
+    [SerializeField] private GameObject _player0Measures;
+    [SerializeField] private GameObject _player1Measures;
     [SerializeField] private TMP_Text _player0MeasureText;
     [SerializeField] private TMP_Text _player1MeasureText;
 
@@ -49,11 +51,11 @@ public class UIManager : MonoBehaviour {
     public void UpdateTurnUI(int activePlayer) {
         bool isP0 = (activePlayer == 0);
 
-        if (_player0TurnText) _player0TurnText.gameObject.SetActive(isP0);
-        if (_player1TurnText) _player1TurnText.gameObject.SetActive(!isP0);
+        _player0TurnText?.gameObject.SetActive(isP0);
+        _player1TurnText?.gameObject.SetActive(!isP0);
 
-        if (_player0MeasureText) _player0MeasureText.gameObject.SetActive(isP0);
-        if (_player1MeasureText) _player1MeasureText.gameObject.SetActive(!isP0);
+        _player0Measures?.gameObject.SetActive(isP0);
+        _player1Measures?.gameObject.SetActive(!isP0);
     }
 
     // Shows probability of 1 square
