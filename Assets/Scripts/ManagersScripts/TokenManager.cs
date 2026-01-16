@@ -132,68 +132,98 @@ public class TokenManager : MonoBehaviour {
         return list.Count > 0 && list[0].CompareTag("GuessedSquare");
     }
 
-    // === NOVÁ METODA ===
     public void RevealLoserBoard(int loserIndex) {
-        // 1. Získáme "Pravdu" (řešení) pro prohrávajícího hráče
-        // (Pozor: PlayersSetUps.GetKeyValuePairs vrací to, co má hráč "u sebe", 
-        // ale my chceme vidět, jak prohrávající hráč tipoval na SOUPEŘE.
-        // Takže musíme porovnat attackery (loser) s řešením (winner's setup)).
 
+        // ======================================================
+        // PURPOSE
+        // Reveals the final state of the board for the losing player.
+        // Shows:
+        //  - Blue probability squares where the player failed to guess
+        //  - Numeric counters comparing guesses vs actual distribution
+        // ======================================================
+
+        // ------------------------------------------------------
+        // 1) Determine opponent and retrieve data
+        // ------------------------------------------------------
+
+        // Opponent index (the player whose true setup we reveal)
         int opponent = (loserIndex == 0) ? 1 : 0;
+
+        // True probability distribution of the opponent
+        // Key: Vector2Int (cell position), Value: probability count
         var trueSolution = PlayersSetUps.GetKeyValuePairs(opponent);
+
+        // Player's guesses (red estimation squares)
+        // Key: Vector3Int (cell position), Value: list of guessed squares
         var playerGuesses = _playerSquares[loserIndex];
 
-        HashSet<Vector3Int> allPositions = new HashSet<Vector3Int>(); // Množina všech pozic, které musíme řešit (sjednocení tipů a reality)
-
+        // ------------------------------------------------------
+        // 2) Collect all relevant board positions
+        // ------------------------------------------------------
+        // We need to process the union of:
+        //  - cells the player guessed
+        //  - cells that actually contain probability squares
+        HashSet<Vector3Int> allPositions = new HashSet<Vector3Int>();
         foreach (var kvp in playerGuesses) allPositions.Add(kvp.Key);
         foreach (var kvp in trueSolution) allPositions.Add(new Vector3Int(kvp.Key.x, kvp.Key.y, 0));
 
-        Tilemap targetMap = _boardManager.GetActiveTilemap();
+        // ------------------------------------------------------
+        // 3) Iterate over all relevant cells
+        // ------------------------------------------------------
 
         foreach (Vector3Int pos in allPositions) {
+
             Vector2Int pos2D = new Vector2Int(pos.x, pos.y);
 
-            // Kolik jich tam ve skutečnosti mělo být
+            // Actual number of probability squares on this cell
             int actualCount = trueSolution.ContainsKey(pos2D) ? trueSolution[pos2D] : 0;
 
-            // Kolik jich hráč tipoval
+            // Number of squares guessed by the losing player
             int guessedCount = 0;
             if (playerGuesses.TryGetValue(pos, out var list)) {
                 guessedCount = list.Count;
             }
 
-            // A) Hráč netipoval nic (0), ale mělo tam něco být (>0) -> Modré čtverečky
+            // --------------------------------------------------
+            // A) Reveal missing probability squares (blue)
+            // Case: player guessed nothing, but something was there
+            // --------------------------------------------------
             if (guessedCount == 0 && actualCount > 0) {
+
+                // Ensure internal storage exists
                 if (!_playerSquares[loserIndex].ContainsKey(pos)) {
                     _playerSquares[loserIndex][pos] = new List<GameObject>();
                 }
 
-                // Správně určíme pozici na tilemapě prohrávajícího (toho, kdo útočil)
-                // BoardManager ukazuje obě, musíme najít world pozici
-                // Tady trochu hack: spoléháme, že UI Manager si s tím poradí, 
-                // jen potřebujeme worldPos pro instanciaci
-
-                // Zjistíme, která tilemapa patří "protivníkovi" (protože na tu loser útočil)
-                // Pokud loser je 0, útočil na tilemapu 1.
+                // Determine which tilemap the loser was attacking
+                // Player 0 attacks Player 1's tilemap and vice versa
                 Tilemap attackMap = (loserIndex == 0) ? _boardManager.Player1TilemapRef : _boardManager.Player0TilemapRef;
 
-                // Prozatím použijeme active (protože v GameFinished jsou obě active)
-                // Ale musíme trefit tu, na které jsou červené čtverečky losera.
-                // Logika hry: Hráč 0 sype červené čtverce na Tilemapu 1 (aby viděl, kam střílí).
+                // World position of the cell center
                 Vector3 worldPos = attackMap.GetCellCenterWorld(pos);
 
+                // Instantiate missing blue probability squares
                 for (int i = 0; i < actualCount; i++) {
                     GameObject blueSq = Instantiate(_probabilitySquarePrefab, worldPos, Quaternion.identity, attackMap.transform);
+
                     blueSq.transform.localScale = Vector3.one;
                     _playerSquares[loserIndex][pos].Add(blueSq);
                 }
             }
 
-            // B) Aktualizace Textu (UI)
-            Tilemap correctMap = (loserIndex == 0) ? _boardManager.Player1TilemapRef : _boardManager.Player0TilemapRef;
-            Vector3 wPos = correctMap.GetCellCenterWorld(pos);
+            // --------------------------------------------------
+            // B) Update numeric UI counters
+            // Shows guessed vs actual values where relevant
+            // --------------------------------------------------
 
-            _uiManager.UpdateTileCounterEndGame(loserIndex, pos, guessedCount, actualCount, wPos, _boardManager.GridSize, correctMap);
+            Tilemap correctMap = (loserIndex == 0)
+                ? _boardManager.Player1TilemapRef
+                : _boardManager.Player0TilemapRef;
+
+            Vector3 worldPosCounter = correctMap.GetCellCenterWorld(pos);
+
+            _uiManager.UpdateTileCounterEndGame(loserIndex, pos, guessedCount, actualCount, worldPosCounter, _boardManager.GridSize, correctMap);
         }
     }
+
 }
