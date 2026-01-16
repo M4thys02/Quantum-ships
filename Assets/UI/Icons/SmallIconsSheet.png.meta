@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 5337806e8f5d8c94a94f061da74c5e27
+guid: 1971249e4acd2ff47bdf05059d3d7a04
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2319086515572571044
-    second: probability_0
+      213: 603681055017043993
+    second: SmallIconsSheet_0
+  - first:
+      213: -5882298029048124752
+    second: SmallIconsSheet_1
+  - first:
+      213: -4760596228799125324
+    second: SmallIconsSheet_2
+  - first:
+      213: -189819882514928490
+    second: SmallIconsSheet_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,23 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: probability_0
+      name: SmallIconsSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 512
+        height: 512
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4abf91c16ec0f2020800000000000000
-      internalID: 2319086515572571044
+      spriteID: 9188ce998b4b06800800000000000000
+      internalID: 603681055017043993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallIconsSheet_1
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 2
+        width: 508
+        height: 508
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ba2b9bbb11ed5ea0800000000000000
+      internalID: -5882298029048124752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallIconsSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 2
+        width: 508
+        height: 508
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b82d5fd3f6feedb0800000000000000
+      internalID: -4760596228799125324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SmallIconsSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 2
+        width: 508
+        height: 508
+      alignment: 9
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69c246392df9d5df0800000000000000
+      internalID: -189819882514928490
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b875368a71a8683428b46b6f2db68ddf
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +208,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":9,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      probability_0: 2319086515572571044
+      SmallIconsSheet_0: 603681055017043993
+      SmallIconsSheet_1: -5882298029048124752
+      SmallIconsSheet_2: -4760596228799125324
+      SmallIconsSheet_3: -189819882514928490
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

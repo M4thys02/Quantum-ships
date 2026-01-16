@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MeasureManager : MonoBehaviour {
@@ -16,7 +17,11 @@ public class MeasureManager : MonoBehaviour {
         Measurements[player][tile]++;
     }
 
+    // Alphabetical order - (A1, A2, B1, B2, ...)
     public Dictionary<Vector2Int, int> GetPlayerMeasurements(int player) {
-        return Measurements[player];
+        return Measurements[player]
+        .OrderBy(kv => kv.Key.x)   // A, B, C...
+        .ThenBy(kv => kv.Key.y)    // 1, 2, 3...
+        .ToDictionary(kv => kv.Key, kv => kv.Value);
     }
 }
