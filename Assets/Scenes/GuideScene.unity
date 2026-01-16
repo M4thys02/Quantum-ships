@@ -624,7 +624,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 904, y: 1800}
+  m_SizeDelta: {x: 904, y: 2500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296316360
 MonoBehaviour:
@@ -657,9 +657,17 @@ MonoBehaviour:
     number of measurements does NOT equal the number of blue squares on that cell.</style>\n\nMeasurements
     are probabilistic:\n<style=Bullet>Cells with higher probability are more likely
     to be measured</style>\n<style=Bullet>But randomness still applies</style>\n<style=Bullet>It
-    is possible to repeatedly measure a low-probability cell purely by chance</style>\n\n<style=H2>2.
-    Estimating the Opponent\u2019s Distribution</style>\n\nInstead of measuring,
-    you can try to reconstruct your opponent\u2019s probability distribution.\n\n<align=center><sprite
+    is possible to repeatedly measure a low-probability cell purely by chance</style>\n\n<style=red><b>Measurement
+    balancing</b>:\r\nThe number of measurements performed is automatically balanced
+    based on the game settings.</style>\r\n\r\nIt depends on:\r\n<style=Bullet><style=blueColor>N</style>
+    \u2014 the grid size (N\xD7N)</style>\r\n<style=Bullet><style=blueColor>P</style>
+    \u2014 the total number of probability squares</style>\r\n\r\nThe number of measurements
+    <style=blueColor>M</style> is computed using the following formula:\r\n\r\n<align=center><style=blueColor>M
+    = 0.08 \xB7 P + 7/N + 1</style></align>\r\n\r\nThis ensures that:\r\n<style=Bullet>On
+    small grids, measurements remain meaningful</style>\r\n<style=Bullet>On larger
+    grids, measurements scale appropriately</style>\n\n<style=H2>2. Estimating the
+    Opponent\u2019s Distribution</style>\n\nInstead of measuring, you can try to
+    reconstruct your opponent\u2019s probability distribution.\n\n<align=center><sprite
     name=attack></align>\n\nUse the right mouse button on the grid to place red estimation
     squares. Each red square represents your guess of the opponent\u2019s probability.
     The number displayed on a cell shows how many red squares are stacked there.\n\n<style=Bullet>Left
@@ -1727,7 +1735,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 370875745}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.1
+  m_Size: 0.0882353
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3244,7 +3252,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 6000}
+  m_SizeDelta: {x: 0, y: 6800}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2072432272
 MonoBehaviour:
