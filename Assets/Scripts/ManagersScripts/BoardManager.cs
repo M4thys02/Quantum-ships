@@ -14,6 +14,8 @@ public class BoardManager : MonoBehaviour {
 
     public float GridScale => _gridScale;
     public int GridSize => _gridSize;
+    public Tilemap Player0TilemapRef => _player0Tilemap;
+    public Tilemap Player1TilemapRef => _player1Tilemap;
 
     private void Awake() {
         _gridSize = (int)PlayerPrefs.GetFloat("GridSlider", 3);

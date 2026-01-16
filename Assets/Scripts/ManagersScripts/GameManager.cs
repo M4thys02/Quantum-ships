@@ -81,9 +81,13 @@ public class GameManager : MonoBehaviour {
 
     private void CheckWinCondition() {
         if (_guessedCounts[0] >= _currentProbability || _guessedCounts[1] >= _currentProbability) {
-            _uiManager.PlayerWinGame(_turnManager.CurrentPlayer);
+            int winner = _turnManager.CurrentPlayer;
+            int loser = _turnManager.GetOpponent();
+
+            _uiManager.PlayerWinGame(winner);
             _boardManager.ShowBothTilemaps();
             _tokenManager.ShowVisualsForBothPlayers();
+            _tokenManager.RevealLoserBoard(loser);
         }
     }
 

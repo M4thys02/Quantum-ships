@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TokenManager : MonoBehaviour {
+    [Header("All squares prefabs")]
     [SerializeField] private GameObject _attackSquarePrefab;
     [SerializeField] private GameObject _guessedSquarePrefab;
+    [SerializeField] private GameObject _probabilitySquarePrefab;
 
     // Data: [PlayerIndex][Coordinates] -> List of objects
     private Dictionary<Vector3Int, List<GameObject>>[] _playerSquares;
@@ -128,5 +130,70 @@ public class TokenManager : MonoBehaviour {
 
     private bool IsTileResolved(List<GameObject> list) {
         return list.Count > 0 && list[0].CompareTag("GuessedSquare");
+    }
+
+    // === NOVÁ METODA ===
+    public void RevealLoserBoard(int loserIndex) {
+        // 1. Získáme "Pravdu" (řešení) pro prohrávajícího hráče
+        // (Pozor: PlayersSetUps.GetKeyValuePairs vrací to, co má hráč "u sebe", 
+        // ale my chceme vidět, jak prohrávající hráč tipoval na SOUPEŘE.
+        // Takže musíme porovnat attackery (loser) s řešením (winner's setup)).
+
+        int opponent = (loserIndex == 0) ? 1 : 0;
+        var trueSolution = PlayersSetUps.GetKeyValuePairs(opponent);
+        var playerGuesses = _playerSquares[loserIndex];
+
+        HashSet<Vector3Int> allPositions = new HashSet<Vector3Int>(); // Množina všech pozic, které musíme řešit (sjednocení tipů a reality)
+
+        foreach (var kvp in playerGuesses) allPositions.Add(kvp.Key);
+        foreach (var kvp in trueSolution) allPositions.Add(new Vector3Int(kvp.Key.x, kvp.Key.y, 0));
+
+        Tilemap targetMap = _boardManager.GetActiveTilemap();
+
+        foreach (Vector3Int pos in allPositions) {
+            Vector2Int pos2D = new Vector2Int(pos.x, pos.y);
+
+            // Kolik jich tam ve skutečnosti mělo být
+            int actualCount = trueSolution.ContainsKey(pos2D) ? trueSolution[pos2D] : 0;
+
+            // Kolik jich hráč tipoval
+            int guessedCount = 0;
+            if (playerGuesses.TryGetValue(pos, out var list)) {
+                guessedCount = list.Count;
+            }
+
+            // A) Hráč netipoval nic (0), ale mělo tam něco být (>0) -> Modré čtverečky
+            if (guessedCount == 0 && actualCount > 0) {
+                if (!_playerSquares[loserIndex].ContainsKey(pos)) {
+                    _playerSquares[loserIndex][pos] = new List<GameObject>();
+                }
+
+                // Správně určíme pozici na tilemapě prohrávajícího (toho, kdo útočil)
+                // BoardManager ukazuje obě, musíme najít world pozici
+                // Tady trochu hack: spoléháme, že UI Manager si s tím poradí, 
+                // jen potřebujeme worldPos pro instanciaci
+
+                // Zjistíme, která tilemapa patří "protivníkovi" (protože na tu loser útočil)
+                // Pokud loser je 0, útočil na tilemapu 1.
+                Tilemap attackMap = (loserIndex == 0) ? _boardManager.Player1TilemapRef : _boardManager.Player0TilemapRef;
+
+                // Prozatím použijeme active (protože v GameFinished jsou obě active)
+                // Ale musíme trefit tu, na které jsou červené čtverečky losera.
+                // Logika hry: Hráč 0 sype červené čtverce na Tilemapu 1 (aby viděl, kam střílí).
+                Vector3 worldPos = attackMap.GetCellCenterWorld(pos);
+
+                for (int i = 0; i < actualCount; i++) {
+                    GameObject blueSq = Instantiate(_probabilitySquarePrefab, worldPos, Quaternion.identity, attackMap.transform);
+                    blueSq.transform.localScale = Vector3.one;
+                    _playerSquares[loserIndex][pos].Add(blueSq);
+                }
+            }
+
+            // B) Aktualizace Textu (UI)
+            Tilemap correctMap = (loserIndex == 0) ? _boardManager.Player1TilemapRef : _boardManager.Player0TilemapRef;
+            Vector3 wPos = correctMap.GetCellCenterWorld(pos);
+
+            _uiManager.UpdateTileCounterEndGame(loserIndex, pos, guessedCount, actualCount, wPos, _boardManager.GridSize, correctMap);
+        }
     }
 }

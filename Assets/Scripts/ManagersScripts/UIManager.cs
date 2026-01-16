@@ -130,6 +130,21 @@ public class UIManager : MonoBehaviour {
         ToggleBothCountersVisibility(true);
     }
 
+    public void UpdateTileCounterEndGame(int playerIndex, Vector3Int cellPos, int guessed, int actual, Vector3 worldPos, int gridSize, Tilemap targetMap) {
+        if (guessed > 0 && guessed == actual) return;
+
+        var counters = _playerCounters[playerIndex];
+
+        if (guessed == 0 && actual == 0) return;
+
+        if (!counters.TryGetValue(cellPos, out var counterScript)) {
+            counterScript = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity, targetMap.transform);
+            counters[cellPos] = counterScript;
+        }
+
+        counterScript.SetText(RevealRealCountLabel(guessed, actual));
+    }
+
     // --- Helping methods for text formating ---
     private string BuildMeasurementString(Dictionary<Vector2Int, int> dict) {
         StringBuilder sb = new StringBuilder();
@@ -152,5 +167,17 @@ public class UIManager : MonoBehaviour {
     private void ShowWhoWin(int player) {
         string roman = player == 0 ? "I" : "II";
         _whichPlayerWinText.text = $"Player {roman} won";
+    }
+
+    private string RevealRealCountLabel(int guessed, int actual) {
+        string finalLabel = "";
+
+        if (guessed == 0 && actual > 0) {
+            finalLabel = $"({actual})";
+        }
+        else if (guessed > 0) {
+            finalLabel = $"{guessed} ({actual})";
+        }
+        return finalLabel;
     }
 }
