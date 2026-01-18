@@ -19,6 +19,10 @@ public class InputManager : MonoBehaviour {
     private Vector3Int _heldCell;
 
     private void Update() {
+        if (UIControlState.IsOpen) {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
             StartHold(false);
 

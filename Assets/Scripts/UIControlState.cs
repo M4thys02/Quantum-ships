@@ -15,6 +15,6 @@ public class UIControlState : MonoBehaviour {
     }
 
     public void DisableControlsUI() {
-
+        _controlsUI.SetActive(false);
     }
 }
