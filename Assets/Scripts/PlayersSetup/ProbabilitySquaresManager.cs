@@ -69,6 +69,9 @@ public class ProbabilitySquaresManager : MonoBehaviour {
 
                 var drag = square.GetComponent<DragAndDrop>();
                 if (drag != null) {
+                    // We need to tell the logic first: "This square is NOT placed".
+                    drag.SetPlacedState(false);
+                    // ------------------
                     drag.SetCurrentTile(cellPos);
                     drag.SetPlacedState(true);
                     drag.SetScaleInstant(scale);
