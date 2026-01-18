@@ -29,6 +29,21 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private Button _measureButton;
     [SerializeField] private Button _nextPlayerButton;
 
+    [Header("Font Settings")]
+    [SerializeField] private float _defaultFontSize = 20f;
+    private float _currentFontSize;
+    // Slovník pro mapování: GridSize -> FontSize
+    private readonly Dictionary<int, float> FontSizeByGrid = new Dictionary<int, float>() {
+        { 3, 24f },
+        { 4, 23f },
+        { 5, 22f },
+        { 6, 21f },
+        { 7, 20f },
+        { 8, 20f },
+        { 9, 20f },
+        { 10, 18f }
+    };
+
     [Header("World Text Settings")]
     [SerializeField] private TileCounter _tileCounterPrefab;
     private Dictionary<Vector3Int, TileCounter>[] _playerCounters = {
@@ -45,6 +60,29 @@ public class UIManager : MonoBehaviour {
         _attackButton.onClick.AddListener(() => OnAttackClicked?.Invoke());
         _measureButton.onClick.AddListener(() => OnMeasureClicked?.Invoke());
         _nextPlayerButton.onClick.AddListener(() => OnNextTurnClicked?.Invoke());
+
+        _currentFontSize = _defaultFontSize;
+        InitializeUI((int)PlayerPrefs.GetFloat("GridSlider", 3));
+    }
+
+    public void InitializeUI(int gridSize) {
+        if (!FontSizeByGrid.TryGetValue(gridSize, out _currentFontSize)) {
+            _currentFontSize = _defaultFontSize;
+        }
+
+        if (_player0Measures != null) {
+            TMP_Text[] p0Texts = _player0Measures.GetComponentsInChildren<TMP_Text>(true);
+            foreach (var txt in p0Texts) {
+                txt.fontSize = _currentFontSize;
+            }
+        }
+
+        if (_player1Measures != null) {
+            TMP_Text[] p1Texts = _player1Measures.GetComponentsInChildren<TMP_Text>(true);
+            foreach (var txt in p1Texts) {
+                txt.fontSize = _currentFontSize;
+            }
+        }
     }
 
     // Update UIText which player is on turn
@@ -60,16 +98,16 @@ public class UIManager : MonoBehaviour {
 
     // Shows probability of 1 square
     public void UpdateProbability(float percentage) {
-        if (_probabilityText != null)
-            _probabilityText.text = $"= {percentage:F2} %";
+        if (_probabilityText != null) _probabilityText.text = $"= {percentage:F2} %";
     }
 
     // Gets dictionary with measurement data, formates them, and then write them in UI
     public void UpdateMeasurementList(int playerIndex, Dictionary<Vector2Int, int> measurements) {
         TMP_Text targetText = (playerIndex == 0) ? _player0MeasureText : _player1MeasureText;
-
         if (targetText == null) return;
 
+        // Font se nastavuje v InitializeUI, ale pro jistotu ho můžeme držet i zde
+        targetText.fontSize = _currentFontSize;
         targetText.text = BuildMeasurementString(measurements);
     }
 
@@ -167,17 +205,5 @@ public class UIManager : MonoBehaviour {
     private void ShowWhoWin(int player) {
         string roman = player == 0 ? "I" : "II";
         _whichPlayerWinText.text = $"Player {roman} won";
-    }
-
-    private string RevealRealCountLabel(int guessed, int actual) {
-        string finalLabel = "";
-
-        if (guessed == 0 && actual > 0) {
-            finalLabel = $"({actual})";
-        }
-        else if (guessed > 0) {
-            finalLabel = $"{guessed} ({actual})";
-        }
-        return finalLabel;
     }
 }
