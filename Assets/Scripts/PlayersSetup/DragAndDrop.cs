@@ -2,6 +2,7 @@
 using UnityEngine.Tilemaps;
 using System;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Collider2D))]
 public class DragAndDrop : MonoBehaviour {
@@ -53,6 +54,9 @@ public class DragAndDrop : MonoBehaviour {
     }
 
     private void OnMouseDown() {
+        if (UIControlState.IsOpen) {
+            return;
+        }
         SetPlacedState(false);
         isDragging = true;
         targetScale = draggingScale;
