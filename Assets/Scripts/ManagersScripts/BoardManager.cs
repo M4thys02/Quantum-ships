@@ -6,6 +6,7 @@ public class BoardManager : MonoBehaviour {
     [SerializeField] private Tilemap _player1Tilemap;
     [SerializeField] private TileBase _tileBase;
     [SerializeField] private GridLabelGenerator _labelGenerator;
+    [SerializeField] private GameObject _tilemapLabels;
 
     private int _gridSize;
     private float _gridScale;
@@ -37,7 +38,14 @@ public class BoardManager : MonoBehaviour {
         _player0Tilemap.gameObject.SetActive(true);
         _player1Tilemap.gameObject.SetActive(true);
 
-        _player0Tilemap.transform.localPosition = new Vector3(2.5f, _player1Tilemap.transform.localPosition.y, _player1Tilemap.transform.localPosition.z);
+        Vector3 originalPosP0 = _player0Tilemap.transform.localPosition;
+        Vector3 newPosP0 = new Vector3(2.5f, _player1Tilemap.transform.localPosition.y, _player1Tilemap.transform.localPosition.z);
+        _player0Tilemap.transform.localPosition = newPosP0;
+
+        Vector3 moveOffset = newPosP0 - originalPosP0;
+        GameObject enemyLabels = Instantiate(_tilemapLabels, _tilemapLabels.transform.parent);
+        enemyLabels.transform.localPosition = _tilemapLabels.transform.localPosition + moveOffset;
+        // enemyLabels.name = _tilemapLabels.name + "_Player0";
     }
 
     // Returns map where attack is currently display

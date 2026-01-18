@@ -1496,6 +1496,7 @@ MonoBehaviour:
   _player1Tilemap: {fileID: 1552613343}
   _tileBase: {fileID: 11400000, guid: ae5b1f850e1dfc54caecb5ed51f53222, type: 2}
   _labelGenerator: {fileID: 1206253712}
+  _tilemapLabels: {fileID: 1206253710}
 --- !u!1 &883442920
 GameObject:
   m_ObjectHideFlags: 0
