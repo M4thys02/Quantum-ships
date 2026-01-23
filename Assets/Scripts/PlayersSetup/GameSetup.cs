@@ -16,7 +16,6 @@ public class GameSetup : MonoBehaviour {
     private float maximumProbability = 100f;
     private int defaultHeight = 850;
     private int oneTileSizes = 64;
-    public bool playWithAI = false;
     public int currentGridSize;
     public int currentProbability;
     public float gridScale {  get; private set; }
@@ -26,10 +25,7 @@ public class GameSetup : MonoBehaviour {
             return;
         }
 
-        if (playWithAI) {
-            SceneManager.LoadScene("MainGame");
-        }
-        else if (sceneName == "Player2") {
+        if (sceneName == "Player2") {
             PlayersSetUps.ChangePlayer();
             SceneManager.LoadScene(sceneName);
         }
@@ -37,6 +33,10 @@ public class GameSetup : MonoBehaviour {
             //PlayersSetUps.ShowDictionaries();
             SceneManager.LoadScene(sceneName);
         }
+    }
+
+    public void BackToMainMenu() {
+        SceneManager.LoadScene("MainMenu");
     }
 
     void Awake() {
@@ -54,6 +54,5 @@ public class GameSetup : MonoBehaviour {
 
         float oneSquareProbability = maximumProbability / (float)currentProbability;
         probabilityPercentige.text = $"= {oneSquareProbability:F2} %";
-        //Debug.Log($"Jeden čtvereček má hodnotu: {oneSquareProbability}%");
     }
 }
