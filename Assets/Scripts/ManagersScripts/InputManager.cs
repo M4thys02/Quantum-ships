@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour {
     private Vector3Int _heldCell;
 
     private void Update() {
-        if (UIControlState.IsOpen) {
+        if (UIControlState.IsOpen || AYSScreenControl.IsOpen) {
             return;
         }
 

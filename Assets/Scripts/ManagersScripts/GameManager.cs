@@ -91,8 +91,8 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void GameFinished() {
-        PlayersSetUps.Cleanup();
-        SceneManager.LoadScene("MainMenu");
-    }
+    //public void GameFinished() {
+    //    PlayersSetUps.Cleanup();
+    //    SceneManager.LoadScene("MainMenu");
+    //}
 }
