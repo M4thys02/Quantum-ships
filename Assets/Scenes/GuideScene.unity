@@ -1041,8 +1041,9 @@ MonoBehaviour:
   m_text: "<style=H1>Phase 1 \u2014 Creating Your Probability Distribution</style>\n\nIn
     the first phase, players take turns creating their own probability distribution.\n\n<style=H2>Placing
     Probability Squares</style> <sprite name=probability>\n\n<style=Bullet>Use the
-    left mouse button to drag blue probability squares onto your grid.</style>\n<style=Bullet>You
-    must place all available squares somewhere on the board.</style>\n<style=Bullet><style=blueColor>Multiple
+    left mouse button to drag blue probability squares onto your grid.</style>\n<style=Bullet>Use
+    shift to drag (max) 10 squares at once</style>\n<style=Bullet>You must place
+    all available squares somewhere on the board.</style>\n<style=Bullet><style=blueColor>Multiple
     squares can be stacked on the same cell.</style></style>\n<style=Bullet>More
     squares on one cell = higher probability that the quantum ship is there.</style>\n\nOne
     blue square represents a fixed probability of the ship being located on that

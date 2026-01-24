@@ -721,11 +721,15 @@ MonoBehaviour:
   m_text: '<style=Bullet>Use the <style=blueColor>left mouse button</style> to drag
     blue squares</style>
 
-    <style=Bullet>You can place <style=blueColor>multiple
-    squares on the same cell</style>
+    <style=Bullet>Use <style=blueColor>SHIFT</style> to
+    drag multiple squares at once (max is 10)</style>
 
-    <style=Bullet>Press <style=blueColor>"AUTOMATIC
-    LAYOUT"</style> to automatically distribute all squares randomly</style>'
+    <style=Bullet>You can
+    place <style=blueColor>multiple squares on the same cell</style>
+
+    <style=Bullet>Press
+    <style=blueColor>"AUTOMATIC LAYOUT"</style> to automatically distribute all squares
+    randomly</style>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67293651db230dd42b4d19e707a35a24, type: 2}
   m_sharedMaterial: {fileID: 882555599375849553, guid: 67293651db230dd42b4d19e707a35a24, type: 2}

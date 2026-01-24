@@ -22,7 +22,7 @@ public class ProbabilitySquaresManager : MonoBehaviour {
             drag.Initialize(tilemap, gridScale);
             drag.OnPlaced += HandleSquarePlaced;
             drag.OnReturned += HandleSquareReturned;
-            drag.OnMassPlaced += HandleMassPlaced;
+            drag.OnShiftDragStarted += HandleShiftDrag;
         }
     }
 
@@ -52,23 +52,24 @@ public class ProbabilitySquaresManager : MonoBehaviour {
         PlayersSetUps.RemoveSquare(new Vector2Int(placedTile.x, placedTile.y));
     }
 
-    private void HandleMassPlaced(Vector3Int targetTile) {
-        Vector3 targetWorldPos = tilemap.GetCellCenterWorld(targetTile);
-        int movedCount = 0;
+    private void HandleShiftDrag(DragAndDrop leader, Vector3Int startTile) {
+        int grabbedCount = 0;
+        bool leaderInStorage = startTile.x == -1;
 
         foreach (Transform child in transform) {
+            if (grabbedCount >= (maxToMove - 1)) break;
+
             if (child.CompareTag("TextLabel")) continue;
+            var follower = child.GetComponent<DragAndDrop>();
+            if (follower == null || follower == leader) continue;
 
-            var drag = child.GetComponent<DragAndDrop>();
+            // If leader in storage -> find non-placed, otherwise find placed (squares)
+            bool shouldPickUp = leaderInStorage ? !follower.IsPlaced : (follower.IsPlaced && follower.currentTile == startTile);
 
-            // If square exists, square is not placed and limit was not reached
-            if (drag != null && !drag.IsPlaced && movedCount < (maxToMove - 1)) {
-                drag.SetCurrentTile(targetTile);
-                drag.transform.position = targetWorldPos;
-                drag.SetPlacedState(true);
-                drag.SetScaleInstant(scale);
-
-                movedCount++;
+            if (shouldPickUp) {
+                follower.StartFollowing(leader.transform);
+                leader.AddFollower(follower);
+                grabbedCount++;
             }
         }
     }
