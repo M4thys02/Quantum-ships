@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.Tilemaps;
 
@@ -8,6 +8,7 @@ public class ProbabilitySquaresManager : MonoBehaviour {
     [SerializeField] private TextMeshPro squareLabelPrefab;
     [SerializeField] private float defaultFontSize = 4f;
     [SerializeField] private int defaultProbSquaresCount = 10;
+    [SerializeField] private int maxToMove = 10;
 
     private TextMeshPro _activeLabel;
     public int RemainingSquares { get; set; }
@@ -21,6 +22,7 @@ public class ProbabilitySquaresManager : MonoBehaviour {
             drag.Initialize(tilemap, gridScale);
             drag.OnPlaced += HandleSquarePlaced;
             drag.OnReturned += HandleSquareReturned;
+            drag.OnMassPlaced += HandleMassPlaced;
         }
     }
 
@@ -50,6 +52,27 @@ public class ProbabilitySquaresManager : MonoBehaviour {
         PlayersSetUps.RemoveSquare(new Vector2Int(placedTile.x, placedTile.y));
     }
 
+    private void HandleMassPlaced(Vector3Int targetTile) {
+        Vector3 targetWorldPos = tilemap.GetCellCenterWorld(targetTile);
+        int movedCount = 0;
+
+        foreach (Transform child in transform) {
+            if (child.CompareTag("TextLabel")) continue;
+
+            var drag = child.GetComponent<DragAndDrop>();
+
+            // If square exists, square is not placed and limit was not reached
+            if (drag != null && !drag.IsPlaced && movedCount < (maxToMove - 1)) {
+                drag.SetCurrentTile(targetTile);
+                drag.transform.position = targetWorldPos;
+                drag.SetPlacedState(true);
+                drag.SetScaleInstant(scale);
+
+                movedCount++;
+            }
+        }
+    }
+
     private void UpdateLabel() {
         if (_activeLabel != null)
             _activeLabel.text = GetLabelText();
@@ -69,7 +92,7 @@ public class ProbabilitySquaresManager : MonoBehaviour {
 
                 var drag = square.GetComponent<DragAndDrop>();
                 if (drag != null) {
-                    // We need to tell the logic first: "This square is NOT placed".
+                    // We need to tell the logic first: "This square is NOT placed"!
                     drag.SetPlacedState(false);
                     // ------------------
                     drag.SetCurrentTile(cellPos);

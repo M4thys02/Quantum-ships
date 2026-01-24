@@ -15,11 +15,13 @@ public class DragAndDrop : MonoBehaviour {
     private Tilemap tilemap;
     private bool isDragging;
     private bool isPlaced;
+    public bool IsPlaced => isPlaced;
     private Vector3 originalPosition;
     private float targetScale;
 
     public event Action<Vector3Int> OnPlaced;
     public event Action<Vector3Int> OnReturned;
+    public event Action<Vector3Int> OnMassPlaced;
     public Vector3Int currentTile { get; private set; }
 
     public void Initialize(Tilemap map, float gridScale) {
@@ -64,7 +66,6 @@ public class DragAndDrop : MonoBehaviour {
 
     private void OnMouseUp() {
         isDragging = false;
-
         Vector3Int cellPos = tilemap.WorldToCell(transform.position);
         Vector3 cellCenter = tilemap.GetCellCenterWorld(cellPos);
 
@@ -72,6 +73,10 @@ public class DragAndDrop : MonoBehaviour {
             currentTile = cellPos;
             transform.position = cellCenter;
             SetPlacedState(true);
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
+                OnMassPlaced?.Invoke(currentTile);
+            }
         }
         else {
             currentTile = new Vector3Int(-1, -1, -1);
