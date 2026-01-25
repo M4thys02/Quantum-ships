@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour {
 
     [Header("Hold settings")]
     [SerializeField] private float holdDelay = 0.1f;
-    [SerializeField] private float repeatRate = 0.25f;
+    [SerializeField] private float repeatRate = 0.2f;
 
     public event Action<Vector3Int> OnLeftClick;
     public event Action<Vector3Int> OnRightClick;

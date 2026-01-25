@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private TokenManager _tokenManager;
     [SerializeField] private MeasureManager _measureManager;
     [SerializeField] private UIManager _uiManager;
+    [SerializeField] private GlobalAudioManager _soundManager;
 
     private int _currentProbability;
     private int[] _guessedCounts = { 0, 0 };
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
+        _soundManager = GlobalAudioManager.Instance;
         _tokenManager.Initialize(_turnManager, _boardManager, _uiManager);
 
         _inputManager.OnLeftClick += (pos) => _tokenManager.OnTileInteract(pos, false);
@@ -23,7 +25,10 @@ public class GameManager : MonoBehaviour {
 
         _uiManager.OnAttackClicked += PlayerAttack;
         _uiManager.OnMeasureClicked += PlayerMeasure;
-        _uiManager.OnNextTurnClicked += () => _turnManager.ChangeTurn();
+        _uiManager.OnNextTurnClicked += () => {
+            _turnManager.ChangeTurn();
+            _soundManager.PlayButtonSound(2);  //0 -> attack, 1 -> measure, 2 -> player change
+        };
 
         _turnManager.OnTurnChanged += (prev, curr) => {
             _boardManager.UpdateVisibility(curr);
@@ -38,6 +43,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerAttack() {
+        _soundManager.PlayButtonSound(0);
         _uiManager.SetActionButtonsInteractable(false);
         int attacker = _turnManager.CurrentPlayer;
         int defender = _turnManager.GetOpponent();
@@ -61,6 +67,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerMeasure() {
+        _soundManager.PlayButtonSound(1);
         _uiManager.SetActionButtonsInteractable(false);
         int attacker = _turnManager.CurrentPlayer;
         int defender = _turnManager.GetOpponent();
@@ -88,11 +95,7 @@ public class GameManager : MonoBehaviour {
             _boardManager.ShowBothTilemaps();
             _tokenManager.ShowVisualsForBothPlayers();
             _tokenManager.RevealLoserBoard(loser);
+            _soundManager.PlayWinSound();
         }
     }
-
-    //public void GameFinished() {
-    //    PlayersSetUps.Cleanup();
-    //    SceneManager.LoadScene("MainMenu");
-    //}
 }

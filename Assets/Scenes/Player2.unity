@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 32416761}
   - component: {fileID: 32416760}
   - component: {fileID: 32416759}
+  - component: {fileID: 32416762}
   m_Layer: 5
   m_Name: NextPlayer button
   m_TagString: Untagged
@@ -252,6 +253,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32416757}
   m_CullTransparentMesh: 1
+--- !u!114 &32416762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32416757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f5be8a89ca91c46828d8b94131c90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  customClip: {fileID: 8300000, guid: 36383a8f82de3f64fb42689c96b071bb, type: 3}
 --- !u!1 &82294640
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +278,7 @@ GameObject:
   - component: {fileID: 82294644}
   - component: {fileID: 82294643}
   - component: {fileID: 82294642}
+  - component: {fileID: 82294645}
   m_Layer: 5
   m_Name: PlaceProbSqrAuto
   m_TagString: Untagged
@@ -385,6 +400,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82294640}
   m_CullTransparentMesh: 1
+--- !u!114 &82294645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82294640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f5be8a89ca91c46828d8b94131c90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  customClip: {fileID: 0}
 --- !u!1 &158045448
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +447,7 @@ MonoBehaviour:
   squareLabelPrefab: {fileID: 4266958885988377455, guid: fb9bdcff389f8c34daf0eeb164ef277d, type: 3}
   defaultFontSize: 3.5
   defaultProbSquaresCount: 10
+  maxToMove: 10
 --- !u!4 &158045450
 Transform:
   m_ObjectHideFlags: 0
@@ -2037,7 +2066,6 @@ MonoBehaviour:
   _probSquareManager: {fileID: 158045449}
   _camera: {fileID: 1284568741}
   probabilityPercentige: {fileID: 231192840}
-  playWithAI: 0
   currentGridSize: 3
   currentProbability: 10
 --- !u!1 &2018231220
