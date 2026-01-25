@@ -4755,6 +4755,7 @@ MonoBehaviour:
   _attackSquarePrefab: {fileID: 4252134518107266298, guid: a973b962b8108d84083141a539b86f74, type: 3}
   _guessedSquarePrefab: {fileID: 4252134518107266298, guid: 5a70d8f33e719e24f8d6a07e314f1aab, type: 3}
   _probabilitySquarePrefab: {fileID: 4252134518107266298, guid: 32038888feb48ca4383c10dbd581cda3, type: 3}
+  _colorBlindModeSquares: {fileID: 4252134518107266298, guid: 74d8186df60d587438b1b552350a44de, type: 3}
 --- !u!1 &1582054045
 GameObject:
   m_ObjectHideFlags: 0

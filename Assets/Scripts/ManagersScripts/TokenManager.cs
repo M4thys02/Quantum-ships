@@ -8,6 +8,8 @@ public class TokenManager : MonoBehaviour {
     [SerializeField] private GameObject _attackSquarePrefab;
     [SerializeField] private GameObject _guessedSquarePrefab;
     [SerializeField] private GameObject _probabilitySquarePrefab;
+    [SerializeField] private GameObject _colorBlindModeSquares;
+    private GameObject _guessedSquares;
 
     // Data: [PlayerIndex][Coordinates] -> List of objects
     private Dictionary<Vector3Int, List<GameObject>>[] _playerSquares;
@@ -25,6 +27,9 @@ public class TokenManager : MonoBehaviour {
         _uiManager = ui;
 
         _maxSquaresPerTurn = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
+        bool value = PlayerPrefs.GetInt("ColorBlindMode") == 1;
+
+        _guessedSquares = value ? _colorBlindModeSquares : _guessedSquarePrefab;
 
         _playerSquares = new Dictionary<Vector3Int, List<GameObject>>[2];
         _playerSquares[0] = new Dictionary<Vector3Int, List<GameObject>>();
@@ -93,7 +98,7 @@ public class TokenManager : MonoBehaviour {
         Vector3 worldPos = targetMap.GetCellCenterWorld(pos);
 
         for (int i = 0; i < count; i++) {
-            GameObject g = Instantiate(_guessedSquarePrefab, worldPos, Quaternion.identity, targetMap.transform);
+            GameObject g = Instantiate(_guessedSquares, worldPos, Quaternion.identity, targetMap.transform);
             g.transform.localScale = Vector3.one;
             list.Add(g);
         }

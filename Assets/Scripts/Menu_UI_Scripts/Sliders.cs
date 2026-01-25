@@ -1,11 +1,9 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Sliders : MonoBehaviour {
-    [SerializeField] private string sliderKey = "MySlider";
+    [SerializeField] private string sliderKey;
     [SerializeField] private Slider slider;
     [SerializeField] private TMP_Text textField;
 
