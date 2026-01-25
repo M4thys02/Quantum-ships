@@ -594,6 +594,7 @@ MonoBehaviour:
   measureButtonSound: {fileID: 8300000, guid: 61825f8022e1e2141b4d0975cd28f176, type: 3}
   attackButtonSound: {fileID: 8300000, guid: cf81fe2d84d07cd41bd91827ec3a379c, type: 3}
   changePlayerButtonSound: {fileID: 8300000, guid: 24e78bc5881681841ae8bf11738503f0, type: 3}
+  squarePlaceSound: {fileID: 8300000, guid: 8b18411b57ec7a64481b1f2f5c0cefe9, type: 3}
   winSound: {fileID: 8300000, guid: ef4ac909f02a35d4a981650e0bdcdc07, type: 3}
   audioSource: {fileID: 534680248}
   volume: 1

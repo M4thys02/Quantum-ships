@@ -11,6 +11,7 @@ public class GlobalAudioManager : MonoBehaviour
     [SerializeField] private AudioClip changePlayerButtonSound;
 
     [Header("Other sound clips")]
+    [SerializeField] private AudioClip squarePlaceSound;
     [SerializeField] private AudioClip winSound;
 
     [Header("Audio Source for UI / SFX")]
@@ -46,14 +47,18 @@ public class GlobalAudioManager : MonoBehaviour
     }
 
     public void PlayWinSound() {
-        audioSource.PlayOneShot(winSound);
+        audioSource.PlayOneShot(winSound, volume);
+    }
+
+    public void PlayPopSound() {
+        audioSource.PlayOneShot(squarePlaceSound, volume);
     }
 
     public void PlayButtonSound(int buttonType) {
         switch (buttonType) {
-            case 0: audioSource.PlayOneShot(attackButtonSound); break;
-            case 1: audioSource.PlayOneShot(measureButtonSound); break;
-            case 2: audioSource.PlayOneShot(changePlayerButtonSound); break;
+            case 0: audioSource.PlayOneShot(attackButtonSound, volume); break;
+            case 1: audioSource.PlayOneShot(measureButtonSound, volume); break;
+            case 2: audioSource.PlayOneShot(changePlayerButtonSound, volume); break;
         }
     }
 }

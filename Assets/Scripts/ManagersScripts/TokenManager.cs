@@ -20,11 +20,13 @@ public class TokenManager : MonoBehaviour {
     private TurnManager _turnManager;
     private BoardManager _boardManager;
     private UIManager _uiManager;
+    private GlobalAudioManager _soundManager;
 
     public void Initialize(TurnManager tm, BoardManager bm, UIManager ui) {
         _turnManager = tm;
         _boardManager = bm;
         _uiManager = ui;
+        _soundManager = GlobalAudioManager.Instance;
 
         _maxSquaresPerTurn = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
         bool value = PlayerPrefs.GetInt("ColorBlindMode") == 1;
@@ -64,6 +66,7 @@ public class TokenManager : MonoBehaviour {
         Tilemap activeTilemap = _boardManager.GetActiveTilemap();
         Vector3 worldPos = activeTilemap.GetCellCenterWorld(cellPos);
         _uiManager.UpdateTileCounter(player, cellPos, list.Count, worldPos, _boardManager.GridSize, activeTilemap);
+        _soundManager.PlayPopSound();
     }
 
     private void AddSquare(Vector3Int pos, List<GameObject> list) {
