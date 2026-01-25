@@ -239,7 +239,8 @@ MonoBehaviour:
     number of Probability Squares can range from 10 to 100 </style></style>\n\nThese
     values can be adjusted in:\n\n<align=center><sprite name=settings_button></align>\n\n\nEach
     Probability Square represents a fixed portion of the total probability.\nThe
-    sum of all probability squares must always equal 100% (1.0).\n"
+    sum of all probability squares must always equal 100% (1.0).\n\n<style=Bullet>The
+    game offers a colorblind mode</style>\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
   m_sharedMaterial: {fileID: -1438503440582932756, guid: 90b8f61def22698459231b25f6c262b8, type: 2}
