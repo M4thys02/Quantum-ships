@@ -1166,6 +1166,7 @@ MonoBehaviour:
   _tokenManager: {fileID: 1567854754}
   _measureManager: {fileID: 1402896911}
   _uiManager: {fileID: 131394317}
+  _soundManager: {fileID: 0}
 --- !u!4 &653447362
 Transform:
   m_ObjectHideFlags: 0
@@ -2121,6 +2122,7 @@ GameObject:
   - component: {fileID: 968673962}
   - component: {fileID: 968673961}
   - component: {fileID: 968673960}
+  - component: {fileID: 968673963}
   m_Layer: 5
   m_Name: No button
   m_TagString: Untagged
@@ -2242,6 +2244,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968673958}
   m_CullTransparentMesh: 1
+--- !u!114 &968673963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968673958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f5be8a89ca91c46828d8b94131c90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  customClip: {fileID: 0}
 --- !u!1 &1061783598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,6 +3588,7 @@ GameObject:
   - component: {fileID: 1463488751}
   - component: {fileID: 1463488750}
   - component: {fileID: 1463488749}
+  - component: {fileID: 1463488752}
   m_Layer: 5
   m_Name: Yes button
   m_TagString: Untagged
@@ -3694,6 +3710,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463488747}
   m_CullTransparentMesh: 1
+--- !u!114 &1463488752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463488747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f5be8a89ca91c46828d8b94131c90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  customClip: {fileID: 0}
 --- !u!1 &1473459617
 GameObject:
   m_ObjectHideFlags: 0
@@ -6584,6 +6613,7 @@ GameObject:
   - component: {fileID: 2121109933}
   - component: {fileID: 2121109932}
   - component: {fileID: 2121109931}
+  - component: {fileID: 2121109934}
   m_Layer: 5
   m_Name: BackToMenu Button
   m_TagString: Untagged
@@ -6705,6 +6735,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121109929}
   m_CullTransparentMesh: 1
+--- !u!114 &2121109934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121109929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f5be8a89ca91c46828d8b94131c90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  customClip: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ public class DragAndDrop : MonoBehaviour {
     [SerializeField] private float draggingScale = 1.2f;  // size while dragging
     [SerializeField] private float scaleLerpSpeed = 8f;
 
+    [SerializeField] private GlobalAudioManager _soundManager;
+
     private Transform followTarget;
     private List<DragAndDrop> followers = new List<DragAndDrop>();
     private Tilemap tilemap;
@@ -33,6 +35,7 @@ public class DragAndDrop : MonoBehaviour {
         targetScale = pickupScale;
         originalPosition = transform.position;
         currentTile = new Vector3Int(-1, -1, -1);
+        _soundManager = GlobalAudioManager.Instance;
     }
 
     public void SetScaleInstant(float s) {
@@ -95,6 +98,10 @@ public class DragAndDrop : MonoBehaviour {
 
     private void OnMouseDown() {
         if (UIControlState.IsOpen) return;
+
+        if (followTarget == null) {
+            _soundManager.PlayPopSound();
+        }
 
         Vector3Int startTile = currentTile;
 
