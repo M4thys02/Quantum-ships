@@ -603,6 +603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f5be8a89ca91c46828d8b94131c90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  customClip: {fileID: 0}
 --- !u!1 &296316358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,14 +2966,13 @@ MonoBehaviour:
   m_text: "<b>Original Board Game Author</b>:\nMgr. Jana Legersk\xE1\n\n<b>Scientific
     Consultant</b>:\nRNDr. Zde\u0148ka Koupilov\xE1, Ph.D.\n\n<b>Game Designer \xB7
     Programmer \xB7 Graphics Designer \xB7 Developer \xB7 Tester</b>:\nMat\u011Bj
-    Marou\u0161ek\n\n<b>Testers</b>:\nJi\u0159\xED Pinkas, Jan Kratochv\xEDl\n\n<b>Special
-    Thanks</b>:\n<style=Bullet>Mgr. Jana Legersk\xE1 \u2014 for giving the opportunity
-    to create the digital version</style>\n<style=Bullet>RNDr. Tom\xE1\u0161 Holan,
-    Ph.D. \u2013 for providing the opportunity to create this game</style>\r\n<style=Bullet>RNDr.
-    Zde\u0148ka Koupilov\xE1, Ph.D. \u2014 for motivation to complete the game and
-    support its future use</style>\n<style=Bullet>Luk\xE1\u0161 Krkavec \u2014 for
-    many great ideas to improve the game</style>\n\n<b>Game</b>: \n<color=#F54927><link=\"https://github.com/M4thys02/Quantum-ships\">GitHub
-    Repository</link></color>"
+    Marou\u0161ek\n\n<b>Tester</b>:\nJi\u0159\xED Pinkas\n\n<b>Special Thanks</b>:\n<style=Bullet>Mgr.
+    Jana Legersk\xE1 \u2014 for giving the opportunity to create the digital version</style>\n<style=Bullet>RNDr.
+    Tom\xE1\u0161 Holan, Ph.D. \u2013 for providing the opportunity to create this
+    game</style>\r\n<style=Bullet>RNDr. Zde\u0148ka Koupilov\xE1, Ph.D. \u2014 for
+    motivation to complete the game and support its future use</style>\n<style=Bullet>Luk\xE1\u0161
+    Krkavec, Jan Kratochv\xEDl \u2014 for many great ideas to improve the game</style>\n\n<b>Game</b>:
+    \n<color=#F54927><link=\"https://github.com/M4thys02/Quantum-ships\">GitHub Repository</link></color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 67293651db230dd42b4d19e707a35a24, type: 2}
   m_sharedMaterial: {fileID: 882555599375849553, guid: 67293651db230dd42b4d19e707a35a24, type: 2}
