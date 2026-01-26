@@ -18,13 +18,13 @@ Each player is given a set of **Probability Squares** (representing a total prob
 * **Meaning:** More squares on a cell equals a higher probability that the "quantum ship" will be detected there during a measurement.
 * **Auto-Layout:** If you prefer not to place squares manually, an automatic layout button is available.
 
-### Phase 2: The Hunt
+### Phase 2: The Game
 Players take turns performing actions to gather data or strike. You must perform at least one action before ending your turn.
 
 1.  **Measure:** Perform a quantum measurement by clicking the Mysterious Bag. The result appears on the board (e.g., `B3 — 5`), meaning the ship was detected at that cell five times during that measurement burst.
 2.  **Estimate & Attack:** Use "Estimation Squares" (red) to guess the opponent's exact layout. If your estimation for a cell is exactly correct, a green square appears to confirm the hit.
 
-### The Physics of Strategy
+### Mathematical balancing
 The number of measurements ($M$) granted per turn is dynamically balanced based on the grid size ($N$) and the total squares ($P$) using the following formula:
 
 $$M = 0.08 \cdot P + \frac{7}{N} + 1$$
