@@ -22,7 +22,7 @@ Each player is given a set of **Probability Squares** (representing a total prob
 Players take turns performing actions to gather data or strike. You must perform at least one action before ending your turn.
 
 1.  **Measure:** Perform a quantum measurement by clicking the Mysterious Bag. The result appears on the board (e.g., `B3 — 5`), meaning the ship was detected at that cell five times during that measurement burst.
-2.  **Estimate & Attack:** Use "Estimation Squares" (red) to guess the opponent's exact layout. If your estimation for a cell is exactly correct, a green square appears to confirm the hit.
+2.  **Estimate & Attack:** Use "Estimation Squares" (red) to guess the opponent's exact layout. If your estimation for a cell is exactly correct, a green square (blue if colorblind mode in on) appears to confirm the hit.
 
 ### Mathematical balancing
 The number of measurements ($M$) granted per turn is dynamically balanced based on the grid size ($N$) and the total squares ($P$) using the following formula:
