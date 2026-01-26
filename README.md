@@ -50,7 +50,7 @@ The game is available for **Windows**, **Linux**, and **Web Browser (WebGL)** (a
 * **Original Board Game Author:** Mgr. Jana Legerská
 * **Digital Version Developer:** Matěj Maroušek (Game Design, Programming, Graphics)
 * **Scientific Consultant:** RNDr. Zdeňka Koupilová, Ph.D.
-* **Assets:** UI elements based on *Fantasy Wooden GUI* (Unity Asset Store). Sound effects via Pixabay. Some visual assets (e.g. game icon, UI elements) and selected parts of the code were created with the assistance of AI tools.
+* **Assets:** UI elements based on *Fantasy Wooden: GUI* (Unity Asset Store). Sound effects via Pixabay. Some visual assets (e.g. game icon, UI elements) and selected parts of the code were created with the assistance of AI tools.
 
 ## License 
 This project is licensed under the **MIT License**.
