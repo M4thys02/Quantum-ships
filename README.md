@@ -33,11 +33,33 @@ $$M = 0.08 \cdot P + \frac{7}{N} + 1$$
 
 ## Installation & Play 
 
-The game is available for **Windows**, **Linux**, and **Web Browser (WebGL)** (available in select releases).
+The game is available for **Windows**, **Linux**, and **Web Browser (WebGL)**.
 
 1.  Navigate to the **Releases** section of this repository.
 2.  **For Desktop:** Download the `.zip` for your OS, extract it, and run the executable directly.
-3.  **For Web:** The WebGL build must be hosted on a web server (local or remote). It cannot be run by opening `index.html` directly due to browser security restrictions. For example, you can use a simple local server such as `python -m http.server`.
+3.  **For Web:** Follow the instructions below based on the version you downloaded.
+
+### How to Run the WebGL Version
+Due to browser security restrictions (CORS), you cannot run the game by simply double-clicking the `index.html` file. It must be hosted on a web server.
+
+#### Option A: Non-compressed Version (Local Setup)
+If you have the standard (non-compressed) version, you can easily run it using Python:
+1.  Open your **terminal** or **command prompt**.
+2.  Navigate to the folder where you extracted the files (the folder containing `index.html`).
+3.  Start a local server by running:
+    ```bash
+    python -m http.server
+    ```
+4.  Open your browser and enter `localhost:8000` into the address bar.
+
+#### Option B: Brotli Compressed Version
+This version is optimized for fast loading on production web servers (like GitHub Pages or Itch.io). 
+* **Note:** This version might not work with a simple Python local server unless the server is configured to send the correct headers. For quick local testing, use the **Non-compressed** variant.
+
+---
+
+> [!IMPORTANT]
+> **Fullscreen Only:** This game is designed to be played **ONLY in fullscreen mode**. Please ensure you switch to fullscreen immediately after launching for the correct UI scaling and experience.
 
 ## Features 
 * **Customizable Difficulty:** Adjust grid size ($3 \times 3$ to $10 \times 10$) and the total number of probability squares (from $10$ to $100$) in the settings.
