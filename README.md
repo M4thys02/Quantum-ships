@@ -64,7 +64,7 @@ Due to browser security restrictions (CORS), you cannot run the game by simply d
 If you have the standard (non-compressed) version, you can easily run it using Python:
 1.  Open your **terminal** or **command prompt**.
 2.  Navigate to the folder where you extracted the files (the folder containing `index.html`).
-3.  Start a local server by running: ```bash python -m http.server ```
+3.  Start a local server by running: ```python -m http.server ```
 4.  Open your browser and enter `localhost:8000` into the address bar.
 
 #### Option B: Brotli Compressed Version
