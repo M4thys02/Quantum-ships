@@ -22,6 +22,9 @@ public class TokenManager : MonoBehaviour {
     private UIManager _uiManager;
     private GlobalAudioManager _soundManager;
 
+    /// <summary>
+    /// Inits dependencies, loads settings, and subscribes to turn change events.
+    /// </summary>
     public void Initialize(TurnManager tm, BoardManager bm, UIManager ui) {
         _turnManager = tm;
         _boardManager = bm;
@@ -37,11 +40,15 @@ public class TokenManager : MonoBehaviour {
         _playerSquares[0] = new Dictionary<Vector3Int, List<GameObject>>();
         _playerSquares[1] = new Dictionary<Vector3Int, List<GameObject>>();
 
+        // Automatically toggle object visibility when turns switch
         _turnManager.OnTurnChanged += (prev, curr) => {
             UpdateVisuals(curr);
         };
     }
 
+    /// <summary>
+    // Handles adding or removing attack squares when a player clicks on a tile.
+    /// </summary>
     public void OnTileInteract(Vector3Int cellPos, bool isAdding) {
         int player = _turnManager.CurrentPlayer;
         int available = _maxSquaresPerTurn - _attackSquaresCount[player] - _guessedSquaresCount[player];
@@ -63,6 +70,7 @@ public class TokenManager : MonoBehaviour {
             RemoveSquare(list);
             _attackSquaresCount[player] = Mathf.Max(0, _attackSquaresCount[player] - 1);
         }
+        // UI and Sound updates
         Tilemap activeTilemap = _boardManager.GetActiveTilemap();
         Vector3 worldPos = activeTilemap.GetCellCenterWorld(cellPos);
         _uiManager.UpdateTileCounter(player, cellPos, list.Count, worldPos, _boardManager.GridSize, activeTilemap);
@@ -83,11 +91,14 @@ public class TokenManager : MonoBehaviour {
         Destroy(sq);
     }
 
+    /// <summary>
+    /// Converts temporary attack squares into permanent "Guessed" squares once a tile is confirmed.
+    /// </summary>
     public void MarkTileAsGuessed(Vector3Int pos, int count) {
         int attacker = _turnManager.CurrentPlayer;
         var dict = _playerSquares[attacker];
 
-        // Removing attackers attack squares
+        // Clear existing temporary attack squares at this position
         if (dict.TryGetValue(pos, out var list)) {
             foreach (var sq in list) Destroy(sq);
             list.Clear();
@@ -100,6 +111,7 @@ public class TokenManager : MonoBehaviour {
         Tilemap targetMap = _boardManager.GetActiveTilemap();
         Vector3 worldPos = targetMap.GetCellCenterWorld(pos);
 
+        // Instantiate permanent guessed visuals
         for (int i = 0; i < count; i++) {
             GameObject g = Instantiate(_guessedSquares, worldPos, Quaternion.identity, targetMap.transform);
             g.transform.localScale = Vector3.one;
@@ -110,7 +122,9 @@ public class TokenManager : MonoBehaviour {
         _guessedSquaresCount[attacker] += count;
     }
 
-    // Method for updating visuals between individual turns
+    /// <summary>
+    /// Toggles the visibility of squares so players cannot see each other's guesses during turns.
+    /// </summary>
     private void UpdateVisuals(int activePlayer) {
         for (int i = 0; i < 2; i++) {
             bool isVisible = (i == activePlayer);
@@ -140,21 +154,16 @@ public class TokenManager : MonoBehaviour {
         return list.Count > 0 && list[0].CompareTag("GuessedSquare");
     }
 
-    public void RevealLoserBoard(int loserIndex) {
-
-        // ======================================================
-        // PURPOSE
-        // Reveals the final state of the board for the losing player.
-        // Shows:
-        //  - Blue probability squares where the player failed to guess
-        //  - Numeric counters comparing guesses vs actual distribution
-        // ======================================================
-
+    /// <summary>
+    /// Reveals the final state of the board for the losing player.
+    /// Shows:
+    ///  - Blue probability squares where the player failed to guess
+    ///  - Numeric counters comparing guesses vs actual distribution
+    /// </summary>
+    public void RevealLoserBoard(int loserIndex) { // This method was created using AI
         // ------------------------------------------------------
         // 1) Determine opponent and retrieve data
         // ------------------------------------------------------
-
-        // Opponent index (the player whose true setup we reveal)
         int opponent = (loserIndex == 0) ? 1 : 0;
 
         // True probability distribution of the opponent
@@ -166,7 +175,7 @@ public class TokenManager : MonoBehaviour {
         var playerGuesses = _playerSquares[loserIndex];
 
         // ------------------------------------------------------
-        // 2) Collect all relevant board positions
+        // 2) Combine all positions where either a guess or a hidden probability exists
         // ------------------------------------------------------
         // We need to process the union of:
         //  - cells the player guessed
@@ -178,9 +187,7 @@ public class TokenManager : MonoBehaviour {
         // ------------------------------------------------------
         // 3) Iterate over all relevant cells
         // ------------------------------------------------------
-
         foreach (Vector3Int pos in allPositions) {
-
             Vector2Int pos2D = new Vector2Int(pos.x, pos.y);
 
             // Actual number of probability squares on this cell
@@ -206,14 +213,11 @@ public class TokenManager : MonoBehaviour {
                 // Determine which tilemap the loser was attacking
                 // Player 0 attacks Player 1's tilemap and vice versa
                 Tilemap attackMap = (loserIndex == 0) ? _boardManager.Player1TilemapRef : _boardManager.Player0TilemapRef;
-
-                // World position of the cell center
                 Vector3 worldPos = attackMap.GetCellCenterWorld(pos);
 
                 // Instantiate missing blue probability squares
                 for (int i = 0; i < actualCount; i++) {
                     GameObject blueSq = Instantiate(_probabilitySquarePrefab, worldPos, Quaternion.identity, attackMap.transform);
-
                     blueSq.transform.localScale = Vector3.one;
                     _playerSquares[loserIndex][pos].Add(blueSq);
                 }
@@ -223,13 +227,8 @@ public class TokenManager : MonoBehaviour {
             // B) Update numeric UI counters
             // Shows guessed vs actual values where relevant
             // --------------------------------------------------
-
-            Tilemap correctMap = (loserIndex == 0)
-                ? _boardManager.Player1TilemapRef
-                : _boardManager.Player0TilemapRef;
-
+            Tilemap correctMap = (loserIndex == 0) ? _boardManager.Player1TilemapRef : _boardManager.Player0TilemapRef;
             Vector3 worldPosCounter = correctMap.GetCellCenterWorld(pos);
-
             _uiManager.UpdateTileCounterEndGame(loserIndex, pos, guessedCount, actualCount, worldPosCounter, _boardManager.GridSize, correctMap);
         }
     }

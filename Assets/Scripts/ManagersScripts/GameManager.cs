@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private UIManager _uiManager;
     [SerializeField] private GlobalAudioManager _soundManager;
 
+    private float _defaultSquaresCount = 10f;
+    private float _maximumSquaresCount = 100f;
     private int _currentProbability;
     private int[] _guessedCounts = { 0, 0 };
-    private HashSet<Vector3Int>[] _resolvedTiles = { new(), new() };
+    private HashSet<Vector3Int>[] _resolvedTiles = { new(), new() }; // With HashSets came up AI
 
     private void Start() {
-        _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", 10);
+        _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", _defaultSquaresCount);
         _soundManager = GlobalAudioManager.Instance;
         _tokenManager.Initialize(_turnManager, _boardManager, _uiManager);
 
@@ -38,8 +40,8 @@ public class GameManager : MonoBehaviour {
             _uiManager.ToggleNextTurnButton(false);
         };
 
-        _uiManager.UpdateProbability(100f / _currentProbability);
-        _turnManager.ChangeTurn(); // Start game
+        _uiManager.UpdateProbability(_maximumSquaresCount / _currentProbability);
+        _turnManager.ChangeTurn(); // Start game - set up game
     }
 
     public void PlayerAttack() {

@@ -6,6 +6,10 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages all UI elements, including turn indicators, measurement logs, 
+/// action buttons, and world-space tile counters.
+/// </summary>
 public class UIManager : MonoBehaviour {
     [Header("Turn Indicators")]
     [SerializeField] private GameObject _gameTitle;
@@ -32,7 +36,8 @@ public class UIManager : MonoBehaviour {
     [Header("Font Settings")]
     [SerializeField] private float _defaultFontSize = 20f;
     private float _currentFontSize;
-    // Slovník pro mapování: GridSize -> FontSize
+
+    // Adjusts font size based on grid complexity to ensure text fits UI panels
     private readonly Dictionary<int, float> FontSizeByGrid = new Dictionary<int, float>() {
         { 3, 24f },
         { 4, 23f },
@@ -46,12 +51,13 @@ public class UIManager : MonoBehaviour {
 
     [Header("World Text Settings")]
     [SerializeField] private TileCounter _tileCounterPrefab;
+    // Tracks numeric counters placed directly on the game board for each player
     private Dictionary<Vector3Int, TileCounter>[] _playerCounters = {
         new Dictionary<Vector3Int, TileCounter>(),
         new Dictionary<Vector3Int, TileCounter>()
     };
 
-    // Events for GameManager
+    // UI Events to decouple logic from GameManager
     public event Action OnAttackClicked;
     public event Action OnMeasureClicked;
     public event Action OnNextTurnClicked;
@@ -65,6 +71,9 @@ public class UIManager : MonoBehaviour {
         InitializeUI((int)PlayerPrefs.GetFloat("GridSlider", 3));
     }
 
+    /// <summary>
+    /// Configures initial UI state, specifically adjusting font sizes based on the chosen grid size.
+    /// </summary>
     public void InitializeUI(int gridSize) {
         if (!FontSizeByGrid.TryGetValue(gridSize, out _currentFontSize)) {
             _currentFontSize = _defaultFontSize;
@@ -85,7 +94,9 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    // Update UIText which player is on turn
+    /// <summary>
+    /// Switches visibility of UI elements (turn labels, measurement lists) based on the active player.
+    /// </summary>
     public void UpdateTurnUI(int activePlayer) {
         bool isP0 = (activePlayer == 0);
 
@@ -101,18 +112,18 @@ public class UIManager : MonoBehaviour {
         if (_probabilityText != null) _probabilityText.text = $"= {percentage:F2} %";
     }
 
-    // Gets dictionary with measurement data, formates them, and then write them in UI
+
+    /// <summary>
+    /// Updates the text log showing history of measurements for a specific player.
+    /// </summary>
     public void UpdateMeasurementList(int playerIndex, Dictionary<Vector2Int, int> measurements) {
         TMP_Text targetText = (playerIndex == 0) ? _player0MeasureText : _player1MeasureText;
         if (targetText == null) return;
 
-        // Font se nastavuje v InitializeUI, ale pro jistotu ho můžeme držet i zde
         targetText.fontSize = _currentFontSize;
         targetText.text = BuildMeasurementString(measurements);
     }
 
-
-    // Turns OFF/ON buttons (Attack & Measure)
     public void SetActionButtonsInteractable(bool interactable) {
         _attackButton.interactable = interactable;
         _measureButton.interactable = interactable;
@@ -122,7 +133,10 @@ public class UIManager : MonoBehaviour {
         _nextPlayerButton.interactable = active;
     }
 
-    // Methods for counters numbers
+    /// <summary>
+    /// Updates or creates a numeric counter in world space on a specific tile.
+    /// Used for showing how many squares a player has placed on a tile.
+    /// </summary>
     public void UpdateTileCounter(int playerIndex, Vector3Int cellPos, int count, Vector3 worldPos, int gridSize, Tilemap targetMap) {
         var counters = _playerCounters[playerIndex];
 
@@ -134,6 +148,7 @@ public class UIManager : MonoBehaviour {
             return;
         }
 
+        // Create new counter if it doesn't exist, otherwise update existing
         if (!counters.TryGetValue(cellPos, out var counterScript)) {
             counterScript = Instantiate(_tileCounterPrefab, worldPos, Quaternion.identity, targetMap.transform); // ← parent = tilemapa
             counters[cellPos] = counterScript;
@@ -142,6 +157,9 @@ public class UIManager : MonoBehaviour {
         counterScript.UpdateVisuals(count, gridSize);
     }
 
+    /// <summary>
+    /// Toggles visibility of board counters to maintain hidden information between turns.
+    /// </summary>
     public void ToggleCountersVisibility(int activePlayer) {
         for (int i = 0; i < 2; i++) {
             bool isVisible = (i == activePlayer);
@@ -159,6 +177,9 @@ public class UIManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Triggers the endgame UI state: hides gameplay panels and shows the winner.
+    /// </summary>
     public void PlayerWinGame(int winPlayer) {
         ToggleNextTurnButton(false);
         _gameTitle.SetActive(false);
@@ -168,6 +189,9 @@ public class UIManager : MonoBehaviour {
         ToggleBothCountersVisibility(true);
     }
 
+    /// <summary>
+    /// Special counter update for the post-game summary, showing Guessed vs. Actual values (e.g., 3/2).
+    /// </summary>
     public void UpdateTileCounterEndGame(int playerIndex, Vector3Int cellPos, int guessed, int actual, Vector3 worldPos, int gridSize, Tilemap targetMap) {
         if (guessed > 0 && guessed == actual) return;
 
@@ -183,7 +207,13 @@ public class UIManager : MonoBehaviour {
         counterScript.SetText(guessed, actual, gridSize);
     }
 
-    // --- Helping methods for text formating ---
+    // ====================================
+    //  HELPING METHODS FOR TEXT FORMATING
+    // ====================================
+
+    /// <summary>
+    /// Formats the measurement dictionary into a readable multi-line string.
+    /// </summary>
     private string BuildMeasurementString(Dictionary<Vector2Int, int> dict) {
         StringBuilder sb = new StringBuilder();
 
@@ -195,6 +225,9 @@ public class UIManager : MonoBehaviour {
         return sb.ToString();
     }
 
+    /// <summary>
+    /// Converts grid coordinates (0,0) into human-readable board labels (A1).
+    /// </summary>
     private string TileToLabel(Vector2Int tile) {
         // Assuming: tile.x = 0 -> 'A', tile.y = 0 -> '1'
         char column = (char)('A' + tile.x);

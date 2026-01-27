@@ -53,6 +53,7 @@ public class PlayersSetUps : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    // Weighted random algorithm -> returns tile with highest number of squares with highest probability
     public static Vector2Int GetWeightedRandomTileForPlayer(int player) {
         Dictionary<Vector2Int, int> dict = (player == 0) ? player0Tiles : player1Tiles;
 

@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 public class ButtonSound : MonoBehaviour {
-    [Header("Leave empty for default tone")]
+    [Header("Button specific sound")]
     public AudioClip customClip;
     private void Start() {
         GetComponent<Button>().onClick.AddListener(PlaySound);

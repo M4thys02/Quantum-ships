@@ -45,7 +45,6 @@ public class BoardManager : MonoBehaviour {
         Vector3 moveOffset = newPosP0 - originalPosP0;
         GameObject enemyLabels = Instantiate(_tilemapLabels, _tilemapLabels.transform.parent);
         enemyLabels.transform.localPosition = _tilemapLabels.transform.localPosition + moveOffset;
-        // enemyLabels.name = _tilemapLabels.name + "_Player0";
     }
 
     // Returns map where attack is currently display

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class TMPLinkHandling : MonoBehaviour, IPointerClickHandler {
+public class TMPLinkHandling : MonoBehaviour, IPointerClickHandler { // This script was AI generated
     [SerializeField] private TMP_Text text;
 
     private void Awake() {
@@ -20,8 +20,6 @@ public class TMPLinkHandling : MonoBehaviour, IPointerClickHandler {
         if (linkIndex != -1) {
             TMP_LinkInfo linkInfo = text.textInfo.linkInfo[linkIndex];
             string linkID = linkInfo.GetLinkID();
-
-            //Debug.Log($"Otevírám odkaz: {linkID}");
             Application.OpenURL(linkID);
         }
     }

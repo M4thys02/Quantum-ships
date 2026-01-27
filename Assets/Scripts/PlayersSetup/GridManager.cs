@@ -26,22 +26,11 @@ public class GridManager : MonoBehaviour {
         get => _gridResolution;
         set => _gridResolution = value;
     }
+    public float currentScale;
 
     public GridLabelGenerator _labelGenerator;
     [SerializeField] private Tilemap targetTilemap;
     [SerializeField] private TileSet tileSet;
-
-    private Dictionary<int, float> gridScaleMap = new Dictionary<int, float>() {
-        { 3, 5f },
-        { 4, 3.75f },
-        { 5, 4f },
-        { 6, 3.5f },
-        { 7, 3f },
-        { 8, 2.5f },
-        { 9, 1.75f },
-        { 10, 1.5f }
-    };
-    public float currentScale;
 
     enum TileType { Center, Up, Down, Left, Right, UpLeft, UpRight, DownLeft, DownRight }
     private TileBase GetTileForPosition(Vector3Int cell) {
@@ -76,19 +65,8 @@ public class GridManager : MonoBehaviour {
         targetTilemap.transform.localScale = Vector3.one * currentScale;
     }
 
-    public float scaleMultiplier() {
-        if (gridScaleMap.TryGetValue(gridResolution, out float scaleMultiplier)) {
-            return scaleMultiplier;
-        }
-        else {
-            //Debug.LogWarning($"Grid size {gridResolution} not found in scale map!");
-            return 0f;
-        }
-    }
-
     public void setUpGrid(int newSize, float newScale) {
         gridResolution = newSize;
-        //currentScale = scaleMultiplier();
         currentScale = newScale; //This is much better then dictionary, bcs it is caluclated on-time for current gridResolution
 
         generateGrid();
