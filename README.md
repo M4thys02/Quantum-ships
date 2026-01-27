@@ -6,6 +6,12 @@ The challenge lies in using measurements and logical reasoning to reconstruct yo
 
 ---
 
+## Features 
+* **Customizable Difficulty:** Adjust grid size ($3 \times 3$ to $10 \times 10$) and the total number of probability squares (from $10$ to $100$) in the settings.
+* **Colorblind Mode:** Support for better visual accessibility.
+* **Post-Game Analysis:** A "Reveal" screen compares your guesses side-by-side with the actual quantum state of the opponent's board to help you improve your strategy.
+---
+
 ## Game Modes 
 * **Local Multiplayer:** Two players compete on the same device in a turn-based format.
 * **Single Player:** Work in progress - future planned.
@@ -28,6 +34,18 @@ Players take turns performing actions to gather data or strike. You must perform
 The number of measurements ($M$) granted per turn is dynamically balanced based on the grid size ($N$) and the total squares ($P$) using the following formula:
 
 $$M = 0.08 \cdot P + \frac{7}{N} + 1$$
+
+---
+
+**Tip:** To win, remember that measurements are probabilistic—randomness applies, and high-probability cells are more likely, but not guaranteed, to be measured.
+
+---
+
+## Credits 
+* **Original Board Game Author:** Mgr. Jana Legerská
+* **Digital Version Developer:** Matěj Maroušek (Game Design, Programming, Graphics)
+* **Scientific Consultant:** RNDr. Zdeňka Koupilová, Ph.D.
+* **Assets:** UI elements based on *Fantasy Wooden: GUI* (Unity Asset Store). Sound effects via Pixabay. Some visual assets (e.g. game icon, UI elements) and selected parts of the code were created with the assistance of AI tools.
 
 ---
 
@@ -61,21 +79,5 @@ This version is optimized for fast loading on production web servers (like GitHu
 > [!IMPORTANT]
 > **Fullscreen Only:** This game is designed to be played **ONLY in fullscreen mode**. Please ensure you switch to fullscreen immediately after launching for the correct UI scaling and experience.
 
-## Features 
-* **Customizable Difficulty:** Adjust grid size ($3 \times 3$ to $10 \times 10$) and the total number of probability squares (from $10$ to $100$) in the settings.
-* **Colorblind Mode:** Support for better visual accessibility.
-* **Post-Game Analysis:** A "Reveal" screen compares your guesses side-by-side with the actual quantum state of the opponent's board to help you improve your strategy.
-
----
-
-## Credits 
-* **Original Board Game Author:** Mgr. Jana Legerská
-* **Digital Version Developer:** Matěj Maroušek (Game Design, Programming, Graphics)
-* **Scientific Consultant:** RNDr. Zdeňka Koupilová, Ph.D.
-* **Assets:** UI elements based on *Fantasy Wooden: GUI* (Unity Asset Store). Sound effects via Pixabay. Some visual assets (e.g. game icon, UI elements) and selected parts of the code were created with the assistance of AI tools.
-
 ## License 
 This project is licensed under the **MIT License**.
-
----
-**Tip:** To win, remember that measurements are probabilistic—randomness applies, and high-probability cells are more likely, but not guaranteed, to be measured.
