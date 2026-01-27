@@ -71,8 +71,7 @@ If you have the standard (non-compressed) version, you can easily run it using P
 4.  Open your browser and enter `localhost:8000` into the address bar.
 
 #### Option B: Brotli Compressed Version
-This version is optimized for fast loading on production web servers (like GitHub Pages or Itch.io). 
-* **Note:** This version might not work with a simple Python local server unless the server is configured to send the correct headers. For quick local testing, use the **Non-compressed** variant.
+This version is optimized for fast loading on production web servers. 
 
 ---
 
