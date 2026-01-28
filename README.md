@@ -76,4 +76,4 @@ This version is optimized for fast loading on production web servers.
 > **Fullscreen Only:** This game is designed to be played **ONLY in fullscreen mode**. Please ensure you switch to fullscreen immediately after launching for the correct UI scaling and experience.
 
 ## License 
-This project is licensed under the **MIT License**.
+This project is licensed under the **GNU Affero General Public License v3.0**.
