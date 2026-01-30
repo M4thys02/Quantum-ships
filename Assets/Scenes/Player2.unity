@@ -457,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 158045448}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.25, y: 6.5, z: 0}
+  m_LocalPosition: {x: 16.8, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1624,6 +1624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131cb1547efaba040ab5b90a50514577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentScale: 0
   _labelGenerator: {fileID: 944188999}
   targetTilemap: {fileID: 2124191990}
   tileSet:
@@ -1636,7 +1637,6 @@ MonoBehaviour:
     down: {fileID: 11400000, guid: 5a88a7ad84208f545b2b301e94b0ee85, type: 2}
     left: {fileID: 11400000, guid: b4728a855718f95489ffd531a6ce403a, type: 2}
     right: {fileID: 11400000, guid: 350f4c483da619c48a2d0329ade2669c, type: 2}
-  currentScale: 0
 --- !u!1 &1212605196
 GameObject:
   m_ObjectHideFlags: 0
