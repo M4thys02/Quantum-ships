@@ -68,7 +68,7 @@ If you have the standard (non-compressed) version, you can easily run it using P
 4.  Open your browser and enter `localhost:8000` into the address bar.
 
 Alternatively, you can play the game directly in your browser here:
-https://m4thys02.github.io/UnityGames/QuantumShips_WebGL/index.html
+https://m4thys02.github.io/Games/QuantumShips_WebGL/index.html
 
 #### Option B: Brotli Compressed Version
 This version is optimized for fast loading on production web servers. 
