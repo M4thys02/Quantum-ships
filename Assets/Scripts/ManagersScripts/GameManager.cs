@@ -14,12 +14,14 @@ public class GameManager : MonoBehaviour {
     private float _defaultSquaresCount = 10f;
     private float _maximumSquaresCount = 100f;
     private int _currentProbability;
+    private int measurementCount;
     private int[] _guessedCounts = { 0, 0 };
     private HashSet<Vector3Int>[] _resolvedTiles = { new(), new() }; // With HashSets came up AI
 
     private void Start() {
         _currentProbability = (int)PlayerPrefs.GetFloat("SquareSlider", _defaultSquaresCount);
         _soundManager = GlobalAudioManager.Instance;
+        CalculateMeasurements();
         _tokenManager.Initialize(_turnManager, _boardManager, _uiManager);
 
         _inputManager.OnLeftClick += (pos) => _tokenManager.OnTileInteract(pos, false);
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour {
             _uiManager.ToggleNextTurnButton(false);
         };
 
+        _uiManager.UpdateMeasurementsCount(measurementCount);
         _uiManager.UpdateProbability(_maximumSquaresCount / _currentProbability);
         _turnManager.ChangeTurn(); // Start game - set up game
     }
@@ -74,11 +77,6 @@ public class GameManager : MonoBehaviour {
         int attacker = _turnManager.CurrentPlayer;
         int defender = _turnManager.GetOpponent();
 
-        // M = 0.08 * squares_count + (7 / gridSize) + 1
-        int gridSize = _boardManager.GridSize;
-        float mFloat = (0.08f * _currentProbability) + (7f / gridSize) + 1f;
-        int measurementCount = Mathf.RoundToInt(mFloat);
-
         for (int i = 0; i < measurementCount; i++) {
             Vector2Int tile = PlayersSetUps.GetWeightedRandomTileForPlayer(defender);
             _measureManager.AddMeasurement(tile, attacker);
@@ -99,5 +97,12 @@ public class GameManager : MonoBehaviour {
             _tokenManager.RevealLoserBoard(loser);
             _soundManager.PlayWinSound();
         }
+    }
+
+    private void CalculateMeasurements() {
+        // M = 0.08 * squares_count + (7 / gridSize) + 1
+        int gridSize = _boardManager.GridSize;
+        float mFloat = (0.08f * _currentProbability) + (7f / gridSize) + 1f;
+        measurementCount = Mathf.RoundToInt(mFloat);
     }
 }

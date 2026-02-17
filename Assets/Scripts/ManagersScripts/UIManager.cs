@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private GameObject _player1Measures;
     [SerializeField] private TMP_Text _player0MeasureText;
     [SerializeField] private TMP_Text _player1MeasureText;
+    [SerializeField] private TMP_Text _textGuide;
 
     [Header("Game Info")]
     [SerializeField] private GameObject _winScreen;
@@ -110,6 +111,10 @@ public class UIManager : MonoBehaviour {
     // Shows probability of 1 square
     public void UpdateProbability(float percentage) {
         if (_probabilityText != null) _probabilityText.text = $"= {percentage:F2} %";
+    }
+
+    public void UpdateMeasurementsCount(int count) {
+        _textGuide.text = $"You have {count} independent measurements per turn. \n Each measurement starts from the original \n ship state, so you get {count} separate outcomes.";
     }
 
 

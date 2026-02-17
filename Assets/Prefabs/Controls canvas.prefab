@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f5be8a89ca91c46828d8b94131c90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonSound
+  customClip: {fileID: 0}
 --- !u!1 &2693705863713318114
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,10 +891,10 @@ MonoBehaviour:
 
 
     <style=Bullet>Use
-    the <style=blueColor>left mouse button</style> to add red estimation squares</style>
+    the <style=blueColor>right mouse button</style> to add red estimation squares</style>
 
     <style=Bullet>Use
-    the <style=blueColor>right mouse button</style> to remove red estimation squares</style>
+    the <style=blueColor>left mouse button</style> to remove red estimation squares</style>
 
     <style=Bullet><style=blueColor>Hold</style>
     the left or right mouse button to continuously add or remove squares</style>'
